@@ -1,0 +1,358 @@
+=============================================LECTURE 13=============================================
+====================================================================================================
+
+====================================================================================================
+Move Members
+    A class can be open to copy and open to move.
+    A class can be closed to copy and open to move.
+    A class can be closed to copy and closed to move.
+
+    Move members must leave the object they steal the resource from, in a valid state.
+    An object whose resource is stolen, can be re-used in an assignment to it.
+
+    ###REMARK###
+        Resource of a const object cannot be stolen(rules of the language prohibits this), nor you
+        should try to steal it.
+    ###REMARK###
+
+    ###REMARK###
+        std::move() is a const qualified function. So when the argument of move is a const, it also
+        returns const.
+            e.g.
+                class MyClass
+                {
+                public:
+                    MyClass() = default;
+                    MyClass(MyClass const&)
+                    {
+                        std::cout << "copy ctor\n";
+                    }
+                    MyClass(MyClass&&)
+                    {
+                        std::cout << "move ctor\n";
+                    }
+                }; // class MyClass
+                int main()
+                {
+                    MyClass x;
+                    MyClass y = std::move(x);       // This line will call the move ctor.
+                    MyClass const z;                // Since MyClass has no data members, this
+                                                    // initialization is VALID.
+                    MyClass t = std::move(z);       // This line will call the copy ctor,
+                    return 0;                       // because resource of a const variable cannot
+                                                    // be stolen.
+                }
+    ###REMARK###
+
+    ###REMARK###
+            CHECK THE special member functions.jgp BEFORE DEFINING SPECIAL MEMBER FUNCTIONS.
+            To summarize;
+                - If any of the destructor / copy ctor / copy assignment is declared, then move
+                    members are not declared.
+                - There are no scenarios dtor does not exist.
+                - Default ctor either defaulted or not declared.
+                - If either of the move members is declared then copy members are deleted.
+    ###REMARK###
+
+    ###REMARK###
+        Ctors cannot be called by their names.
+            e.g.
+                class MyClass;
+                MyClass x;
+                MyClass* ptr = &x;
+                x.MyClass();                // Always a syntax error.
+                ptr->MyClass();             // Always a syntax error.
+        Dtors can be called by their names, but must not. There is only one exception to this rule,
+        placement new operator, a topic for later.
+            e.g.
+                class MyClass;
+                MyClass x;
+                MyClass* ptr = &x;
+                x.~MyClass();               // Can be done, but must not.
+                ptr->~MyClass();            // Can be done, but must not.
+    ###REMARK###
+
+    ###REMARK####
+        WHEN DEFINING COPY OR MOVE ASSIGNMENT, ALWAYS CHECK FOR SELF ASSIGNMENT, TO PREVENT DANGLING
+        POINTERS.
+    ###REMARK###
+
+====================================================================================================
+Delegating Constructor
+    is the ctor that calls another ctor.
+        e.g.
+            class MyClass
+            {
+            public:
+                MyClass(int x) : MyClass(x, 0, 0) {}
+                MyClass(int x, int y, int z) : _x{ x } , _y{ y }, _z{ z } {}
+            private:
+                int _x, _y, _z;
+            }; // class MyClass
+    ###REMARK###
+        Constructor Initializer List cannot be used in a delegating constructor.
+        Calling a ctor must be the only thing that delegating constructor should do.
+    ###REMARK###
+
+====================================================================================================
+Temporary Objects
+    Life of a temporary object ends after the enclosing expression that contains the expression that
+    creates the temporary object.
+        e.g.
+            class MyClass
+            {
+            public:
+                MyClass()
+                {
+                    std::cout << "default ctor this = " << this << '\n';
+                }
+                MyClass(int a, int b)
+                {
+                    std::cout << "a = " << a << " b = " << b << " this = " << this << '\n';
+                }
+                ~MyClass()
+                {
+                    std::cout << "destructor this = " << this << '\n';
+                }
+                void foo()
+                {
+                    std::cout << "MyClass foo() this = " << this << '\n';
+                }
+            private:
+                int _x{}, _y{};
+
+            }; // class MyClass
+            int main()
+            {
+                std::cout << "main starts here\n";
+                MyClass{}.foo();                    // Yes this is VALID and a pr value expression,
+                                                    // this line creates a temporary object.
+                std::cout << "main continues\n";
+                return 0;
+            }
+            This code snippet will have the following output;
+                main starts here
+                default ctor this =             // address goes here
+                MyClass foo() this =            // same address as before goes here
+                destructor this =               // same address as before goes here
+                main continues
+            but, binding it to an r value expression like,
+                int main()
+                {
+                    std::cout << "main starts here\n";
+                    MyClass&& x = MyClass{ 3, 5 };
+                    std::cout << "main continues\n";
+                    return 0;
+                }
+            would have the following output;
+                main starts here
+                a = 3 b = 5 this =              // address
+                main continues
+                destructor this =               // same address as before
+
+                So binding a temp object to an r val. expr. extends the life of that temp object,
+                till the end of that reference's scope.    This is called life extension.
+
+====================================================================================================
+Reference Qualifiers
+    ###REMARK###
+        Non-static member functions can be called with L and R val. expr. class instances.
+            e.g.
+                class MyClass
+                {
+                public:
+                    void foo() {};
+                    void bar() {};
+                }; // class MyClass
+
+                int main()
+                {
+                    MyClass mx;
+                    mx.foo();           // L val. expr. VALID
+                    mx.bar();           // L val. expr. VALID
+                    MyClass{}.foo();    // R val. expr. VALID
+                    MyClass{}.bar();    // R val. expr. VALID
+                    return 0;
+                }
+            BUT there are such cases;
+                a-) We want to disable the calling of functions for R val. expr. class instances.
+                b-) We want to disable the calling of functions for R val. expr. and L val. expr.
+                    class instances.
+                c-) We want to define different implementations.
+    ###REMARK###
+
+    void MyClass::foo() &               // Here foo() & is an L value reference qualifier.
+    {
+        std::cout << "MyClass foo() & this = " << this << '\n';
+    }
+    void MyClass::bar()&&               // Here bar() && is an R value reference qualifier.
+    {
+        std::cout << "MyClass bar() && this = " << this << '\n';
+    }
+    Calling these functions in the following style would be;
+        MyClass x;
+        x.foo();                        // VALID
+        x.bar();                        // INVALID
+        MyClass{}.foo();                // INVALID
+        MyClass{}.bar();                // VALID
+        std::move(x).foo();             // INVALID
+        std::move(x).bar();             // VALID
+
+    ###REMARK###
+        Member functions can be overloaded with reference qualifiers.
+    ###REMARK###
+
+    Why Do We Need Reference Qualifiers?
+        To prevent problems like assigning a value to an r value expr;
+            e.g.
+                MyClass x;
+                MyClass{} = x;      // This is not a syntax error, but also illogical.
+                                    // To turn this into a syntax error, we define assignment
+                                    // operator of the class as L val ref qualified.
+                // Like this
+                MyClass& MyClass::operator=(const MyClass&)& = default;
+
+    ###REMARK###
+        If one of the overloads of a member function is reference qualified, then all overloads of
+        that function must be reference qualified.
+    ###REMARK###
+
+====================================================================================================
+Conversion Constructors
+    class MyClass
+    {
+    public:
+        MyClass();          // Default ctor
+        MyClass(T);         // Also ctor but, ctors with one parameter are usually called conversion
+                            // constructors. Because it creates an implicit conversion from T to
+                            // MyClass.
+    }; // class MyClass
+    MyClass x;
+    x = 5;                  // Implicit Conversion
+    
+    ###REMARK###
+        This type of conversion is called User-Defined Conversion(UDC).
+        Compiler can perform an implicit conversion in two ways;
+            1-) Standard Conversion + User-Defined Conversion
+            2-) User-Defined Conversion + Standard Conversion
+            Both are implicit conversions, but compiler cannot perform an implicit conversion in the
+            form of;
+                User-Defined Conversion + User-Defined Conversion.
+            e.g.
+                class A {};
+                class B
+                {
+                public:
+                    B(A);
+                }; // class B
+                class C
+                {
+                public:
+                    C(B);
+                }; // class C
+                A ax;
+                B bx = ax;                  // VALID, compiler performs UDC implicitly.
+                C cx = bx;                  // VALID, compiler performs UDC implicitly.
+                C cx1 = ax;                 // INVALID, because this needs UDC + UDC.
+                                            // To perform this we can use explicit cast.
+                C cx1 = static_cast<B>(ax); // VALID, compiler performs a standard conversion.
+    
+            To prevent the compiler performing an implicit conversion, we use "explicit" keyword in
+            ctor definition. Means that constructor does not allow implicit conversion, only
+            explicit conversion.
+                e.g.
+                    class MyClass
+                    {
+                    public:
+                        MyClass();
+                        explicit MyClass(T);
+                    }; // class MyClass
+                    Some important rules about explicit;
+                        1-) If it's not defined in class definition(inline definition) explicit
+                            keyword does not have to be in the definition.
+                            e.g.
+                                class MyClass
+                                {
+                                public:
+                                    MyClass();
+                                    explicit MyClass(T);
+                                }; // class MyClass
+                                MyClass::MyClass(T x){}                 // This is the correct way.
+                                explicit MyClass::MyClass(T x){}        // This is the wrong way.
+                        2-) If copy initialization requires an implicit conversion, explicit
+                            conversion ctor will cause a syntax error.
+                                e.g.
+                                    class MyClass
+                                    {
+                                    public:
+                                        MyClass();
+                                        explicit MyClass(int);
+                                    }; // class MyClass
+                                    int main()
+                                    {
+                                        MyClass m = 10;                 // This is a syntax error.
+                                    }
+                        3-) Explicit functions are omitted from viable functions list in function
+                            overloading resolution.
+                        4-) Conversion ctors can have more than 1 parameters, but in practice this
+                            is rare.
+        ###REMARK###
+        
+        ###REMARK###
+            99% of the time we want conversion ctors to be EXPLICIT.
+        ###REMARK###
+
+====================================================================================================
+Copy Elision
+    Not performing the copying, or escaping from the copying. Sometimes referred to as copy
+    elimination. There is a copy performing code but compiler produces a code that does not copy,
+    hence the naming. With the C++17, some of the copy elision scenarios are switched from
+    optional(usually called optimization) to mandatory.
+    
+    e.g.
+        class MyClass
+        {
+        public:
+            MyClass() { std::cout << "MyClass default ctor\n"; }
+
+            MyClass(MyClass const&) { std::cout << "MyClass copy ctor\n"; }
+        }
+
+        void func(MyClass) {}
+        
+        // This one is usually called Return Value Optimiziation, RVO.
+        MyClass foo() { return MyClass{}; }
+        
+        //There is another type of RVO, which is called Named Return Value Optimization, NRVO.
+        MyClass bar()
+        {
+            MyClass m;
+            //.. code goes here
+            //.. code goes here
+            return m;
+        }
+        
+        int main()
+        {
+            func(MyClass{});
+            MyClass m1 = foo();         // RVO
+            MyClass m2 = bar();         // NRVO
+            return 0;
+        }
+        Expected output for this code snippet is
+            MyClass default ctor
+            MyClass copyctor
+            MyClass default ctor
+            MyClass copyctor
+
+        BUT it actually is
+            MyClass default ctor
+            MyClass default ctor
+
+        Copy ctor is not called because compiler decides that since the temp object is not gonna be
+        used, instead of creating that temp object in main and pass it to the func(MyClass) by
+        value, it creates the temp object in the scope of func(MyClass). In other words compiler
+        elides copying, hence the name Copy Elision. This exact example was considered as
+        optimization but with C++17 it is mandatory. So if copy ctor to be deleted, it would be a
+        syntax error on standarts before C++17.
+====================================================================================================
