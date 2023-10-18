@@ -54,7 +54,7 @@ Static Data Members of Classes
                 int MyClass:_sta_x = 10;            ||          int MyClass::_sta_x = 10;
                 int MyClass:_sta_x(10);             ||          int MyClass::_sta_x(10);
                 int MyClass:_sta_x{};               ||          int MyClass::_sta_x{};
-                int MyClass:_sta_x{ 10 };           ||          int MyClass::_sta_x 10 };
+                int MyClass:_sta_x{10};             ||          int MyClass::_sta_x {10};
 
             - Static keyword has to be used in declaration but not in definition.
             - Static data member can be of an incomplete type.
@@ -121,9 +121,9 @@ Static Data Members of Classes
                         static int _sta_ival;
                     public:
                         MyClass(){}
-                        MyClass(int x, int y) : _x{ x }, _y{ y } {}                       // VALID
-                        MyClass(int x, int y, int z) : _x{ x }, _y{ y }, _sta_ival{ z } {}// INVALID
-                        MyClass() : _x{ 10 }, _y{ 20 }, _sta_ival{ 30 } {}                // INVALID
+                        MyClass(int x, int y) : _x{x}, _y{y} {}                       // VALID
+                        MyClass(int x, int y, int z) : _x{x}, _y{y}, _sta_ival{z} {}// INVALID
+                        MyClass() : _x{10}, _y{20}, _sta_ival{30} {}                // INVALID
                     }; // class MyClass
 
 ====================================================================================================
@@ -309,9 +309,9 @@ Friend Declarations
                         private:
                             friend void baz() { std::cout << "baz()\n"; }
                         }; // class MyClass
-                        foo();            // VALID
-                        bar();            // VALID
-                        baz();            // VALID
+                        void foo();            // VALID
+                        void bar();            // VALID
+                        void baz();            // VALID
             ###REMARK###
     ###REMARK###
 

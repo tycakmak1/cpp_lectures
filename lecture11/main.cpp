@@ -24,7 +24,7 @@ void foo()
 class yas
 {
 public:
-    yas() : _data{ 1 }, _temp1{ 5 }, _temp2(4), _debug(0) {}
+    yas() : _data{1}, _temp1{5}, _temp2(4), _debug(0) {}
 
     void print() const { std::cout << _debug++; }
 

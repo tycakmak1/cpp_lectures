@@ -1,4 +1,4 @@
-// Lecture 01
+// Lecture 02
 #include <iostream>
 
 int main()

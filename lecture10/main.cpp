@@ -122,7 +122,7 @@ int main()
     std::cout << &*ptv_xx << '\n';
 
     constexpr int x = foo(1, 2);
-    int const arr[x]{ 0, 1, 2, 3, 4 };
+    int const arr[x]{0, 1, 2, 3, 4};
     int const yy      = 5;
     int const* ptv_yy = &yy;
 

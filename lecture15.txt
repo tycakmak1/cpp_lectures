@@ -280,7 +280,7 @@ Operator Overloading
                 }; // class T
                 inline T operator+(T const& lhs, T const& rhs)
                 {
-                    return T{ lhs } += rhs;
+                    return T{lhs} += rhs;
                 }
         6-) ++ and --. they have the same syntax, how to differentiate them in operator function?
             e.g.
@@ -294,7 +294,7 @@ Operator Overloading
                     }
                     T operator++(int)               // This is postfix.
                     {
-                        T return_val{ *this };
+                        T return_val{*this};
                         ++*this;
                         return return_val;
                     }
@@ -319,7 +319,7 @@ These operator functions will be studied separately.
                     class Name
                     {
                     public:
-                        Name(char const* p) : mp{ new char[strlen(p) + 1] }
+                        Name(char const* p) : mp{new char[strlen(p) + 1]}
                         {
                             std::strcpy(mp, p);
                         }
@@ -344,7 +344,7 @@ These operator functions will be studied separately.
 
                     int main()
                     {
-                        Name const myname{ "taha" };
+                        Name const myname{"taha"};
 
                         myname.print();             // This line will print out taha.
                         myname[0] = 'y';            // This line will cause a syntax error because
@@ -366,7 +366,7 @@ Pointer-Like Classes
     They store the location information of elements in a container.
     std::iterator
         e.g.
-            std::vector<std::string> svec = { "john", "jack", "jane" };
+            std::vector<std::string> svec = {"john", "jack", "jane"};
             auto iter1 = svec.begin();                  // auto = std::vector<std::string>::iterator
             std::vector<std::string>::iterator iter2 = svec.begin() + 1;
             std::cout << *iter1 << ' ' << *iter2 << ' ' << iter2->size();   // This line will print

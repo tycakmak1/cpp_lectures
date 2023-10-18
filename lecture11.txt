@@ -139,7 +139,7 @@ last but destroyed first.
             int main()
             {
                 MyClass x1(10);     // Direct initialization.
-                MyClass x2{ 10 };   // Direct list(brace) initialization.
+                MyClass x2{10};   // Direct list(brace) initialization.
                 MyClass x3 = 92;    // Copy initialization.
                 return 0;
             }
@@ -213,7 +213,7 @@ Ctor Initializer List(Member Initializer List)
         class MyClass
         {
         public:
-            MyClass() : _x{ 5 }, _y{ 6 }, _z(7)        // This here is the ctor initializer list.
+            MyClass() : _x{5}, _y{6}, _z(7)        // This here is the ctor initializer list.
             {
                 //..
             }
@@ -228,7 +228,7 @@ Ctor Initializer List(Member Initializer List)
                     class MyClass
                     {
                     public:
-                        MyClass() : _x{ 10 } {}     // Because _x is initialized with a value but _y
+                        MyClass() : _x{10} {}     // Because _x is initialized with a value but _y
                                                     // is not, _y will be default initialized.
                     private:
                         int _x, _y;
@@ -253,10 +253,10 @@ Default Member Initializer(In-Class Initializer) ==> Not Actually an Initializer
         class MyClass
         {
         public:
-            MyClass() : _y{ 10 } {}     // _x is not initialized here but since it has a Default
+            MyClass() : _y{10} {}     // _x is not initialized here but since it has a Default
                                         // Member Initializer. It will be initialized with 20.
         private:
-            int _x { 20 };              // Default Member Initializer. Could also be used with "="
+            int _x {20};              // Default Member Initializer. Could also be used with "="
                                         // e.g. int _x = 20. But () cannot be used.
             int _y;
         }

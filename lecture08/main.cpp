@@ -33,7 +33,7 @@ int main()
     int* (*p_f2)() = f2;
     foo(10);
     std::cout << '\n';
-    int x{ 10 };
+    int x{10};
     foo(x);
     f(x);
     std::cout << '\n';
@@ -44,7 +44,7 @@ int main()
     std::cout << sizeof(x *= 5) << '\n';
     std::cout << "x: " << x << '\n';
 
-    int a[5]{ 0, 1, 2, 3, 4 };
+    int a[5]{0, 1, 2, 3, 4};
     int b[5]{};
     int* p1_a = a;
     int* p1_b = b;
@@ -54,7 +54,7 @@ int main()
     n = 5;
     while (n--)
         std::cout << "a[" << n << "] = " << *--p1_a << "\tb[" << n << "] = " << *--p1_b << '\n';
-    for (int i{ 0 }; i < 5; i++)
+    for (int i{0}; i < 5; i++)
         std::cout << a[i] << ' ' << b[i] << '\n';
 
     return 0;

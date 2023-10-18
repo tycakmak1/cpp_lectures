@@ -6,7 +6,7 @@
 class Counter
 {
 public:
-    explicit Counter(int x = 0) : _val{ x }
+    explicit Counter(int x = 0) : _val{x}
     {
         std::cout << "a Counter object created   at " << this << " with value " << _val << '\n';
     }
@@ -42,9 +42,9 @@ private:
 class CounterPtr
 {
 public:
-    CounterPtr() : _ptr{ nullptr } {}
+    CounterPtr() : _ptr{nullptr} {}
 
-    CounterPtr(Counter* p) : _ptr{ p } {}
+    CounterPtr(Counter* p) : _ptr{p} {}
 
     ~CounterPtr()
     {
@@ -55,7 +55,7 @@ public:
     CounterPtr(CounterPtr const&)            = delete;
     CounterPtr& operator=(CounterPtr const&) = delete;
 
-    CounterPtr(CounterPtr&& other) : _ptr{ other._ptr } { other._ptr = nullptr; }
+    CounterPtr(CounterPtr&& other) : _ptr{other._ptr} { other._ptr = nullptr; }
 
     Counter& operator*() { return *_ptr; }
 
@@ -69,9 +69,9 @@ template<typename T>
 class SmartPtr
 {
 public:
-    SmartPtr() : _ptr{ nullptr } {}
+    SmartPtr() : _ptr{nullptr} {}
 
-    SmartPtr(T* p) : _ptr{ p } {}
+    SmartPtr(T* p) : _ptr{p} {}
 
     ~SmartPtr()
     {
@@ -82,7 +82,7 @@ public:
     SmartPtr(SmartPtr const&)            = delete;
     SmartPtr& operator=(SmartPtr const&) = delete;
 
-    SmartPtr(SmartPtr&& other) : _ptr{ other._ptr } { other._ptr = nullptr; }
+    SmartPtr(SmartPtr&& other) : _ptr{other._ptr} { other._ptr = nullptr; }
 
     T& operator*() { return *_ptr; }
 
@@ -95,11 +95,11 @@ private:
 class Yasin
 {
 public:
-    Yasin(double data) : _x{ data } {}
+    Yasin(double data) : _x{data} {}
 
     operator double() const { return _x; }
 
-    Yasin(Yasin const& other) : _x{ other._x } { std::cout << "copy ctor called\n"; }
+    Yasin(Yasin const& other) : _x{other._x} { std::cout << "copy ctor called\n"; }
 
     friend std::ostream& operator<<(std::ostream& os, Yasin const& temp) { return os << temp._x; }
 
@@ -119,7 +119,7 @@ enum class Color
 
 std::ostream& operator<<(std::ostream& os, yas::Color const& col)
 {
-    static constexpr char const* p[] = { "Blue", "Black", "Green" };
+    static constexpr char const* p[] = {"Blue", "Black", "Green"};
     return os << p[static_cast<int>(col)];
 }
 
@@ -130,32 +130,32 @@ int main()
     std::cout << col << '\n';
     std::cout << "main started\nfirst block\n";
     {
-        CounterPtr p1 = new Counter{ 35 };
+        CounterPtr p1 = new Counter{35};
         ++*p1;
         std::cout << p1->get() << '\n';
         p1->operator++();
     }
     std::cout << "\n\nsecond block\n\n";
     {
-        SmartPtr<Counter> p2 = new Counter{ 38 };
+        SmartPtr<Counter> p2 = new Counter{38};
         ++*p2;
         std::cout << p2->get() << '\n';
         p2->operator++();
     }
     std::cout << "\n\nthird block\n\n";
     {
-        SmartPtr<std::string> p3 = new std::string{ "taha yasin" };
+        SmartPtr<std::string> p3 = new std::string{"taha yasin"};
         std::cout << *p3 << '\n';
         *p3 = "yasin taha";
         std::cout << *p3 << '\n' << p3->size() << '\n';
     }
     std::cout << "\n\n";
-    Yasin temp{ 5.3 };
+    Yasin temp{5.3};
     int x    = 5 + static_cast<double>(temp);
     double y = x + static_cast<double>(temp);
     std::cout << x << '\n';
     std::cout << y << '\n';
-    std::array<Yasin, 3> a{ 3.5, 5.2, 7.3 };
+    std::array<Yasin, 3> a{3.5, 5.2, 7.3};
     for (int i = 0; i < a.size(); i++)
         std::cout << "a[" << i << "] = " << a[i] << '\n';
     for (Yasin const& i : a)

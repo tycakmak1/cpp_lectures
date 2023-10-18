@@ -85,7 +85,7 @@ int main()
     ref_fib1(3, 5);
     std::cout << "(*ptr_fib)(3, 5) ";
     (*ptr_fib1)(3, 5);
-    int (*a[2])(int, int){ ptr_fib2, ptr_fib1 };
+    int (*a[2])(int, int){ptr_fib2, ptr_fib1};
     for (int i{}; i < 2; i++)
         std::cout << "a[" << i << "] = " << a[i] << '\n';
     int ret = (ref_fib2)(3, 5);
@@ -105,7 +105,7 @@ int main()
     char* ptr = reinterpret_cast<char*>(&dval1);
     std::cout << *ptr << "\n";
 
-    unsigned int const uval{ 456U };
+    unsigned int const uval{456U};
     int* p = reinterpret_cast<int*>(const_cast<unsigned int*>(&uval));
 
     return 0;

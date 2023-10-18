@@ -8,11 +8,11 @@ namespace complex
 class Complex
 {
 public:
-    Complex() : _x{ 0 }, _y{ 0 } {}
+    Complex() : _x{0}, _y{0} {}
 
-    Complex(double x, double y) : _x{ x }, _y{ y } {}
+    Complex(double x, double y) : _x{x}, _y{y} {}
 
-    Complex(Complex const& other) : _x{ other._x }, _y{ other._y } {}
+    Complex(Complex const& other) : _x{other._x}, _y{other._y} {}
 
     Complex operator=(Complex const& z)
     {
@@ -30,7 +30,7 @@ public:
 
     Complex operator++(int)
     {
-        Complex return_val{ *this };
+        Complex return_val{*this};
         ++*this;
         return return_val;
     }
@@ -44,7 +44,7 @@ public:
 
     Complex operator--(int)
     {
-        Complex return_val{ *this };
+        Complex return_val{*this};
         --*this;
         return return_val;
     }
@@ -65,7 +65,7 @@ public:
 
     Complex& operator*=(Complex const& other)
     {
-        Complex tmp{ *this };
+        Complex tmp{*this};
         _x = tmp._x * other._x - tmp._y * other._y;
         _y = tmp._x * other._y + tmp._y * other._x;
         return *this;

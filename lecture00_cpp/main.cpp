@@ -31,7 +31,7 @@ public:
 int main()
 {
     int a;
-    int* p1{ &a };
+    int* p1{&a};
     f(p1);
     Pos mypos = Pos::on;
     int ival  = static_cast<int>(mypos);

@@ -26,7 +26,7 @@ int temp_g;
 
 int& foo1()
 {
-    // int temp{ 5 };
+    // int temp{5};
     return temp_g;
 }
 
@@ -69,10 +69,10 @@ int main()
     enum pos mypos     = off;
     int xy             = mycolor;
     std::cout << xy;
-    int x{ 5 };
-    int* ptv_x{ &x };
+    int x{5};
+    int* ptv_x{&x};
     std::cout << "ptr_x " << ptv_x << '\n' << "*ptr_x " << *ptv_x << '\n';
-    int& ref_x{ x };
+    int& ref_x{x};
     ref_x++;
     std::cout << "x " << x << '\n';
     std::cout << "ref_x " << ref_x << '\n';
@@ -82,14 +82,14 @@ int main()
     print_val_cat(++x);
     print_val_cat(foo1());
     print_val_cat(bar());
-    int a1;       // default initialization, a1 has (indeterminate)garbage value
-    int a2 = 10;  // copy initialization
-    int a3(5);    // direct initialization
-    int a4{ 45 }; // brace initialization, generally known as uniform or list initialization
-    int a5{};     // value initialization
+    int a1;      // default initialization, a1 has (indeterminate)garbage value
+    int a2 = 10; // copy initialization
+    int a3(5);   // direct initialization
+    int a4{45};  // brace initialization, generally known as uniform or list initialization
+    int a5{};    // value initialization
     std::cout << "a2 " << a2 << '\n' << "a3 " << a3 << '\n' << "a4 " << a4 << '\n';
     int arr_a[5]{};
-    for (int i{ 0 }; i < 5; ++i)
+    for (int i{0}; i < 5; ++i)
         std::cout << "a[" << i << "] = " << arr_a[i] << '\n';
     auto* temp = &x;
     std::cout << "temp " << temp << '\n' << "x " << x << '\n' << "*temp " << *temp << '\n';

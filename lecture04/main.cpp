@@ -9,7 +9,7 @@ int main()
               << "r  " << r << " *r  " << *r << "\n";
     ip = nullptr;
     std::cout << ip << '\n';
-    int const buf{ 5 };
+    int const buf{5};
     int const& ref_buf = buf;
     int const* ptr_buf = &buf;
 }

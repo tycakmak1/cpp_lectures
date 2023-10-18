@@ -15,7 +15,7 @@ public:
                   << '\n';
     }
 
-    MyClass(int x, int y) : _x{ x }, _y{ y } {}
+    MyClass(int x, int y) : _x{x}, _y{y} {}
 
     // inline static int x = 5; // ==> this is available with C++17
     static int _sta_x;
@@ -30,7 +30,7 @@ int MyClass::_sta_x{};
 
 int get_mx()
 {
-    MyClass x{ 3, 5 };
+    MyClass x{3, 5};
     return x._x;
 }
 
@@ -61,9 +61,9 @@ class B
 
 int main()
 {
-    MyClass m1{ 10, 20 };
+    MyClass m1{10, 20};
     m1._sta_x;
-    MyClass m2{ 11, 21 };
+    MyClass m2{11, 21};
     m1._sta_x = ::foo();
     m1.print();
     m1.print();

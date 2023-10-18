@@ -30,21 +30,20 @@ class String
 public:
     String() = default;
 
-    String(char const* p) : _len{ std::strlen(p) }, _p{ static_cast<char*>(std::malloc(_len + 1)) }
+    String(char const* p) : _len{std::strlen(p)}, _p{static_cast<char*>(std::malloc(_len + 1))}
     {
         if (!_p)
         {
-            throw std::runtime_error{ "cannot allocate memory" };
+            throw std::runtime_error{"cannot allocate memory"};
         }
         std::strcpy(_p, p);
     }
 
-    String(String const& other)
-    : _len{ other._len }, _p{ static_cast<char*>(std::malloc(_len + 1)) }
+    String(String const& other) : _len{other._len}, _p{static_cast<char*>(std::malloc(_len + 1))}
     {
         if (!_p)
         {
-            throw std::runtime_error{ "cannot allocate memory" };
+            throw std::runtime_error{"cannot allocate memory"};
         }
         std::strcpy(_p, other._p);
     }
@@ -62,7 +61,7 @@ public:
         _p   = static_cast<char*>(std::malloc(_len + 1));
         if (!_p)
         {
-            throw std::runtime_error{ "cannot allocate memory" };
+            throw std::runtime_error{"cannot allocate memory"};
         }
         std::strcpy(_p, other._p);
         return *this;
@@ -95,7 +94,7 @@ int main()
     m.print();
     std::cout << "\n\n";
 
-    String str{ "hello world!" };
+    String str{"hello world!"};
     str.print();
     auto len = str.length();
     std::cout << "len = " << len << '\n';
@@ -105,7 +104,7 @@ int main()
     std::cout << str.length();
     std::cout << "\n\n";
 
-    String s{ "goodbye world!" };
+    String s{"goodbye world!"};
     s.print();
     s   = str;
     s   = s;

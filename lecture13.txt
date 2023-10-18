@@ -85,7 +85,7 @@ Delegating Constructor
             {
             public:
                 MyClass(int x) : MyClass(x, 0, 0) {}
-                MyClass(int x, int y, int z) : _x{ x } , _y{ y }, _z{ z } {}
+                MyClass(int x, int y, int z) : _x{x} , _y{y}, _z{z} {}
             private:
                 int _x, _y, _z;
             }; // class MyClass
@@ -140,7 +140,7 @@ Temporary Objects
                 int main()
                 {
                     std::cout << "main starts here\n";
-                    MyClass&& x = MyClass{ 3, 5 };
+                    MyClass&& x = MyClass{3, 5};
                     std::cout << "main continues\n";
                     return 0;
                 }

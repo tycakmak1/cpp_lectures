@@ -1,0 +1,22 @@
+=============================================LECTURE 18=============================================
+====================================================================================================
+Nested Types(Continued)
+    ###REMARK###
+        Member functions of a nested type can be defined inside of the class declaration, or can be
+        declared in the class declaration and defined outside of the enclosing class. Notice the
+        detail "enclosing class" in the previous sentence.
+            e.g.
+                class MyClass
+                {
+                    class Nested
+                    {
+                        void foo();                     // VALID
+                        void bar();                     // VALID
+                    }; // class Nested
+
+                    void Nested::bar() { return; }      // INVALID
+
+                }; // class MyClass
+                void MyClass::Nested::foo() { return; } // VALID
+    ###REMARK###
+====================================================================================================

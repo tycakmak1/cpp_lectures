@@ -42,7 +42,7 @@ int main()
     std::cout << "(x) " << (x) << "\n"
               << "x " << x << "\n";
 
-    int arr1[4]{ 1, 2, 3, 4 };
+    int arr1[4]{1, 2, 3, 4};
     int(&r_arr1)[4] = arr1;
     int& ra1        = arr1[0];
     int* pa1        = arr1;

@@ -52,7 +52,7 @@ Copy Ctor
     constructor is called.
         e.g.
             Student mike;               // Calls default constructor.
-            Student taha{ mike };         // Calls copy constructor.
+            Student taha{mike};         // Calls copy constructor.
             Student yasin(mike);        // Calls copy constructor.
             Student cakmak = mike;      // Calls copy constructor.
 
@@ -80,7 +80,7 @@ Copy Ctor
                         String() = default;
 
                         String(char const* p)
-                        : _len{ std::strlen(p) }, _p{ static_cast<char*>(std::malloc(_len + 1)) }
+                        : _len{std::strlen(p)}, _p{static_cast<char*>(std::malloc(_len + 1))}
                         {
                             if (!_p)
                             {
@@ -90,7 +90,7 @@ Copy Ctor
                         }
 
                         String(String const& other)
-                        : _len{ other._len }, _p{ static_cast<char*>(std::malloc(_len + 1)) }
+                        : _len{other._len}, _p{static_cast<char*>(std::malloc(_len + 1))}
                         {
                             if (!_p)
                             {
@@ -117,7 +117,7 @@ Copy Ctor
                             return *this;
                         }
 
-                        ~String() { std::free(_p); }
+                        ~String() {std::free(_p);}
 
                         void print() const { std::cout << "[" << _p << "]\n"; }
 
@@ -135,7 +135,7 @@ Copy Ctor
 
                     int main()
                     {
-                        String str{ "hello world!" };
+                        String str{"hello world!"};
 
                         str.print();
                         auto len = str.length();

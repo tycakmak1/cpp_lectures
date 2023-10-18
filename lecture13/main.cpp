@@ -6,14 +6,14 @@
 class Car
 {
 public:
-    Car() : _year{ -1 }, _doorNumber{ -1 } { std::cout << "Default Ctor Called\n"; }
+    Car() : _year{-1}, _doorNumber{-1} { std::cout << "Default Ctor Called\n"; }
 
-    Car(int year, int door_number) : _year{ year }, _doorNumber{ door_number }
+    Car(int year, int door_number) : _year{year}, _doorNumber{door_number}
     {
         std::cout << "Ctor Called\n";
     }
 
-    Car(Car const& rhs) : _year{ rhs._year }, _doorNumber{ rhs._doorNumber }
+    Car(Car const& rhs) : _year{rhs._year}, _doorNumber{rhs._doorNumber}
     {
         std::cout << "Copy constructor is called\n";
         print();
@@ -28,8 +28,7 @@ public:
         return *this;
     }
 
-    Car(Car&& other) : _year{ std::move(other._year) }, _doorNumber{ std::move(other._doorNumber) }
-    {}
+    Car(Car&& other) : _year{std::move(other._year)}, _doorNumber{std::move(other._doorNumber)} {}
 
     Car& operator=(Car&& other)
     {
@@ -50,18 +49,17 @@ class String
 public:
     String() = default;
 
-    String(char const* p) : _len{ std::strlen(p) }, _p{ static_cast<char*>(std::malloc(_len + 1)) }
+    String(char const* p) : _len{std::strlen(p)}, _p{static_cast<char*>(std::malloc(_len + 1))}
     {
         if (!_p)
-            throw std::runtime_error{ "cannot allocate memory" };
+            throw std::runtime_error{"cannot allocate memory"};
         std::strcpy(_p, p);
     }
 
-    String(String const& other)
-    : _len{ other._len }, _p{ static_cast<char*>(std::malloc(_len + 1)) }
+    String(String const& other) : _len{other._len}, _p{static_cast<char*>(std::malloc(_len + 1))}
     {
         if (!_p)
-            throw std::runtime_error{ "cannot allocate memory" };
+            throw std::runtime_error{"cannot allocate memory"};
         std::strcpy(_p, other._p);
     }
 
@@ -75,12 +73,12 @@ public:
         _len = other._len;
         _p   = static_cast<char*>(std::malloc(_len + 1));
         if (!_p)
-            throw std::runtime_error{ "cannot allocate memory" };
+            throw std::runtime_error{"cannot allocate memory"};
         strcpy(_p, other._p);
         return *this;
     }
 
-    String(String&& other) : _len{ std::move(other._len) }, _p{ std::move(other._p) } // move ctor
+    String(String&& other) : _len{std::move(other._len)}, _p{std::move(other._p)} // move ctor
     {
         other._len = 0;
         other._p   = nullptr;
@@ -118,14 +116,14 @@ class MyClass
 public:
     MyClass() : _x{}, _y{} { std::cout << "default ctor this = " << this << '\n'; }
 
-    MyClass(int a, int b) : _x{ a }, _y{ b }
+    MyClass(int a, int b) : _x{a}, _y{b}
     {
         std::cout << "int ctor a = " << a << " b = " << b << " this = " << this << '\n';
     }
 
-    MyClass(MyClass const& other) : _x{ other._x }, _y{ other._y } { std::cout << "Copy Ctor\n"; }
+    MyClass(MyClass const& other) : _x{other._x}, _y{other._y} { std::cout << "Copy Ctor\n"; }
 
-    MyClass(MyClass&& other) : _x{ std::move(other._x) }, _y{ std::move(other._y) }
+    MyClass(MyClass&& other) : _x{std::move(other._x)}, _y{std::move(other._y)}
     {
         std::cout << "Move Ctor\n";
     }
@@ -177,11 +175,11 @@ int main()
     // std::cout << "main continues\n";
 
     MyClass t1;
-    MyClass t2{ 3, 4 };
+    MyClass t2{3, 4};
     t1 = t2;
-    MyClass t3{ std::move(t2) };
-    t3         = { 3, 4 };
-    MyClass t4 = MyClass{ 3, 4 };
+    MyClass t3{std::move(t2)};
+    t3         = {3, 4};
+    MyClass t4 = MyClass{3, 4};
     // THIS HERE IS ABOUT REFERENCE QUALIFIERS
     // MyClass{3, 4}.foo();
     // MyClass x;
