@@ -1,5 +1,7 @@
 =============================================LECTURE 18=============================================
 ====================================================================================================
+
+====================================================================================================
 Nested Types(Continued)
     ###REMARK###
         Member functions of a nested type can be defined inside of the class declaration, or can be
@@ -19,4 +21,97 @@ Nested Types(Continued)
                 }; // class MyClass
                 void MyClass::Nested::foo() { return; } // VALID
     ###REMARK###
+
+    ================================================================================================
+    Pimple Idiom
+        - Also called Handle Body Idiom, Cheshire Cat Idiom, Opaque Pointer Idiom.
+        - It aims to minimize the dependency between modules. It is achieved by hiding the private
+            members of the class. Since size of pointers to all types of variables are the same
+            binary compatibility is still intact.
+            e.g.
+                #include "Date.h"
+                class MyClass
+                {
+                private:
+                    std::string _str;
+                    Date _date;
+                }; // class Myclass
+                Since we are using a Date object in MyClass, compiler must be able to see the
+                definition of Date type. This means everytime Date.h or Date.cpp gets changed,
+                MyClass header and implementation files must also be compiled again. To avoid this
+                pimple idiom is used. Instead of this we do this,
+                    // MyClass.h
+                    class MyClass
+                    {
+                        void foo();
+                    private:
+                        class Pimple;
+                        Pimple* _p;
+                    }; // class MyClass
+
+                    // MyClass.cpp
+                    #include <string>
+                    #include "MyClass.h"
+                    #include "Date.h"
+                    class MyClass::Pimple
+                    {
+                        std::string _str;
+                        Date _date;
+                    }; // class MyClass::Pimple
+
+                    void MyClass::foo()
+                    {
+                        pimple->_str;   // Since _str and _date are members of MyClass:Pimple this
+                        pimple->_date;  // is how they can be accessed.
+                    }
+
+                    Alternatively same functions can be re-declared inside Pimple and can be used
+                    directly.
+                        e.g.
+                            // MyClass.h
+                            class MyClass
+                            {
+                                void foo();
+                            private:
+                                class Pimple;
+                                Pimple* _p;
+                            }; // class MyClass
+
+                            // MyClass.cpp
+                            #include <string>
+                            #include "MyClass.h"
+                            #include "Date.h"
+                            class MyClass::Pimple
+                            {
+                                void foo()
+                                {
+                                    _str = "Hello World!\n";
+                                    _date = Date{22, 10, 2023};
+                                }
+                            }; // class MyClass:Pimple
+
+                            void MyClass::foo()
+                            {
+                                _p->foo();
+                            }
+                            This way there are less derefences.
+        - For Pimple Idiom to be used, constructor of the enclosing type must initialize the
+            pointer.
+        - Also the destructor of enclosing type must also delete the pimple object.
+            e.g.
+                class MyClass
+                {
+                    MyClass() : _p{new Pimple}
+                    {}
+                    ~MyClass()
+                    {
+                        delete _p;
+                    }
+                    class Pimple;
+                    Pimple* _p;
+                }; // class MyClass
+
+====================================================================================================
+Containment
+    A class having other class or classess as it's member or members.
 ====================================================================================================
