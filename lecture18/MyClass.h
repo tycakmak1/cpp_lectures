@@ -6,6 +6,7 @@ class MyClass
 public:
     MyClass();
     void foo();
+    void foo(int);
     void print() const;
 
 private:

@@ -22,7 +22,10 @@ void MyClass1::Nested::foo() { return; } // VALID
 
 int main()
 {
-    MyClass mc;
-    mc.print();
+    MyClass mc1, mc2;
+    mc1.foo();
+    mc1.print();
+    mc2.foo(0);
+    mc2.print();
     return 0;
 }

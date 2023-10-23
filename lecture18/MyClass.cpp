@@ -13,6 +13,8 @@ public:
 private:
     friend void MyClass::print() const;
     friend void MyClass::foo();
+    friend void MyClass::foo(int);
+    void foo();
     std::string _str;
     Date _date;
 }; // class MyClass::Pimple
@@ -23,8 +25,16 @@ MyClass::Pimple::Pimple() : _str{"Hello World!"}, _date{23, 10, 2023} {}
 
 void MyClass::foo()
 {
-    _p->_str  = "Hello World\n";
+    _p->_str  = "Hello World!, MyClass::foo()";
     _p->_date = Date{23, 10, 2023};
 }
 
-void MyClass::print() const { std::cout << _p->_str << '\n' << _p->_date << '\n'; }
+void MyClass::foo(int) { _p->foo(); }
+
+void MyClass::print() const { std::cout << _p->_str << ", " << _p->_date << '\n'; }
+
+void MyClass::Pimple::foo()
+{
+    _str  = "Hello World!, MyClass::Pimple::foo()";
+    _date = Date{23, 10, 2023};
+}
