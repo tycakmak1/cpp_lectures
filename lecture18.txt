@@ -99,17 +99,32 @@ Nested Types(Continued)
             pointer.
         - Also the destructor of enclosing type must also delete the pimple object.
             e.g.
+                // MyClass.h
+                #include "Date.h"
                 class MyClass
                 {
-                    MyClass() : _p{new Pimple}
-                    {}
-                    ~MyClass()
-                    {
-                        delete _p;
-                    }
+                    MyClass();
+                    ~MyClass();
                     class Pimple;
                     Pimple* _p;
                 }; // class MyClass
+
+                // MyClass.cpp
+                #include "MyClass.h"
+                class MyClass::Pimple
+                {
+                public:
+                    Pimple();
+                private:
+                    std::string _str;
+                    Date _date;
+                }; // class MyClass::Pimpla
+
+                MyClass::MyClass() : _p{new Pimple} {}
+                MyClass::~MyClass() { delete _p; }
+
+                MyClass::Pimple::Pimple() : _str{"Hello World!"}, _date{23, 10, 2023} {}
+
 
 ====================================================================================================
 Containment

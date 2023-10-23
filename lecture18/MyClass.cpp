@@ -8,7 +8,7 @@
 class MyClass::Pimple
 {
 public:
-    Pimple() : _str{"Hello World!"}, _date{23, 10, 2023} {}
+    Pimple();
 
 private:
     friend void MyClass::print() const;
@@ -18,6 +18,8 @@ private:
 }; // class MyClass::Pimple
 
 MyClass::MyClass() : _p{new Pimple} {}
+
+MyClass::Pimple::Pimple() : _str{"Hello World!"}, _date{23, 10, 2023} {}
 
 void MyClass::foo()
 {
