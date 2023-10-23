@@ -1,7 +1,11 @@
 // Lecture 18
-#include <iostream>
+#include "Date.h"
+#include "MyClass.h"
 
-class MyClass
+#include <iostream>
+#include <string>
+
+class MyClass1
 {
     class Nested
     {
@@ -14,6 +18,11 @@ class MyClass
 
 }; // class MyClass
 
-void MyClass::Nested::foo() { return; } // VALID
+void MyClass1::Nested::foo() { return; } // VALID
 
-int main() { return 0; }
+int main()
+{
+    MyClass mc;
+    mc.print();
+    return 0;
+}
