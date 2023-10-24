@@ -9,12 +9,11 @@ class MyClass::Pimple
 {
 public:
     Pimple();
+    void foo();
 
 private:
     friend void MyClass::print() const;
     friend void MyClass::foo();
-    friend void MyClass::foo(int);
-    void foo();
     std::string _str;
     Date _date;
 }; // class MyClass::Pimple

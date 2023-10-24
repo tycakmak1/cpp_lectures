@@ -41,59 +41,64 @@ Nested Types(Continued)
                 MyClass header and implementation files must also be compiled again. To avoid this
                 pimple idiom is used. Instead of this we do this,
                     // MyClass.h
-                    class MyClass
-                    {
-                        void foo();
-                    private:
-                        class Pimple;
-                        Pimple* _p;
-                    }; // class MyClass
+                        class MyClass
+                        {
+                            void foo();
+                        private:
+                            class Pimple;
+                            Pimple* _p;
+                        }; // class MyClass
 
                     // MyClass.cpp
-                    #include <string>
-                    #include "MyClass.h"
-                    #include "Date.h"
-                    class MyClass::Pimple
-                    {
-                        std::string _str;
-                        Date _date;
-                    }; // class MyClass::Pimple
+                        #include <string>
+                        #include "MyClass.h"
+                        #include "Date.h"
+                        class MyClass::Pimple
+                        {
+                            friend void MyClass::foo();
+                            std::string _str;
+                            Date _date;
+                        }; // class MyClass::Pimple
 
-                    void MyClass::foo()
-                    {
-                        pimple->_str;   // Since _str and _date are members of MyClass:Pimple this
-                        pimple->_date;  // is how they can be accessed.
-                    }
+                        void MyClass::foo()
+                        {
+                            pimple->_str;   // Since _str and _date are private members of
+                            pimple->_date;  // MyClass::Pimple this is how they can be accessed.
+                        }
 
                     Alternatively same functions can be re-declared inside Pimple and can be used
                     directly.
                         e.g.
                             // MyClass.h
-                            class MyClass
-                            {
-                                void foo();
-                            private:
-                                class Pimple;
-                                Pimple* _p;
-                            }; // class MyClass
+                                class MyClass
+                                {
+                                    void foo();
+                                private:
+                                    class Pimple;
+                                    Pimple* _p;
+                                }; // class MyClass
 
                             // MyClass.cpp
-                            #include <string>
-                            #include "MyClass.h"
-                            #include "Date.h"
-                            class MyClass::Pimple
-                            {
-                                void foo()
+                                #include <string>
+                                #include "MyClass.h"
+                                #include "Date.h"
+                                class MyClass::Pimple
                                 {
-                                    _str = "Hello World!\n";
-                                    _date = Date{22, 10, 2023};
-                                }
-                            }; // class MyClass:Pimple
+                                public:
+                                    void foo()
+                                    {
+                                        _str = "Hello World!\n";
+                                        _date = Date{22, 10, 2023};
+                                    }
+                                private:
+                                    std::string _str;
+                                    Date _date;
+                                }; // class MyClass:Pimple
 
-                            void MyClass::foo()
-                            {
-                                _p->foo();
-                            }
+                                void MyClass::foo()
+                                {
+                                    _p->foo();
+                                }
                             This way there are less derefences.
         - For Pimple Idiom to be used, constructor of the enclosing type must initialize the
             pointer.
