@@ -27,5 +27,7 @@ int main()
     mc1.print();
     mc2.foo(0);
     mc2.print();
+    mc1.foo(0);
+    mc1.print();
     return 0;
 }
