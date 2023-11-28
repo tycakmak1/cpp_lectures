@@ -98,7 +98,7 @@ Classes
         ###REMARK###
     private:
         int _x;             // Non-static data member.
-        static int _y;      // Static      data member.
+        static int _y;      // Static     data member.
     }
     
     MyClass mc;

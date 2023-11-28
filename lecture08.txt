@@ -100,7 +100,7 @@ Inline Functions
             }
 
             int a = func(5);    // Compiler expands this line to int a = 5 * 5.
-                                // This expansion is not always done and cannot be forced. compiler
+                                // This expansion is not always done and cannot be forced. Compiler
                                 // decides it.
 
     ###REMARK###
