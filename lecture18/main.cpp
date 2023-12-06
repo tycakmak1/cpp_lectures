@@ -20,6 +20,34 @@ class MyClass1
 
 void MyClass1::Nested::foo() { return; } // VALID
 
+class Member
+{
+public:
+    Member() { std::cout << "Member default ctor\n"; }
+
+    Member(Member const&) { std::cout << "Member copy ctor\n"; }
+}; // class Member
+
+class A
+{
+public:
+    A() = default;
+
+    A(A const&) {}
+
+private:
+    Member _x;
+}; // class A
+
+class B
+{
+public:
+    B() : _x() {}
+
+private:
+    Member _x;
+}; // class B
+
 int main()
 {
     MyClass mc1, mc2;
@@ -29,5 +57,11 @@ int main()
     mc2.print();
     mc1.foo(0);
     mc1.print();
+
+    A a1;
+    A a2{a1};
+
+    B b1;
+    B b2{b1};
     return 0;
 }

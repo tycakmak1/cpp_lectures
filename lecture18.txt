@@ -132,6 +132,113 @@ Nested Types(Continued)
 
 
 ====================================================================================================
-Containment
+Composition
     A class having other class or classess as it's member or members.
+    ###REMARK###
+        Public interface of the member class is not part of the enclosing class.
+            e.g.
+                class Member
+                {
+                public:
+                    void foo() {}
+                    void bar() {}
+                }; // class Member
+
+                class Owner
+                {
+                private:
+                    Member _x;
+                }; // class Owner
+
+                int main()
+                {
+                    Owner a;
+                    // a.foo();        // syntax error
+                    // a.bar();        // syntax error
+                }
+            BUT
+                member functions of owner class can use it's members to acces their own public
+                interfaces.
+                    e.g.
+                        class Member
+                        {
+                            int _val;
+                            void baz();
+                        public:
+                            void foo() {}
+                            void bar() {}
+                        }; // class Member
+
+                        class Owner
+                        {
+                        public:
+                            void func()
+                            {
+                                _x.foo();       // VALID
+                                _x.bar();       // VALID
+                                _x._ival;       // INVALID
+                                _x.baz();       // INVALID
+                            }
+                        private:
+                            Member _x;
+                        }; // class Owner
+
+                        int main()
+                        {
+                            Owner a;
+                            // a.foo();         // still a syntax error
+                            // a.bar();         // still a syntax error
+                        }
+                ###REMARK###
+                    - Members of a class instance is created before the constructors block.
+                    - If the default ctor of a class is defaulted(defined by the compiler) then the
+                        data members will be default initialized.
+                    - If the copy ctor of a class does not initialize all members, compiler will
+                        call the default ctor for the missing members, which is dangerous.
+                            e.g.
+                                class Member
+                                {
+                                public:
+                                    Member()
+                                    {
+                                        std::cout << "Member default ctor\n";
+                                    }
+
+                                    Member(Member const&)
+                                    {
+                                        std::cout << "Member copy ctor\n";
+                                    }
+                                }; // class Member
+
+                                class A
+                                {
+                                public:
+                                    A() = default;
+                                    A(A const&){}
+                                private:
+                                    Member _x;
+                                }; // class A
+
+                                class B
+                                {
+                                    Member _x;
+                                }; // class B
+
+                                int main()
+                                {
+                                    A a1;
+                                    A a2{a1};   // Since _x is not properly initialized in copy
+                                                // ctor, compiler will call the default ctor for it.
+                                    B b1;
+                                    B b2{b1};   // Here cdefault ctor will not be called.
+                                }
+
+                                Will have the following output because of copy ctor.
+                                    Member default ctor
+                                    Member default ctor
+                                    Member default ctor
+                                    Member copy ctor
+                ###REMARK###
+                // LEFT AT 2:39:54
+    ###REMARK###
 ====================================================================================================

@@ -1,13 +1,5 @@
 ---
 
-########## VERSION ###########
-
-# This information is used by code-format to choose the correct clang-format executable:
-# MajorVersion: 14
-# MinorVersion: 0
-
-########## GENERAL ###########
-
 DeriveLineEnding: true
 UseCRLF:         false # only used if line ending cannot be derived
 Language:        Cpp
