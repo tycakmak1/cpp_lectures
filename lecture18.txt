@@ -101,39 +101,39 @@ Nested Types(Continued)
                                 }
                             This way there are less derefences.
         - For Pimple Idiom to be used, constructor of the enclosing type must initialize the
-            pointer.
-        - Also the destructor of enclosing type must also delete the pimple object.
-            e.g.
-                // MyClass.h
-                #include "Date.h"
-                class MyClass
-                {
-                    MyClass();
-                    ~MyClass();
-                    class Pimple;
-                    Pimple* _p;
-                }; // class MyClass
+            pointer. Also the destructor of enclosing type must also delete the pimple object.
+                e.g.
+                    // MyClass.h
+                    #include "Date.h"
+                    class MyClass
+                    {
+                        MyClass();
+                        ~MyClass();
+                        class Pimple;
+                        Pimple* _p;
+                    }; // class MyClass
 
-                // MyClass.cpp
-                #include "MyClass.h"
-                class MyClass::Pimple
-                {
-                public:
-                    Pimple();
-                private:
-                    std::string _str;
-                    Date _date;
-                }; // class MyClass::Pimpla
+                    // MyClass.cpp
+                    #include "MyClass.h"
+                    class MyClass::Pimple
+                    {
+                    public:
+                        Pimple();
+                    private:
+                        std::string _str;
+                        Date _date;
+                    }; // class MyClass::Pimpla
 
-                MyClass::MyClass() : _p{new Pimple} {}
-                MyClass::~MyClass() { delete _p; }
+                    MyClass::MyClass() : _p{new Pimple} {}
+                    MyClass::~MyClass() { delete _p; }
 
-                MyClass::Pimple::Pimple() : _str{"Hello World!"}, _date{23, 10, 2023} {}
+                    MyClass::Pimple::Pimple() : _str{"Hello World!"}, _date{23, 10, 2023} {}
 
 
 ====================================================================================================
 Composition
-    A class having other class or classess as it's member or members.
+    A class having other class or classess as it's member or members. Broadly speaking, object
+    composition models a "has-a" relationship between two objects, e.g. a car "has-a" transmission.
     ###REMARK###
         Public interface of the member class is not part of the enclosing class.
             e.g.
@@ -162,7 +162,7 @@ Composition
                     e.g.
                         class Member
                         {
-                            int _val;
+                            int _ival;
                             void baz();
                         public:
                             void foo() {}
@@ -214,7 +214,7 @@ Composition
                                 {
                                 public:
                                     A() = default;
-                                    A(A const&){}
+                                    A(A const&) {}
                                 private:
                                     Member _x;
                                 }; // class A
@@ -230,7 +230,7 @@ Composition
                                     A a2{a1};   // Since _x is not properly initialized in copy
                                                 // ctor, compiler will call the default ctor for it.
                                     B b1;
-                                    B b2{b1};   // Here cdefault ctor will not be called.
+                                    B b2{b1};   // Here default ctor will not be called.
                                 }
 
                                 Will have the following output because of copy ctor.
@@ -239,6 +239,5 @@ Composition
                                     Member default ctor
                                     Member copy ctor
                 ###REMARK###
-                // LEFT AT 2:39:54
     ###REMARK###
 ====================================================================================================

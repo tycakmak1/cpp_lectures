@@ -106,4 +106,4 @@
     Lecture18
         - Nested Types(Continued)
             - Pimple Idiom(Pointer Implementation Idiom)
-        - Containment(related to Composition)
+        - Composition
