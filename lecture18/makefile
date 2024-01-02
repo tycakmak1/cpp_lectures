@@ -10,8 +10,8 @@ MyClass.o: MyClass.h MyClass.cpp
 Date.o: Date.h Date.cpp
 	g++ -std=c++17 -c Date.cpp
 
-clean:
-	rm *.o out
+cleanup:
+	rm *.out *.s
 
 assem:
 	g++ -std=c++17 -S *.cpp

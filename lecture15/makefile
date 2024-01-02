@@ -7,7 +7,7 @@ main.o: main.cpp
 complex.o: complex.h complex.cpp
 	g++ -std=c++17 -c complex.cpp
 
-clean:
+cleanup:
 	rm *.o *.s out
 
 assem:

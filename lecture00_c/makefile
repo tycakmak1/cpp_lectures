@@ -4,7 +4,7 @@ out: main.o
 main.o: main.c
 	gcc -std=c11 -c main.c
 
-clean:
+cleanup:
 	rm *.o *.s out
 
 assem:

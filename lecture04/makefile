@@ -4,7 +4,7 @@ out: main.o
 main.o: main.cpp
 	g++ -std=c++17 -c main.cpp
 
-clean:
+cleanup:
 	rm *.o *.s out
 
 assem:

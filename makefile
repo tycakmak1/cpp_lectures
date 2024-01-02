@@ -1,4 +1,7 @@
-clean:
+format:
+	clang-format -i -style=file **/*.cpp **/*.h **/*.c
+
+cleanup:
 	rm -f **/*.o **/*.s **/out
 	clang-format -i -style=file **/*.cpp **/*.h **/*.c
 
