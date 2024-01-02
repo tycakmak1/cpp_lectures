@@ -1,4 +1,9 @@
 // Lecture 19
 #include <iostream>
+#include <string>
 
-int main() { return 0; }
+int main()
+{
+    std::cout << "sizeof(std::string) = " << sizeof(std::string) << '\n';
+    return 0;
+}

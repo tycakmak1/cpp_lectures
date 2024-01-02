@@ -2,5 +2,14 @@
 ====================================================================================================
 
 ====================================================================================================
-
+std::string
+    Different Types of Strings
+        - Null Terminated Byte Stream(CString)
+            e.g.
+                tahacakmak\0
+        - An object of std::string
+        - A string literal that is know at the compiled time, which also has a null character at the
+            end.
+            e.g.
+                "tahacakmak"
 ====================================================================================================
