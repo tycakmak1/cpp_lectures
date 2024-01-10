@@ -102,6 +102,7 @@ Initialization Types
     int x(10);                      // Direct   Initialization
     int x{10};                      // Uniform  Initialization, also called brace initialization.
                                     // The official name is Direct List Initialization.
+    int x();                        // Value    Initialization
     int x{};                        // Value    Initialization
 
     ###REMARK###
