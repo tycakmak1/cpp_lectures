@@ -31,12 +31,12 @@ long double
 4.5  means double
 4.5F means float
 
-Types                Suffix
-unsigned            U
-long                L
-float                F    (has to contain . , e.g. 34F is a syntax error, correct way is 34.F)
-unsigned long        UL  or LU
-unsigned long long    ULL or LLU
+Types                   Suffix
+unsigned                U
+long                    L
+float                   F    (has to contain . , e.g. 34F is a syntax error, correct way is 34.F)
+unsigned long           UL  or LU
+unsigned long long      ULL or LLU
 
 ##REMARK##
     - When signed or unsigned used without any type keywords like signed x or unsigned x, it
@@ -53,11 +53,11 @@ unsigned long long    ULL or LLU
 ##REMARK##
 
 ---------------------------------------------
-C                C++
-Decimal            Decimal        41        (default)
-Octal            Octal        041
-Hexadecimal        Hexadecimal    0x41
-                Binary        0b1001
+C                   C++
+Decimal             Decimal         41        (default)
+Octal               Octal           041
+Hexadecimal         Hexadecimal     0x41
+                    Binary          0b1001
 ---------------------------------------------
 
 Default type of variables are int.
