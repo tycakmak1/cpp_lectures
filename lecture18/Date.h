@@ -2,8 +2,7 @@
 #define GUARD_EC237AFF_C170_4346_9A8A_FB682EE584B8
 #include <iosfwd>
 
-class Date
-{
+class Date {
 public:
     Date() = default;
 

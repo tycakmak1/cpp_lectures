@@ -8,7 +8,7 @@ foo.o: foo.cpp foo.h
 	g++ -std=c++17 -c foo.cpp
 
 cleanup:
-	rm *.out *.s
+	rm *.o out *.s
 
 assem:
 	g++ -std=c++17 -S *.cpp

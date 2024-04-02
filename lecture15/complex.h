@@ -3,10 +3,8 @@
 
 #include <iostream>
 
-namespace complex
-{
-class Complex
-{
+namespace complex {
+class Complex {
 public:
     Complex() : _x{0}, _y{0} {}
 
@@ -14,71 +12,61 @@ public:
 
     Complex(Complex const& other) : _x{other._x}, _y{other._y} {}
 
-    Complex operator=(Complex const& z)
-    {
+    Complex operator=(Complex const& z) {
         _x = z._x;
         _y = z._y;
         return *this;
     }
 
-    Complex& operator++()
-    {
+    Complex& operator++() {
         ++_x;
         ++_y;
         return *this;
     }
 
-    Complex operator++(int)
-    {
+    Complex operator++(int) {
         Complex return_val{*this};
         ++*this;
         return return_val;
     }
 
-    Complex operator--()
-    {
+    Complex operator--() {
         --_x;
         --_y;
         return *this;
     }
 
-    Complex operator--(int)
-    {
+    Complex operator--(int) {
         Complex return_val{*this};
         --*this;
         return return_val;
     }
 
-    Complex& operator+=(Complex const& other)
-    {
+    Complex& operator+=(Complex const& other) {
         _x += other._x;
         _y += other._y;
         return *this;
     }
 
-    Complex& operator-=(Complex const& other)
-    {
+    Complex& operator-=(Complex const& other) {
         _x -= other._x;
         _y -= other._y;
         return *this;
     }
 
-    Complex& operator*=(Complex const& other)
-    {
+    Complex& operator*=(Complex const& other) {
         Complex tmp{*this};
         _x = tmp._x * other._x - tmp._y * other._y;
         _y = tmp._x * other._y + tmp._y * other._x;
         return *this;
     }
 
-    void print() const&
-    {
+    void print() const& {
         std::cout << "const&  x = " << _x << " y = " << _y << '\n';
         return;
     }
 
-    void print() const&&
-    {
+    void print() const&& {
         std::cout << "const&& x = " << _x << " y = " << _y << '\n';
         return;
     }

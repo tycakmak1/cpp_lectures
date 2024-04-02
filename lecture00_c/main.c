@@ -5,8 +5,7 @@ int g = 10;
 
 void func(void* p) { return; }
 
-int main()
-{
+int main() {
     int* p = NULL;
     func(p);
 

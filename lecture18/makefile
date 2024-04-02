@@ -11,7 +11,7 @@ Date.o: Date.h Date.cpp
 	g++ -std=c++17 -c Date.cpp
 
 cleanup:
-	rm *.out *.s
+	rm out *.o *.s
 
 assem:
 	g++ -std=c++17 -S *.cpp

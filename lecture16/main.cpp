@@ -3,27 +3,22 @@
 #include <iostream>
 #include <string>
 
-class Counter
-{
+class Counter {
 public:
-    explicit Counter(int x = 0) : _val{x}
-    {
+    explicit Counter(int x = 0) : _val{x} {
         std::cout << "a Counter object created   at " << this << " with value " << _val << '\n';
     }
 
-    ~Counter()
-    {
+    ~Counter() {
         std::cout << "a Counter object destroyed at " << this << " with value " << _val << '\n';
     }
 
-    Counter& operator++()
-    {
+    Counter& operator++() {
         ++_val;
         return *this;
     }
 
-    Counter operator++(int)
-    {
+    Counter operator++(int) {
         Counter retval = *this;
         ++*this;
         return retval;
@@ -39,15 +34,13 @@ private:
     int _val;
 }; // class Counter
 
-class CounterPtr
-{
+class CounterPtr {
 public:
     CounterPtr() : _ptr{nullptr} {}
 
     CounterPtr(Counter* p) : _ptr{p} {}
 
-    ~CounterPtr()
-    {
+    ~CounterPtr() {
         if (_ptr)
             delete _ptr;
     }
@@ -66,15 +59,13 @@ private:
 }; // class CounterPtr
 
 template<typename T>
-class SmartPtr
-{
+class SmartPtr {
 public:
     SmartPtr() : _ptr{nullptr} {}
 
     SmartPtr(T* p) : _ptr{p} {}
 
-    ~SmartPtr()
-    {
+    ~SmartPtr() {
         if (_ptr)
             delete _ptr;
     }
@@ -92,8 +83,7 @@ private:
     T* _ptr;
 }; // class SmartPtr
 
-class Yasin
-{
+class Yasin {
 public:
     Yasin(double data) : _x{data} {}
 
@@ -107,24 +97,16 @@ private:
     double _x;
 }; // class Yasin
 
-namespace yas
-{
-enum class Color
-{
-    blue,
-    black,
-    green
-}; // enum class Color
+namespace yas {
+enum class Color { blue, black, green }; // enum class Color
 } // namespace yas
 
-std::ostream& operator<<(std::ostream& os, yas::Color const& col)
-{
+std::ostream& operator<<(std::ostream& os, yas::Color const& col) {
     static constexpr char const* p[] = {"Blue", "Black", "Green"};
     return os << p[static_cast<int>(col)];
 }
 
-int main()
-{
+int main() {
     enum yas::Color col = yas::Color::blue;
     // using enum yas::Color; // This is avaliable with C++20
     std::cout << col << '\n';

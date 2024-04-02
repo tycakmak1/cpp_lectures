@@ -1,8 +1,7 @@
 // Lecture 02
 #include <iostream>
 
-int main()
-{
+int main() {
     auto name = "robinn";
 
     return 0;

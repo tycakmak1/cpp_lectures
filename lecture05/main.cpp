@@ -6,8 +6,7 @@ int* pptr  = &y;
 using lref = int&;
 using rref = int&&;
 
-int main()
-{
+int main() {
     char const name[5] = "jack";
     int num            = 5;
 

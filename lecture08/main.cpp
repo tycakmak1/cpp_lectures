@@ -5,14 +5,12 @@ void bar(int&) { std::cout << 3 << '\n'; }
 
 void bar(int&&) { std::cout << 4 << '\n'; }
 
-void foo(int& x)
-{
+void foo(int& x) {
     std::cout << 1 << '\n';
     bar(x);
 }
 
-void foo(int&& x)
-{
+void foo(int&& x) {
     std::cout << 2 << '\n';
     bar(x);
 }
@@ -27,8 +25,7 @@ Tah* f1() { return nullptr; }
 
 int* f2() { return nullptr; }
 
-int main()
-{
+int main() {
     Tah* (*p_f1)() = f1;
     int* (*p_f2)() = f2;
     foo(10);

@@ -5,44 +5,37 @@
 
 #include <iostream>
 
-class MyClass
-{
+class MyClass {
 public:
     int m_data{};
 
-    void f1()
-    {
+    void f1() {
         std::cout << "Hello World!\n";
         return;
     }
 }; // class MyClass
 
-class Car
-{
+class Car {
 public:
-    Car()
-    {
+    Car() {
         _make  = "No information given";
         _model = "No information given";
         _year  = -1;
     }
 
-    Car(char const* make, char const* model, int year)
-    {
+    Car(char const* make, char const* model, int year) {
         _make  = make;
         _model = model;
         _year  = year;
     }
 
-    void set_info(char const* make, char const* model, int year)
-    {
+    void set_info(char const* make, char const* model, int year) {
         _make  = make;
         _model = model;
         _year  = year;
     }
 
-    void get_info() const
-    {
+    void get_info() const {
         std::cout << "Make  : " << _make << "\nModel : " << _model << "\nYear  : " << _year << '\n';
     }
 
@@ -54,23 +47,19 @@ private:
     int _year;
 }; // class Car
 
-class Ptr
-{
+class Ptr {
 public:
-    Ptr* f1()
-    {
+    Ptr* f1() {
         std::cout << "f1, this = " << this << '\n';
         return this;
     }
 
-    Ptr* f2()
-    {
+    Ptr* f2() {
         std::cout << "f2, this = " << this << '\n';
         return this;
     }
 
-    Ptr* f3()
-    {
+    Ptr* f3() {
         std::cout << "f3, this = " << this << '\n';
         return this;
     }
@@ -78,22 +67,19 @@ public:
 
 void f1(int x = 5) { std::cout << x * x << '\n'; }
 
-void fconst(int const* p)
-{
+void fconst(int const* p) {
     std::cout << "const int*\n";
     return;
 }
 
-void fconst(int* p)
-{
+void fconst(int* p) {
     std::cout << "int*\n";
     return;
 }
 
 constexpr int foo(int a, int b) { return a * a + b * b; }
 
-int main()
-{
+int main() {
     int temp = 5;
     fconst(&temp);
     int const* ptv_temp = &temp;

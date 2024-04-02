@@ -1,13 +1,11 @@
 // Lecture 03
 #include <iostream>
 
-struct Point
-{
+struct Point {
     double _x, _y;
 }; // struct Point
 
-std::ostream& operator<<(std::ostream& out, Point const p)
-{
+std::ostream& operator<<(std::ostream& out, Point const p) {
     return (
         (p._y == 0)
             ? (out << p._x << " +i" << p._y)
@@ -16,8 +14,7 @@ std::ostream& operator<<(std::ostream& out, Point const p)
 
 Point times(Point p) { return {p._x * 2, p._y * 2}; }
 
-int main()
-{
+int main() {
     int x{10};
     // if(int num{x}; ++num == 11)// same as if(int num{x}; num++, num == 11)
     // this is only available with C++17
@@ -38,8 +35,7 @@ int main()
     Point p1{3, 4};
     std::cout << p1 << "\n";
     int temp{}, *ptr_temp = &temp;
-    if (p1 = {5, 12}, x != 10)
-    {
+    if (p1 = {5, 12}, x != 10) {
         std::cout << x << "\n";
         std::cout << p1 << "\n";
     }

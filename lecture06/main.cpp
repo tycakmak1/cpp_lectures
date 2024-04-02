@@ -3,24 +3,13 @@
 
 #include <iostream>
 
-enum Color : uint8_t
-{
-    Black = 0,
-    White = 1,
-    Blue  = 2
-}; // enum Color
+enum Color : uint8_t { Black = 0, White = 1, Blue = 2 }; // enum Color
 
-enum class Colors : uint8_t
-{
-    red    = 0,
-    black  = 1,
-    yellow = 2
-}; // enum class Colors
+enum class Colors : uint8_t { red = 0, black = 1, yellow = 2 }; // enum class Colors
 
 int g = 10;
 
-void func(int a = g++)
-{
+void func(int a = g++) {
     std::cout << "func called, a = " << a << '\n';
     return;
 }
@@ -28,8 +17,7 @@ void func(int a = g++)
 void func_test(int a, int b, int c = 10);
 void func_test(int a, int b = 5, int c);
 
-int main()
-{
+int main() {
     int x1 = -5;
     int x2 = 3;
     std::cout << static_cast<decltype(10.)>(x1 * x2) << '\n';

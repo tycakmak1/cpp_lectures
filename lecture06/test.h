@@ -3,8 +3,7 @@
 
 #include <iostream>
 
-void func_test(int a, int b, int c)
-{
+void func_test(int a, int b, int c) {
     std::cout << "a = " << a << " b = " << b << " c = " << c << '\n';
 
     return;

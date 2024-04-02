@@ -3,24 +3,20 @@
 #include <cstring>
 #include <iostream>
 
-class Car
-{
+class Car {
 public:
     Car() : _year{-1}, _doorNumber{-1} { std::cout << "Default Ctor Called\n"; }
 
-    Car(int year, int door_number) : _year{year}, _doorNumber{door_number}
-    {
+    Car(int year, int door_number) : _year{year}, _doorNumber{door_number} {
         std::cout << "Ctor Called\n";
     }
 
-    Car(Car const& rhs) : _year{rhs._year}, _doorNumber{rhs._doorNumber}
-    {
+    Car(Car const& rhs) : _year{rhs._year}, _doorNumber{rhs._doorNumber} {
         std::cout << "Copy constructor is called\n";
         print();
     }
 
-    Car& operator=(Car const& rhs)
-    {
+    Car& operator=(Car const& rhs) {
         _year       = rhs._year;
         _doorNumber = rhs._doorNumber;
         std::cout << "Copy assignment is called\n";
@@ -30,8 +26,7 @@ public:
 
     Car(Car&& other) : _year{std::move(other._year)}, _doorNumber{std::move(other._doorNumber)} {}
 
-    Car& operator=(Car&& other)
-    {
+    Car& operator=(Car&& other) {
         _year       = std::move(other._year);
         _doorNumber = std::move(other._doorNumber);
         std::cout << "move asssignment is called\n";
@@ -44,27 +39,23 @@ private:
     int _year, _doorNumber;
 }; // class Car
 
-class String
-{
+class String {
 public:
     String() = default;
 
-    String(char const* p) : _len{std::strlen(p)}, _p{static_cast<char*>(std::malloc(_len + 1))}
-    {
+    String(char const* p) : _len{std::strlen(p)}, _p{static_cast<char*>(std::malloc(_len + 1))} {
         if (!_p)
             throw std::runtime_error{"cannot allocate memory"};
         std::strcpy(_p, p);
     }
 
-    String(String const& other) : _len{other._len}, _p{static_cast<char*>(std::malloc(_len + 1))}
-    {
+    String(String const& other) : _len{other._len}, _p{static_cast<char*>(std::malloc(_len + 1))} {
         if (!_p)
             throw std::runtime_error{"cannot allocate memory"};
         std::strcpy(_p, other._p);
     }
 
-    String& operator=(String const& other)
-    {
+    String& operator=(String const& other) {
         if (this == &other) // Removal of this control mechanism, creates a dangling
                             // handle problem caused by self assignment.
             return *this;   // There is an alternative to this, copy & swap idiom, a
@@ -78,7 +69,9 @@ public:
         return *this;
     }
 
-    String(String&& other) : _len{std::move(other._len)}, _p{std::move(other._p)} // move ctor
+    String(String&& other)
+    : _len{std::move(other._len)}
+    , _p{std::move(other._p)} // move ctor
     {
         other._len = 0;
         other._p   = nullptr;
@@ -96,8 +89,7 @@ public:
         return *this;
     }
 
-    ~String()
-    {
+    ~String() {
         if (_p)
             std::free(_p);
     }
@@ -111,35 +103,30 @@ private:
     char* _p{};
 }; // class String
 
-class MyClass
-{
+class MyClass {
 public:
     MyClass() : _x{}, _y{} { std::cout << "default ctor this = " << this << '\n'; }
 
-    MyClass(int a, int b) : _x{a}, _y{b}
-    {
+    MyClass(int a, int b) : _x{a}, _y{b} {
         std::cout << "int ctor a = " << a << " b = " << b << " this = " << this << '\n';
     }
 
     MyClass(MyClass const& other) : _x{other._x}, _y{other._y} { std::cout << "Copy Ctor\n"; }
 
-    MyClass(MyClass&& other) : _x{std::move(other._x)}, _y{std::move(other._y)}
-    {
+    MyClass(MyClass&& other) : _x{std::move(other._x)}, _y{std::move(other._y)} {
         std::cout << "Move Ctor\n";
     }
 
     ~MyClass() { std::cout << "destructor this = " << this << '\n'; }
 
-    MyClass& operator=(MyClass const& other)
-    {
+    MyClass& operator=(MyClass const& other) {
         std::cout << "Copy Assignment\n";
         _x = other._x;
         _y = other._y;
         return *this;
     }
 
-    MyClass& operator=(MyClass&& other)
-    {
+    MyClass& operator=(MyClass&& other) {
         std::cout << "Move Assignment\n";
         _x = std::move(other._x);
         _y = std::move(other._y);
@@ -158,8 +145,7 @@ private:
     int _x, _y;
 }; // class MyClass
 
-int main()
-{
+int main() {
     /*std::cout << "Hello World!\n";
 
     Car car1{ 2021, 5 };

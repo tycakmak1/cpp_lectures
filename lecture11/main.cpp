@@ -1,8 +1,7 @@
 // Lecture 11
 #include <iostream>
 
-class MyClass
-{
+class MyClass {
 public:
     MyClass() { std::cout << "default ctor, this = " << this << '\n'; }
 
@@ -13,16 +12,14 @@ MyClass g1;
 MyClass g2;
 MyClass g3;
 
-void foo()
-{
+void foo() {
     std::cout << "foo starts here\n";
     static MyClass l1;
     std::cout << "foo is ending\n";
     return;
 }
 
-class yas
-{
+class yas {
 public:
     yas() : _data{1}, _temp1{5}, _temp2(4), _debug(0) {}
 
@@ -32,8 +29,7 @@ public:
     mutable int _debug;
 }; // class Yas
 
-int main()
-{
+int main() {
     yas temp;
     std::cout << temp._data << ' ' << temp._temp1 << '\n';
 

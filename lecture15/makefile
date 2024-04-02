@@ -8,7 +8,7 @@ complex.o: complex.h complex.cpp
 	g++ -std=c++17 -c complex.cpp
 
 cleanup:
-	rm *.o *.s out
+	rm *.o out *.s
 
 assem:
 	g++ -std=c++17 -S *.cpp

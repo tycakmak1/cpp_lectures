@@ -1,8 +1,7 @@
 #ifndef GUARD_BAC70BAE_9FD9_4D5F_BAC1_7803114BAEFB
 #define GUARD_BAC70BAE_9FD9_4D5F_BAC1_7803114BAEFB
 
-class MyClass
-{
+class MyClass {
 public:
     MyClass();
     void foo();

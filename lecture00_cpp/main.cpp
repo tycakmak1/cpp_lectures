@@ -1,12 +1,7 @@
 // this is a testing ground for C++
 #include <iostream>
 
-enum class Pos
-{
-    off,
-    on,
-    hold
-}; // /enum class Pos
+enum class Pos { off, on, hold }; // /enum class Pos
 
 int func(int a) { return 1; }
 
@@ -19,8 +14,7 @@ void bar(int const&&) { return; }
 int foo(int, int = 10);
 int foo(int = 5, int);
 
-class MyClass
-{
+class MyClass {
 public:
     static int tyc() { return 5; }
 
@@ -28,8 +22,7 @@ public:
 
 }; // class MyClass
 
-int main()
-{
+int main() {
     int a;
     int* p1{&a};
     f(p1);
@@ -38,8 +31,7 @@ int main()
 
     std::cout << ival << '\n';
 
-    if (true)
-    {
+    if (true) {
         std::cout << "true\n";
     }
 

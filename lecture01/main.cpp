@@ -3,20 +3,17 @@
 #include <string>
 
 template<typename T>
-struct ValCat
-{
+struct ValCat {
     static constexpr char const* p = "PR value";
 }; // struct ValCat
 
 template<typename T>
-struct ValCat<T&>
-{
+struct ValCat<T&> {
     static constexpr char const* p = "L value";
 }; // struct ValCal<T&>
 
 template<typename T>
-struct ValCat<T&&>
-{
+struct ValCat<T&&> {
     static constexpr char const* p = "X value";
 }; // class ValCat<T&&>
 
@@ -24,8 +21,7 @@ struct ValCat<T&&>
     std::cout << "Value category of '" #expr "' is " << ValCat<decltype(expr)>::p << '\n';
 int temp_g;
 
-int& foo1()
-{
+int& foo1() {
     // int temp{5};
     return temp_g;
 }
@@ -40,22 +36,11 @@ int x;
 
 int* foo2() { return nullptr; }
 
-enum color
-{
-    red,
-    green,
-    blue
-}; // enum color
+enum color { red, green, blue }; // enum color
 
-enum pos
-{
-    on,
-    off,
-    hold
-}; // enum pos
+enum pos { on, off, hold }; // enum pos
 
-int main()
-{
+int main() {
     int const xx = -5;
     {
         std::string temp = get_int();

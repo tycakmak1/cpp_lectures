@@ -5,10 +5,8 @@
 #include <iostream>
 #include <string>
 
-class MyClass1
-{
-    class Nested
-    {
+class MyClass1 {
+    class Nested {
         void foo(); // VALID
         void bar(); // VALID
 
@@ -20,16 +18,14 @@ class MyClass1
 
 void MyClass1::Nested::foo() { return; } // VALID
 
-class Member
-{
+class Member {
 public:
     Member() { std::cout << "Member default ctor\n"; }
 
     Member(Member const&) { std::cout << "Member copy ctor\n"; }
 }; // class Member
 
-class A
-{
+class A {
 public:
     A() = default;
 
@@ -39,8 +35,7 @@ private:
     Member _x;
 }; // class A
 
-class B
-{
+class B {
 public:
     B() : _x() {}
 
@@ -48,8 +43,7 @@ private:
     Member _x;
 }; // class B
 
-int main()
-{
+int main() {
     MyClass mc1, mc2;
     mc1.foo();
     mc1.print();

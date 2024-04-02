@@ -5,7 +5,7 @@ main.o: main.cpp taha.h yasin.h cakmak.h
 	g++ -std=c++17 -c main.cpp
 
 cleanup:
-	rm *.out *.s
+	rm *.o out *.s
 
 assem:
 	g++ -std=c++17 -S *.cpp

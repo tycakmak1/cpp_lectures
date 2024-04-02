@@ -5,7 +5,7 @@ main.o: main.c
 	gcc -std=c11 -c main.c
 
 cleanup:
-	rm *.o *.s out
+	rm *.o out *.s
 
 assem:
 	gcc -std=c11 -S *.c

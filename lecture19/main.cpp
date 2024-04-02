@@ -2,8 +2,7 @@
 #include <iostream>
 #include <string>
 
-int main()
-{
+int main() {
     std::cout << "sizeof(std::string) = " << sizeof(std::string) << '\n';
     return 0;
 }

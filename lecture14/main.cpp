@@ -2,15 +2,13 @@
 #include <iostream>
 #include <vector>
 
-class MyClass
-{
+class MyClass {
 public:
     friend int get_mx();
 
     friend int get_mx(MyClass mc) { return mc._x; }
 
-    void print() const&
-    {
+    void print() const& {
         std::cout << "mx = " << _x << " my = " << _y << " _x = " << _sta_x << " this = " << this
                   << '\n';
     }
@@ -28,8 +26,7 @@ private:
 
 int MyClass::_sta_x{};
 
-int get_mx()
-{
+int get_mx() {
     MyClass x{3, 5};
     return x._x;
 }
@@ -37,8 +34,7 @@ int get_mx()
 int foo() { return 5; }
 
 // example for Named Ctor Idiom
-class Complex
-{
+class Complex {
     Complex(double x, double y) { std::cout << "Complex cartesian\n"; }
 
     Complex(double angle, double distance, int) { std::cout << "Complex polar\n"; }
@@ -46,21 +42,18 @@ class Complex
 public:
     static Complex create_cartesian(double x, double y) { return Complex(x, y); }
 
-    static Complex create_polar(double angle, double distance)
-    {
+    static Complex create_polar(double angle, double distance) {
         return Complex(angle, distance, 0);
     }
 }; // class Complex
 
 class A;
 
-class B
-{
+class B {
     friend class A;
 }; // class B
 
-int main()
-{
+int main() {
     MyClass m1{10, 20};
     m1._sta_x;
     MyClass m2{11, 21};

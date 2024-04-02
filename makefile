@@ -3,7 +3,7 @@ format:
 
 cleanup:
 	rm -f **/*.o **/*.s **/out
-	clang-format -i -style=file **/*.cpp **/*.h **/*.c
+	clang-format -i --style=file **/*.cpp **/*.h **/*.c
 
 push:
 	clang-format -i -style=file **/*.cpp **/*.h **/*.c

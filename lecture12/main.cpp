@@ -3,19 +3,16 @@
 #include <cstring>
 #include <iostream>
 
-class MyClass
-{
+class MyClass {
 public:
-    MyClass()
-    {
+    MyClass() {
         _x = 0;
         _y = 4;
     }
 
     void print() const { std::cout << "x = " << _x << " y = " << _y << " this = " << this << '\n'; }
 
-    void set(int x, int y)
-    {
+    void set(int x, int y) {
         _x = x;
         _y = y;
         return;
@@ -25,31 +22,25 @@ private:
     int _x{}, _y{};
 }; // class MyClass1
 
-class String
-{
+class String {
 public:
     String() = default;
 
-    String(char const* p) : _len{std::strlen(p)}, _p{static_cast<char*>(std::malloc(_len + 1))}
-    {
-        if (!_p)
-        {
+    String(char const* p) : _len{std::strlen(p)}, _p{static_cast<char*>(std::malloc(_len + 1))} {
+        if (!_p) {
             throw std::runtime_error{"cannot allocate memory"};
         }
         std::strcpy(_p, p);
     }
 
-    String(String const& other) : _len{other._len}, _p{static_cast<char*>(std::malloc(_len + 1))}
-    {
-        if (!_p)
-        {
+    String(String const& other) : _len{other._len}, _p{static_cast<char*>(std::malloc(_len + 1))} {
+        if (!_p) {
             throw std::runtime_error{"cannot allocate memory"};
         }
         std::strcpy(_p, other._p);
     }
 
-    String& operator=(String const& other)
-    {
+    String& operator=(String const& other) {
         if (this == &other) // Removal of this control mechanism, creates a dangling handle problem
                             // caused by self assignment. There is an alternative to this, copy &
                             // swap idiom, a topic for later.
@@ -59,8 +50,7 @@ public:
         std::free(_p);
         _len = other._len;
         _p   = static_cast<char*>(std::malloc(_len + 1));
-        if (!_p)
-        {
+        if (!_p) {
             throw std::runtime_error{"cannot allocate memory"};
         }
         std::strcpy(_p, other._p);
@@ -78,14 +68,12 @@ private:
     char* _p{};
 }; // class String
 
-void func(String s)
-{
+void func(String s) {
     std::cout << "func called\n";
     s.print();
 }
 
-int main()
-{
+int main() {
     MyClass m;
     m.print();
     MyClass& rtv_m = m;

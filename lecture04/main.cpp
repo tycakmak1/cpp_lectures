@@ -1,8 +1,7 @@
 // Lecture 04
 #include <iostream>
 
-int main()
-{
+int main() {
     int x   = 5;
     int *ip = &x, *&r = ip;
     std::cout << "ip " << ip << " *ip " << *ip << "\n"

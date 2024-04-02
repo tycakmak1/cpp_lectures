@@ -1,8 +1,7 @@
 #ifndef TAHA_H
 #define TAHA_H
 
-void func()
-{
+void func() {
     //
     return;
 }

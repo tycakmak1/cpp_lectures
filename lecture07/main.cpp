@@ -1,62 +1,47 @@
 // Lecture 07
 #include <iostream>
 
-enum class Pos
-{
-    on,
-    off,
-    hold
-}; // enum class Pos
+enum class Pos { on, off, hold }; // enum class Pos
 
-char* mystrchr(char const* p, int c)
-{
-    while (*p)
-    {
-        if (*p == c)
-        {
+char* mystrchr(char const* p, int c) {
+    while (*p) {
+        if (*p == c) {
             return const_cast<char*>(p);
         }
         ++p;
     }
-    if (c == '\0')
-    {
+    if (c == '\0') {
         return const_cast<char*>(p);
     }
     return nullptr;
 }
 
-int fib(int a, int b)
-{
+int fib(int a, int b) {
     std::cout << a << ' ' << b << '\n';
     return 1;
 }
 
-void f(int* a)
-{
+void f(int* a) {
     std::cout << "int*\n";
     return;
 }
 
-void f(int const* a)
-{
+void f(int const* a) {
     std::cout << "int const*\n";
     return;
 }
 
-void f(int& a)
-{
+void f(int& a) {
     std::cout << "int&\n";
     return;
 }
 
-void f(int const& a)
-{
+void f(int const& a) {
     std::cout << "int const&\n";
     return;
 }
 
-int main()
-{
+int main() {
     int num           = 5;
     int const* cp_num = &num;
     int* p_num        = &num;
