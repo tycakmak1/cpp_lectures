@@ -51,10 +51,10 @@ int main() {
         std::cout << "inside2\n";
 
     enum color mycolor = red;
-    enum pos mypos     = off;
-    int xy             = mycolor;
+    enum pos   mypos   = off;
+    int        xy      = mycolor;
     std::cout << xy;
-    int x{5};
+    int  x{5};
     int* ptv_x{&x};
     std::cout << "ptr_x " << ptv_x << '\n' << "*ptr_x " << *ptv_x << '\n';
     int& ref_x{x};

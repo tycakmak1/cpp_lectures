@@ -132,8 +132,8 @@ int main() {
         std::cout << *p3 << '\n' << p3->size() << '\n';
     }
     std::cout << "\n\n";
-    Yasin temp{5.3};
-    int x    = 5 + static_cast<double>(temp);
+    Yasin  temp{5.3};
+    int    x = 5 + static_cast<double>(temp);
     double y = x + static_cast<double>(temp);
     std::cout << x << '\n';
     std::cout << y << '\n';

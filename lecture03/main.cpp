@@ -19,18 +19,18 @@ int main() {
     // if(int num{x}; ++num == 11)// same as if(int num{x}; num++, num == 11)
     // this is only available with C++17
     int num{x};
-    if (++num == 11)
-        std::cout << "suck it"
-                  << " num = " << num << "\n";
+    if (++num == 11) {
+        std::cout << "suck it num = " << num << "\n";
+    }
     int y = x++;
     std::cout << "x " << x << " y " << y << "\n";
 
     unsigned int z = 15;
     std::cout << "z " << z << "\n";
 
-    int a[5] = {1, 2, 3};
-    int* p_a = a;
-    auto t   = sizeof p_a++;
+    int  a[5] = {1, 2, 3};
+    int* p_a  = a;
+    auto t    = sizeof p_a++;
     std::cout << "x " << t << " *p_a " << *p_a << "\n";
     Point p1{3, 4};
     std::cout << p1 << "\n";

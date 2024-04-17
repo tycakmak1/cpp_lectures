@@ -23,7 +23,7 @@ public:
 }; // class MyClass
 
 int main() {
-    int a;
+    int  a;
     int* p1{&a};
     f(p1);
     Pos mypos = Pos::on;

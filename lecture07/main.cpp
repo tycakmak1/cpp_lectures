@@ -42,10 +42,10 @@ void f(int const& a) {
 }
 
 int main() {
-    int num           = 5;
+    int        num    = 5;
     int const* cp_num = &num;
-    int* p_num        = &num;
-    int& r_num        = num;
+    int*       p_num  = &num;
+    int&       r_num  = num;
     int const& cr_num = num;
     f(cp_num);
     f(p_num);
@@ -76,10 +76,10 @@ int main() {
     int ret = (ref_fib2)(3, 5);
     std::cout << "ret " << ret << '\n';
 
-    int x        = 10;
-    int y        = 3;
+    int    x     = 10;
+    int    y     = 3;
     double dval1 = static_cast<double>(x) / y;
-    int ival1    = static_cast<int>(dval1);
+    int    ival1 = static_cast<int>(dval1);
     std::cout << dval1 << "\n";
     std::cout << ival1 << "\n";
 
@@ -91,7 +91,7 @@ int main() {
     std::cout << *ptr << "\n";
 
     unsigned int const uval{456U};
-    int* p = reinterpret_cast<int*>(const_cast<unsigned int*>(&uval));
+    int*               p = reinterpret_cast<int*>(const_cast<unsigned int*>(&uval));
 
     return 0;
 }

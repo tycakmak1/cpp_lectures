@@ -22,13 +22,13 @@ int main() {
     int x2 = 3;
     std::cout << static_cast<decltype(10.)>(x1 * x2) << '\n';
     decltype(x1 + 5) z = 10;
-    auto *x = &x1, y = x2;
-    decltype(x2) a;         // here x2 is an identifier, so decltype(x2) = int
-    decltype((x2)) b  = x2; // here (x)2 is an L val. expre., so decltype((x2)) = int&
-    unsigned short x3 = x1;
+    auto *           x = &x1, y = x2;
+    decltype(x2)     a;       // here x2 is an identifier, so decltype(x2) = int
+    decltype((x2))   b  = x2; // here (x)2 is an L val. expre., so decltype((x2)) = int&
+    unsigned short   x3 = x1;
     std::cout << x1 << ' ' << x3 << '\n';
 
-    int const t1{};
+    int const    t1{};
     decltype(t1) t2 = 10;
 
     std::cout << "g = " << g << '\n';

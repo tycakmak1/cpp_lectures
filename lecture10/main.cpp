@@ -44,7 +44,7 @@ public:
 private:
     char const* _make;
     char const* _model;
-    int _year;
+    int         _year;
 }; // class Car
 
 class Ptr {
@@ -83,9 +83,9 @@ int main() {
     int temp = 5;
     fconst(&temp);
     int const* ptv_temp = &temp;
-    int temp2           = 6;
+    int        temp2    = 6;
 
-    Ptr temp_ptr;
+    Ptr  temp_ptr;
     Ptr* ptv_temp_tr = &temp_ptr;
     (&temp_ptr)->f1()->f2()->f3();
     ptv_temp_tr->f1()->f2()->f3();
@@ -103,14 +103,14 @@ int main() {
     temp_car1.f1();
     Car temp_car3;
     (temp_car3.*ptf_get_info)();
-    int xx      = 5;
+    int  xx     = 5;
     int* ptv_xx = &xx;
     std::cout << &*ptv_xx << '\n';
 
     constexpr int x = foo(1, 2);
-    int const arr[x]{0, 1, 2, 3, 4};
-    int const yy      = 5;
-    int const* ptv_yy = &yy;
+    int const     arr[x]{0, 1, 2, 3, 4};
+    int const     yy     = 5;
+    int const*    ptv_yy = &yy;
 
     std::cout << "*ptv_yy = " << *ptv_yy << "\nptv_yy = " << ptv_yy << '\n';
 

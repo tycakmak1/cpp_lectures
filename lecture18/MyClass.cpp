@@ -14,7 +14,7 @@ private:
     friend void MyClass::print() const;
     friend void MyClass::foo();
     std::string _str;
-    Date _date;
+    Date        _date;
 }; // class MyClass::Pimple
 
 MyClass::MyClass() : _p{new Pimple} {}

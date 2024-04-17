@@ -25,7 +25,7 @@ public:
 
     void print() const { std::cout << _debug++; }
 
-    int _data, _temp1, _temp2;
+    int         _data, _temp1, _temp2;
     mutable int _debug;
 }; // class Yas
 

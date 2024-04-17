@@ -1,38 +1,38 @@
 // Lecture 05
 #include <iostream>
 
-int y      = 5;
+int  y     = 5;
 int* pptr  = &y;
 using lref = int&;
 using rref = int&&;
 
 int main() {
     char const name[5] = "jack";
-    int num            = 5;
+    int        num     = 5;
 
-    lref lnum1   = num;
-    lref& lnum2  = num;
+    lref   lnum1 = num;
+    lref&  lnum2 = num;
     lref&& lnum3 = num;
-    rref rnum1   = 5;
+    rref   rnum1 = 5;
 
-    rref& lnum4  = num;
+    rref&  lnum4 = num;
     rref&& rnum2 = 6;
-    char c       = 0b1100;
+    char   c     = 0b1100;
 
     int ac = +c;
     std::cout << "ac " << ac << "\n"
               << "c " << (int)c << "\n";
     int const dizi[5]{};
-    auto& rdizi = dizi;
-    int val{};
-    auto aval = val;
+    auto&     rdizi = dizi;
+    int       val{};
+    auto      aval = val;
     std::cout << "&val  " << &val << "\n"
               << "&aval " << &aval << "\n";
     std::cout << val << "\n";
-    int ival = 35;
-    int* p1  = &ival;
-    int*& rp = p1;
-    *rp      = 36;
+    int   ival = 35;
+    int*  p1   = &ival;
+    int*& rp   = p1;
+    *rp        = 36;
     std::cout << ival << "\n";
     int x = 10;
     rp    = &x;
@@ -47,22 +47,22 @@ int main() {
     int* pa1        = arr1;
     int(*pa2)[4]    = &arr1;
 
-    int& r_x1     = x;
-    int const* cp = &x;
-    int* r_x2     = &r_x1;
-    int& rx       = x;
-    int* ptr_rx   = &rx;
-    int* ptr_x    = &x;
-    auto r2x      = *ptr_rx;
-    auto* r3x     = &x;
-    auto*& r4x    = ptr_rx; // lref lnum1 = num;
-    if (pptr == nullptr)
-        std::cout << "true dat1"
-                  << "\n";
+    int&       r_x1   = x;
+    int const* cp     = &x;
+    int*       r_x2   = &r_x1;
+    int&       rx     = x;
+    int*       ptr_rx = &rx;
+    int*       ptr_x  = &x;
+    auto       r2x    = *ptr_rx;
+    auto*      r3x    = &x;
+    auto*&     r4x    = ptr_rx; // lref lnum1 = num;
+    if (pptr == nullptr) {
+        std::cout << "true dat1" << "\n";
+    }
     pptr = &x;
-    if (pptr == nullptr)
-        std::cout << "true dat2"
-                  << "\n";
+    if (pptr == nullptr) {
+        std::cout << "true dat2" << "\n";
+    }
 
     std::cout << "*pptr " << *pptr << "\n"
               << "*::pptr " << *::pptr << "\n";
@@ -74,8 +74,8 @@ int main() {
     int b[5][10][20];
     int(&p2)[20] = b[1][2];
 
-    int ival1          = 10;
-    double const& dref = ival1;
+    int           ival1 = 10;
+    double const& dref  = ival1;
     ++ival1;
     std::cout << "dref " << dref << "\n"
               << "ival1 " << ival1 << "\n";

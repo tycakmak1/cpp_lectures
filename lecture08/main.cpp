@@ -41,11 +41,11 @@ int main() {
     std::cout << sizeof(x *= 5) << '\n';
     std::cout << "x: " << x << '\n';
 
-    int a[5]{0, 1, 2, 3, 4};
-    int b[5]{};
+    int  a[5]{0, 1, 2, 3, 4};
+    int  b[5]{};
     int* p1_a = a;
     int* p1_b = b;
-    int n     = 5;
+    int  n    = 5;
     while (n--)
         *p1_b++ = *p1_a++;
     n = 5;

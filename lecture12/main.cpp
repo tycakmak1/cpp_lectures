@@ -65,7 +65,7 @@ public:
 
 private:
     std::size_t _len{};
-    char* _p{};
+    char*       _p{};
 }; // class String
 
 void func(String s) {

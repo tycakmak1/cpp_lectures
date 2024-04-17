@@ -58,7 +58,7 @@ private:
 }; // class Name
 
 static MyClass stemp1;
-MyClass stemp2;
+MyClass        stemp2;
 
 int main() {
     static MyClass stemp3;
@@ -86,11 +86,11 @@ int main() {
     operator<<(std::cout, c4);
     operator<<(std::cout, c3);
 
-    std::vector<std::string> svec            = {"john", "jack", "jane"};
-    auto iter1                               = svec.begin();
+    std::vector<std::string>           svec  = {"john", "jack", "jane"};
+    auto                               iter1 = svec.begin();
     std::vector<std::string>::iterator iter2 = svec.begin() + 1;
     std::cout << *iter1 << ' ' << *iter2 << ' ' << iter2->size() << '\n';
-    int a[5]{0, 1, 2, 3, 4};
+    int                a[5]{0, 1, 2, 3, 4};
     std::array<int, 5> b{0, 1, 2, 3, 4};
 
     return 0;
