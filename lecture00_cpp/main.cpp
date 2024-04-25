@@ -11,8 +11,8 @@ void f(void* p) { return; }
 
 void bar(int const&&) { return; }
 
-int foo(int, int = 10);
-int foo(int = 5, int);
+// int foo(int, int = 10);
+// int foo(int = 5, int);
 
 class MyClass {
 public:
@@ -21,6 +21,16 @@ public:
     static inline int _sta_x = tyc(); // VALID
 
 }; // class MyClass
+
+void bar() {
+    std::printf("bar");
+    return;
+}
+
+void foo() {
+    bar();
+    std::printf("foo");
+}
 
 int main() {
     int  a;
@@ -34,6 +44,6 @@ int main() {
     if (true) {
         std::cout << "true\n";
     }
-
+    foo();
     return 0;
 }

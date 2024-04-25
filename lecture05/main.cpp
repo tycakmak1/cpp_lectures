@@ -57,11 +57,13 @@ int main() {
     auto*      r3x    = &x;
     auto*&     r4x    = ptr_rx; // lref lnum1 = num;
     if (pptr == nullptr) {
-        std::cout << "true dat1" << "\n";
+        std::cout << "true dat1"
+                  << "\n";
     }
     pptr = &x;
     if (pptr == nullptr) {
-        std::cout << "true dat2" << "\n";
+        std::cout << "true dat2"
+                  << "\n";
     }
 
     std::cout << "*pptr " << *pptr << "\n"
