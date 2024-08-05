@@ -33,44 +33,6 @@ std::string
         because of the buffer.
     ###REMARK###
 
-    Typical Parametric Structures
-        - CString Parameter                 (char const*)
-            e.g.
-                char s[] = "asd\n";         // it must contain null terminator at the end
-                std::string str(s);
-                std::cout << str;           // outputs asd
-        - Data Parameter                    (char const*, size_t)
-            e.g.
-                char s = "tycakmak1";
-                std::string str(s, 5);
-                std::cout << str;           // outputs tycak
-        - Fill Parameter                    (size_t, char)
-            e.g.
-                std::string str(5, 'A');
-                std::cout << str;           // outputs AAAAA
-        - std::initializer_list Parameter   {'t', 'y', 'c'}
-            e.g.
-                std::string str{'t', 'y', 'c'};
-                std::cout << str;           // outputs tyc
-        - range Parameter                   (pos1, pos2)
-            Requires two positions, they don't have to be pointers. First position is inclusive,
-            second is not.
-        - std::string Parameter             (std::string)
-            e.g.
-                std::string str1{"tyc"};
-                std::string str2(str1);
-                std::cout << str2;          // outputs tyc
-        - Sub-String Parameter              (std::string, size_t idx)
-            e.g.
-                std::string str1{"tycakmak1"};
-                std::string str2(str1, 2);
-                std::cout << str2;          // outputs cakmak1
-        - Sub-String Parameter              (std::string, size_t idx1, size_t idx2)
-            e.g.
-                std::string str1{"tycakmak1"};
-                std::string str2(str1, 2, 3);
-                std::cout << str2;          // outputs cak
-
     - It has the nested type of size_type.
         ###REMARK###
             std::string::size_type is not always size_t but for char specialization of std::string,
@@ -97,4 +59,91 @@ std::string
         Reallocation takes time.
         Reallocation invalidates pointers.
     ###REMARK###
+
+    Typical Constructors of std::string
+        - CString Constructor                 (char const*)
+            e.g.
+                char s[] = "asd\n";         // It must contain null terminator at the end, if it
+                std::string str(s);         // does noet, it's an Undefined Behaviour.
+                std::cout << '|' << str << '|';           // Outputs |asd|
+
+        - Data Constructor                    (char const*, size_t)
+            e.g.
+                char s = "tycakmak1";
+                std::string str(s, 5);
+                std::cout << '|' << str << '|';           // Outputs |tycak|
+
+        - Fill Constructor                    (size_t, char)
+            e.g.
+                std::string str(5, 'A');
+                std::cout << '|' << str << '|';           // Outputs |AAAAA|
+
+        - std::initializer_list Constructor   {'t', 'y', 'c'}
+            e.g.
+                std::string str{'t', 'y', 'c'};
+                std::cout << '|' << str << '|';           // Outputs |tyc|
+            ###REMARK###
+                e.g. for initializer_list Constructor
+                    class MyClass {
+                    public:
+                        MyClass(int){ std::cout << "int" << '\n'; }
+
+                        MyClass(std::initializer_list<int>){
+                            std::cout << "std::initializer_list<int>" << '\n';
+                        }
+                    }; // class MyClass
+
+                    int main(){
+                        MyClass a(5);       // Outputs int
+                        MyClass b{ 5 };     // Outputs std::initializer_list<int>
+                    }
+            ###REMARK###
+
+        - range Constructor                   (pos1, pos2)
+            Requires two positions, they don't have to be pointers. First position is inclusive,
+            second is not.
+
+        - std::string Constructor             (std::string)
+            e.g.
+                std::string str1{"tyc"};
+                std::string str2(str1);
+                std::cout << '|' << str2 << '|';          // Outputs |tyc|
+
+        - Sub-String Constructor              (std::string, size_t idx)
+            e.g.
+                std::string str1{"tycakmak1"};
+                std::string str2(str1, 2);
+                std::cout << '|' << str2 << '|';          // Outputs |cakmak1|
+
+        - Sub-String Constructor              (std::string, size_t idx1, size_t idx2)
+            e.g.
+                std::string str1{"tycakmak1"};
+                std::string str2(str1, 2, 3);
+                std::cout << '|' << str2 << '|';          // Outputs |cak|
+
+        ###REMARK###
+            std::string does not have a char Constructor.
+                e.g.
+                    std::string s1('A');                  // Invalid
+                    std::string s2 = 'A';                 // Invalid
+        ###REMARK###
+
+    ###REMARK###
+        std::string has a static constexpr variable called npos. It stores the highest possible
+        value for size() function of string. This variable is used as to denote a failure.
+            e.g.
+                string::size_type find(char)const;
+                This function searches a character in a string. If it can find the character then it
+                returns the position of that character in that string. If it can't find it, it
+                returns string::npos because that value can't be a position.
+
+                int main() {
+                    std::string str{"tycakmak1"};
+                    std::cout << str.find('t') << '\n';  // Outputs 0
+                    std::cout << str.find('b') << '\n';  // Outputs the value of std::string::npos
+
+                    return 0;
+                }
+    ###REMARK###
+
 ====================================================================================================

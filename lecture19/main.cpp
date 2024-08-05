@@ -1,5 +1,6 @@
 // Lecture 19
 #include <array>
+#include <cstdint>
 #include <iostream>
 #include <string>
 #include <vector>
@@ -11,13 +12,24 @@ int main() {
     std::string str1{"tycakmak1"};
     std::string str2(20, '\0');
     std::cout << str2 << '\n';
-    std::vector<int>   vec;
-    std::array<int, 5> arr;
+    std::vector<uint8_t>    vec;
+    std::array<uint16_t, 5> arr;
+
+    str1.insert(str1.begin(), 'a');
+    std::cout << str1 << '\n';
 
     while (!str1.empty()) {
         std::cout << str1 << '\n';
         str1.erase(str1.begin());
     }
+
+    vec.resize(10, 0xFF);
+    for (auto iter = vec.begin(); iter != vec.end(); iter++) {
+        std::cout << static_cast<uint16_t>(*iter) << ' ';
+    }
+    std::cout << '\n';
+    std::cout << std::string::npos << '\n';
+    std::cout << str1.find('a') << '\n';
     std::cout << str1.capacity() << '\n';
     auto cap = str1.capacity();
     for (;;) {
