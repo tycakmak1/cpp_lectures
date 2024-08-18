@@ -109,3 +109,5 @@
         - Composition
     Lecture19
         - std::string
+    Lecture20
+        - std::string Functions

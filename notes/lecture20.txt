@@ -1,0 +1,134 @@
+=============================================LECTURE 20=============================================
+====================================================================================================
+
+====================================================================================================
+std::string
+    Another use for std::string::npos is for the substring functions.
+        e.g.
+            std::string& some_function(std::string str, size_t idx, size_t n);
+            This function returns the substring of n many characters starting from idx in str.
+            If n is greater then the remaining length of the str, then it includes all the remaining
+            characters in str. If the aim is to return the substring starting from idx till the end,
+            then n must be equal or greater then the number of remaining characters. To ensure this
+            std::string::npos can be used.
+
+    std::string::reserve()
+        This function reserves the space for the string, it doesn't increase it's size, but it's
+        capacity.
+        ###REMARK###
+            Just because it is reserved, it doesn't mean that a position that lies in that capacity
+            is accessible. This also applies for vector as well.
+                e.g.
+                    std::string str{"string with a size of 24"};
+                    str.reserve(100);
+                    str[25];        // Undefined Behaviour
+
+            Compiler automatically expands the capacity when necessary but it won't shrink it.
+            Reallocation is an expensive operation, since there is no guarantee that that string
+            won't expand again, compiler doesn't shrink the capacity. It only enlarges it.
+                e.g.
+                    std::string str(300'000, 'A');
+
+                    std::cout << "len = " << str.length() << '\n';      // len = 300000
+                    std::cout << "cap = " << str.capacity() << '\n';    // cap = 300000
+
+                    str.erase(1);       // will erase starting from index 1 till the end.
+
+                    std::cout << "len = " << str.length() << '\n';      // len = 1
+                    std::cout << "cap = " << str.capacity() << '\n';    // cap = 300000
+                    str = "hello world";
+                    std::string::iterator iter = str.begin();
+                    std::cout << *++iter << '\n';               // e
+
+                ###REMARK###
+                    begin() returns the index to the first element.
+                    end() returns the index that comes after the last element. Values like these are
+                    typically named as "Sentinel" in programming.
+                ###REMARK###
+    ###REMARK###
+        Some operations for strings like reverse are not part of the strting class, but it is in the
+        algorithm as global functions. Reason for this is that these kind of functions are used by
+        other containers as well, vector, array, etc.
+    ###REMARK###
+
+    As said before, string is a container. Like all other containers it has iterator interfaces but,
+    additionally it also has index interfaces. That's why some string functions and functions that
+    are used with strings have index and some have iterator parameters. Most member functions of
+    string uses index interfaces.
+        e.g.
+            erase function has both of those possibilities.
+                std::string str{"hello world"};
+
+                str.erase(str.begin());
+                std::cout << '|' << str << '|';           // |ello world|
+
+                str = "hello world";
+                str.erase(0U, 1U);          
+                std::cout << '|' << str << '|';           // |ello world|
+
+                str = "hello world";
+                str.erase(0U);
+                std::cout << '|' << str << '|';           // ||
+
+                insert funtions is another example for this, it support both iterators and indexes.
+    std::string::erase()
+        Can be used in three different ways.
+            1-) constexpr since C++20
+                basic_string& erase(size_type index = 0, size_type count = std::string::npos)
+                    std::string str{"hello world"};
+                    str.erase();
+                    std::cout << '|' << str << '|';    // ||
+                    str{"hello world"};
+                    str.erase(1);
+                    std::cout << '|' << str << '|';    // |h|
+
+            2-) since C++11, constexpr since C++20
+                iterator erase(const_iterator position)
+                    std::string str{"hello world"};
+                    str.erase(str.begin());
+                    std::cout << '|' << str << '|';           // |ello world|
+
+            3-) since C++11, constexpr since C++20
+                iterator erase(const_iterator first, const_iterator last) 
+                    std::string str{"hello world"};
+                    str.erase(str.begin(), str.begin() + 2);
+                    std::cout << '|' << str << '|';           // |llo world|
+
+            4-) noexcept since C++11, constexpr since C++20
+                    std::string str{"hello world"};
+                    str.clear();
+                    std::cout << '|' << str << '|';           // ||
+
+            5-) other ways to empty the string
+                    std::string str{"hello world"};
+                    str.erase(str.begin(), str.end());
+                    str.erase();
+                    str.clear();
+                    str.resize(0);
+                    str = "";
+                    str = {};
+                    str = std::string{};
+    ###REMARK###
+        While taking input for a string, usin std::cin >> str; will interpret spaces as separator.
+            i.e.
+                std::string str;
+                std::cin >> str;                    // hello world is the input
+                std::cout << '|' << str << '|';     // |hello|
+
+                BUT getline() considers new line characters as separators.
+                    i.e.
+                        std::string str;
+                        getline(std::cin, str);             // hello world is the input
+                        std::cout << '|' << str << '|';     // |hello|
+                A distinct separator for getline can be declared by passing as the third argument.
+                    i.e.
+                        std::string str1, str2;
+                        getline(std::cin, str1);            // hello world is the input
+                        std::cout << '|' << str1 << '|';    // |hello|
+                        getline(std::cin, str2, ',');       // hello, is the input
+                        std::cout << '|' << str2 << '|';    // |hello|
+    ###REMARK###
+
+1:43:10
+
+====================================================================================================
