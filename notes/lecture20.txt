@@ -112,20 +112,21 @@ std::string
         While taking input for a string, usin std::cin >> str; will interpret spaces as separator.
             i.e.
                 std::string str;
-                std::cin >> str;                    // hello world is the input
-                std::cout << '|' << str << '|';     // |hello|
+                std::cin >> str;                            // hello world is the input
+                std::cout << '|' << str << '|';             // |hello|
 
-                BUT getline() considers new line characters as separators.
+                BUT std::getline() considers new line characters as separators.
                     i.e.
                         std::string str;
-                        getline(std::cin, str);             // hello world is the input
+                        std::getline(std::cin, str);        // hello world is the input
                         std::cout << '|' << str << '|';     // |hello|
-                A distinct separator for getline can be declared by passing as the third argument.
+                A distinct separator for std::getline can be declared by passing as the third
+                argument.
                     i.e.
                         std::string str1, str2;
-                        getline(std::cin, str1);            // hello world is the input
-                        std::cout << '|' << str1 << '|';    // |hello|
-                        getline(std::cin, str2, ',');       // hello, is the input
+                        std::getline(std::cin, str1);       // hello world is the input
+                        std::cout << '|' << str1 << '|';    // |hello world|
+                        std::getline(std::cin, str2, ',');  // hello, is the input
                         std::cout << '|' << str2 << '|';    // |hello|
     ###REMARK###
 

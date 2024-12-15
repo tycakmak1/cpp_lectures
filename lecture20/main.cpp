@@ -10,10 +10,10 @@ int main() {
     std::string::iterator iter = str.begin();
     std::cout << *iter << '\n';
     std::cout << *++iter << '\n';
-    std::vector<uint16_t> vec{0U, 1U, 2U, 3U, 4U};
+    std::vector<uint8_t> vec{0U, 1U, 2U, 3U, 4U};
     vec.erase(vec.begin());
     for (auto i : vec) {
-        std::cout << i << ' ';
+        std::cout << static_cast<uint16_t>(i) << ' ';
     }
     std::cout << "\b\nvec.cap  " << vec.capacity() << '\n';
     std::cout << "vec.size " << vec.size() << '\n';
@@ -28,6 +28,7 @@ int main() {
     str = "hello world";
     str.erase(1U);
     std::cout << '|' << str << "|\n";
-    getline(std::cin, str, ',');
+    std::getline(std::cin, str, ',');
     std::cout << '|' << str << "|\n";
+    return 0;
 }
