@@ -9,7 +9,8 @@ int main() {
     std::string           str{"hello world"};
     std::string::iterator iter = str.begin();
     std::cout << *iter << '\n';
-    std::cout << *++iter << '\n';
+    std::cout << *(++iter)++ << '\n';
+    std::cout << *iter << '\n';
     std::vector<uint8_t> vec{0U, 1U, 2U, 3U, 4U};
     vec.erase(vec.begin());
     for (auto i : vec) {
