@@ -34,7 +34,6 @@ In C++ every expression has a data type and a value category(L value expr., R va
 Knowing the value category is critically important.
 
 L value expressions point to an object
-e.g.
 ```cpp
 int* p = &x;
 *p;     // here *p is an L value expression
@@ -105,25 +104,22 @@ int x();        // Value    Initialization
 int x{};        // Value    Initialization
 ```
 
- REMARK
+###REMARK###
 ```cpp
 double dval = 5.6;
 int    ival = dval; // In this assignment there is a data loss and an implicit type conversion (from double to int).
                     // Conversions that cause data loss are called Narrowing Conversion.
 ```
 
-###### REMARK
-Narrowing implicit conversion in a uniform initialization is a syntax error.
+ ###REMARK### Narrowing implicit conversion in a uniform initialization is a syntax error.
 ```cpp
 double dval = 5.6;
 int    ival{dval};     // This is a syntax error.
 ```
 
-###### REMARK
-Const variables cannot be default initialized.
+###REMARK### Const variables cannot be default initialized.
 
-###### REMARK
-0 and `nullptr` are different. But in C++ there is `nullptr` conversion.
+###REMARK### 0 and `nullptr` are different. But in C++ there is `nullptr`.
 ```cpp
 int* ptr;
 ptr = 0;                    // Implicit conversion from 0 to nullptr.
