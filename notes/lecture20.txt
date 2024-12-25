@@ -60,15 +60,15 @@ std::string
                 std::string str{"hello world"};
 
                 str.erase(str.begin());
-                std::cout << '|' << str << '|';           // |ello world|
+                std::cout << '|' << str << '|';           // |ello world| is the output
 
                 str = "hello world";
                 str.erase(0U, 1U);          
-                std::cout << '|' << str << '|';           // |ello world|
+                std::cout << '|' << str << '|';           // |ello world| is the output
 
                 str = "hello world";
                 str.erase(0U);
-                std::cout << '|' << str << '|';           // ||
+                std::cout << '|' << str << '|';           // || is the output
 
                 insert funtions is another example for this, it support both iterators and indexes.
     std::string::erase()
@@ -77,27 +77,27 @@ std::string
                 basic_string& erase(size_type index = 0, size_type count = std::string::npos)
                     std::string str{"hello world"};
                     str.erase();
-                    std::cout << '|' << str << '|';    // ||
+                    std::cout << '|' << str << '|';    // || is the output
                     str{"hello world"};
                     str.erase(1);
-                    std::cout << '|' << str << '|';    // |h|
+                    std::cout << '|' << str << '|';    // |h| is the output
 
             2-) since C++11, constexpr since C++20
                 iterator erase(const_iterator position)
                     std::string str{"hello world"};
                     str.erase(str.begin());
-                    std::cout << '|' << str << '|';           // |ello world|
+                    std::cout << '|' << str << '|';           // |ello world| is the output
 
             3-) since C++11, constexpr since C++20
                 iterator erase(const_iterator first, const_iterator last) 
                     std::string str{"hello world"};
                     str.erase(str.begin(), str.begin() + 2);
-                    std::cout << '|' << str << '|';           // |llo world|
+                    std::cout << '|' << str << '|';           // |llo world| is the output
 
             4-) noexcept since C++11, constexpr since C++20
                     std::string str{"hello world"};
                     str.clear();
-                    std::cout << '|' << str << '|';           // ||
+                    std::cout << '|' << str << '|';           // || is the output
 
             5-) other ways to empty the string
                     std::string str{"hello world"};
@@ -113,13 +113,13 @@ std::string
             i.e.
                 std::string str;
                 std::cin >> str;                            // hello world is the input
-                std::cout << '|' << str << '|';             // |hello|
+                std::cout << '|' << str << '|';             // |hello| is the output
 
                 BUT std::getline() considers new line characters as separators.
                     i.e.
                         std::string str;
                         std::getline(std::cin, str);        // hello world is the input
-                        std::cout << '|' << str << '|';     // |hello|
+                        std::cout << '|' << str << '|';     // |hello| is the output
                 A distinct separator for std::getline can be declared by passing as the third
                 argument.
                     i.e.

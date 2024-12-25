@@ -45,11 +45,10 @@ this is in C
     
     struct Data i;
     
-    
-    typedef Data
+    typedef struct
     {
         int a,b;
-    }Data;
+    }Data; // struct Data
     
     Data i;
 
@@ -83,14 +82,13 @@ Const Semantics
     Internal linkage and external linkage is important.
     
     In C there is implicit conversion from T const* to T* but in C++ this is illegal.
-    
-    int* const ptr1;		// Top-level const, also called the right const because const is on the
-                            // right of *.
-    int const* ptr2;		// Low-level const, also called the left  const because const is on the
-                            // left  of *.
-    
-    void foo(T* p);			// mutator or out param
-    void foo(T const* p);	// in param
+        int* const ptr1;        // Top-level const, also called the right const because const is on
+                                // the right of *.
+        int const* ptr2;        // Low-level const, also called the left  const because const is on
+                                // the left  of *.
+
+        void foo(T* p);         // mutator or out param
+        void foo(T const* p);   // in param
 
 ====================================================================================================
 Scope Leakage

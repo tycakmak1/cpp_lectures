@@ -298,7 +298,7 @@ Operator Overloading
                         ++*this;
                         return return_val;
                     }
-                }
+                }; // class T
 
 These operator functions will be studied separately.
     []      Index Operator Function
