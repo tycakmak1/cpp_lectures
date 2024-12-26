@@ -145,14 +145,15 @@ For more details check [CppReference C Operator Precedence](https://en.cpprefere
     - sizeof operand of sizeof operator is unevaluated context.
 [^2]: Right operand of bit shift operators must be smaller than the number of bits of its left operand, also must be a positive value.
 
-[^3]: ```c
-    // assignments
-    z = x > y ? a : b;
-    // function calls
-    function(a > b ? a : b)
-    // return statements
-    return x > 10 ? x : b;
-    ```
+[^3]:
+```cpp
+// assignments
+z = x > y ? a : b;
+// function calls
+function(a > b ? a : b)
+// return statements
+return x > 10 ? x : b;
+```
 14. `=` (Assignment Operator) `+=` `-=` `*=` `/=` `%=` `&=` `^=` `|=` (Compound Operators)
 15. `,`(Comma Operator) is a binary operator that evaluates its first operand and discards the result, it then evaluates the
     second operand and returns this value and type.
