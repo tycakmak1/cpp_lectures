@@ -28,8 +28,10 @@ In C, `int func()` and `func()` (without an explicit data type declaration) are 
     int  t     = flag2;			// value of t is 0
     ```
 
-###### <turquoise>###REMARK###</turquoise> <white>There is implicit conversion from pointer to bool but not from bool to pointer.</white>
-###### <turquoise>###REMARK###</turquoise> <white>The most dangerous situation is having a valid code by accident.</white>
+##### ###REMARK###
+> There is implicit conversion from pointer to bool but not from bool to pointer.
+##### ###REMARK###
+> The most dangerous situation is having a valid code by accident.
 
 ```cpp
 struct Data1
@@ -46,7 +48,6 @@ typedef struct
 
 Data2 i;
 ```
-
 - In C++ you do not need to use typedef.
 - In C++ structures are also classes.
 - In C structures do not have access control(public, private, etc.), in C++ they do.

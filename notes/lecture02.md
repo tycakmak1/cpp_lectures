@@ -104,22 +104,26 @@ int x();        // Value    Initialization
 int x{};        // Value    Initialization
 ```
 
-###REMARK###
+##### ###REMARK###
 ```cpp
 double dval = 5.6;
 int    ival = dval; // In this assignment there is a data loss and an implicit type conversion (from double to int).
                     // Conversions that cause data loss are called Narrowing Conversion.
 ```
 
- ###REMARK### Narrowing implicit conversion in a uniform initialization is a syntax error.
+ ##### ###REMARK###
+ > Narrowing implicit conversion in a uniform initialization is a syntax error.
 ```cpp
 double dval = 5.6;
 int    ival{dval};     // This is a syntax error.
 ```
 
-###REMARK### Const variables cannot be default initialized.
+##### ###REMARK###
+> Const variables cannot be default initialized.
 
-###REMARK### 0 and `nullptr` are different. But in C++ there is `nullptr`.
+##### ###REMARK###
+> 0 and `nullptr` are different. But in C++ there is `nullptr`.
+
 ```cpp
 int* ptr;
 ptr = 0;                    // Implicit conversion from 0 to nullptr.

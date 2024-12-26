@@ -15,6 +15,8 @@
 - Expression
 - `constexpr`
 - Operators
+    - Operator Precedence in C
+    - Operator Precedence in C++
 - Sequence Point(Sqeuencing)
 - Order of Evaluation
 
