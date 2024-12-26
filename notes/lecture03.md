@@ -130,7 +130,7 @@ For more details check [CppReference C Operator Precedence](https://en.cpprefere
 |12|`\|\|`|Logical `OR`|Left-to-right|
 |13|`?:`[^3]|Ternary conditional|Right-to-left|
 |14|`=`<br>`+=` `-=`<br>`*=` `/=` `%=`<br>`<<=` `>>=`<br>`&=` `^=` `\|=`|Simple assignment<br>Assignment by sum and difference<br>Assignment by product, quotient and remainder<br>Assignment by bitwise left shift and bitwise right shift<br>Assignment by bitwise `AND`, `XOR`, and `OR`|Right-to-left|
-|15|`,`|Comma|Left-to-right|
+|15|`,`[^4]|Comma|Left-to-right|
 
 
 [^1]: `sizeof`
@@ -154,8 +154,8 @@ For more details check [CppReference C Operator Precedence](https://en.cpprefere
     // return statements
     return x > 10 ? x : b;
     ```
-14. `=` (Assignment Operator) `+=` `-=` `*=` `/=` `%=` `&=` `^=` `|=` (Compound Operators)
-15. `,`(Comma Operator) is a binary operator that evaluates its first operand and discards the result, it then evaluates the
+
+[^4]: Comma Operator is a binary operator that evaluates its first operand and discards the result, it then evaluates the
     second operand and returns this value and type.
     ```c
     int num1 = (5, 10);         // 10 is assigned to num
