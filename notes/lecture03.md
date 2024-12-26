@@ -145,8 +145,7 @@ For more details check [CppReference C Operator Precedence](https://en.cpprefere
     - sizeof operand of sizeof operator is unevaluated context.
 [^2]: Right operand of bit shift operators must be smaller than the number of bits of its left operand, also must be a positive value.
 
-[^3]:
-    ```c
+[^3]: ```c
     // assignments
     z = x > y ? a : b;
     // function calls
