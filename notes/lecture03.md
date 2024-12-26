@@ -83,7 +83,7 @@ If you put a ';' at the end of an expression it becomes an expression statement.
 Every expression has a data type(int, double, ...) and a value category (PR, X, L (primary val cats) or R, GL (secondary val cats)).
 
 ##### ###REMARK###
-Priority operator does not change the value category.
+> Priority operator does not change the value category.<br>
 >`x = 9;` and `(((((((((x))))))))) = 9;` are the same thing.
 
 ## constexpr
@@ -227,7 +227,7 @@ int main(void) {
     5. Operand of `sizeof` operator is unevaluated context.
     6. `()` used in `sizeof` are not part of the operator, they are only necessary when the operand is a typename.
 
-        ```cpp
+        ```c
         sizeof 5;
         sizeof(int);
         sizeof(double);
@@ -249,7 +249,7 @@ int main(void) {
 [^5]:
     Ternary Operators
 
-    ```cpp
+    ```c
     // assignments
     z = x > y ? a : b;
     // function calls

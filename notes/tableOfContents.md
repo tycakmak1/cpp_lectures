@@ -24,7 +24,7 @@
 - Type Conversion
 - Control Statemens
 - Maximal Munch
-- Pointer
+- Pointers
 
 ## Lecture05
 - Reference Semantics
