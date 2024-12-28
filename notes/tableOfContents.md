@@ -47,6 +47,8 @@
     - Function Overload Resolution
 
 ## Lecture08
+- Function Overloading (Continued)
+    - Exceptions to the Overload Resolution
 - One Definition Rule (ODR)
 - Inline Functions
 
