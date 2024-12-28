@@ -36,9 +36,9 @@ int x;
 
 int* foo2() { return nullptr; }
 
-enum color { red, green, blue }; // enum color
+enum Colour { RED, GREEN, BLUE }; // enum Colour
 
-enum pos { on, off, hold }; // enum pos
+enum Pos { ON, OFF, HOLD}; // enum Pos
 
 int main() {
     int const xx = -5;
@@ -50,9 +50,9 @@ int main() {
     if (int* p = foo2())
         std::cout << "inside2\n";
 
-    enum color mycolor = red;
-    enum pos   mypos   = off;
-    int        xy      = mycolor;
+    enum Colour mycolour = RED;
+    enum Pos    mypos    = OFF;
+    int         xy       = mycolour;
     std::cout << xy;
     int  x{5};
     int* ptv_x{&x};

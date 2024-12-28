@@ -1,7 +1,7 @@
 // this is a testing ground for C++
 #include <iostream>
 
-enum class Pos { off, on, hold }; // /enum class Pos
+enum class Pos { OFF, ON, HOLD }; // /enum class Pos
 
 int func(int a) { return 1; }
 
@@ -36,7 +36,7 @@ int main() {
     int  a;
     int* p1{&a};
     f(p1);
-    Pos mypos = Pos::on;
+    Pos mypos = Pos::ON;
     int ival  = static_cast<int>(mypos);
 
     std::cout << ival << '\n';

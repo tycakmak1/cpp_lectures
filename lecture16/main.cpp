@@ -98,17 +98,17 @@ private:
 }; // class Yasin
 
 namespace yas {
-enum class Color { blue, black, green }; // enum class Color
+enum class Colour { BLUE, BLACK, GREEN }; // enum class Colour
 } // namespace yas
 
-std::ostream& operator<<(std::ostream& os, yas::Color const& col) {
+std::ostream& operator<<(std::ostream& os, yas::Colour const& col) {
     static constexpr char const* p[] = {"Blue", "Black", "Green"};
     return os << p[static_cast<int>(col)];
 }
 
 int main() {
-    enum yas::Color col = yas::Color::blue;
-    // using enum yas::Color; // This is avaliable with C++20
+    enum yas::Colour col = yas::Colour::BLUE;
+    // using enum yas::Colour; // This is avaliable with C++20
     std::cout << col << '\n';
     std::cout << "main started\nfirst block\n";
     {

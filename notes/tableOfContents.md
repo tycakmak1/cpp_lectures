@@ -31,10 +31,11 @@
 - Type Deduction
     - `auto` Type Deduction
     - Reference Collapsing
-    - Universal Reference
+    - Universal Reference (Forwarding Reference)
 
 ## Lecture06
-- `decltype()` Type Deduction
+- Type Deduction (Continued)
+    - `decltype()` Type Deduction
 - Default Arguments of Functions
 - Enumerators
     - Old Enums
@@ -46,7 +47,7 @@
     - Function Overload Resolution
 
 ## Lecture08
-- One Definition Rule(ODR)
+- One Definition Rule (ODR)
 - Inline Functions
 
 ## Lecture09
@@ -55,13 +56,13 @@
 - Classes
 
 ## Lecture10
-- Classes(Continued)
+- Classes (Continued)
     - `this` Keyword
     - Const Member Functions
 
 ## Lecture11
-- Classes(Continued)
-    - Const Member Functions(Continued)
+- Classes (Continued)
+    - Const Member Functions (Continued)
     - Constructors and Destructors
     - Special Member Functions
     - `new operator`        // FORESHADOW
@@ -72,13 +73,13 @@
     - Default Member Initializer
 
 ## Lecture12
-- Classes(Continued)
+- Classes (Continued)
     - Copy Constructor
     - Copy Assignment
     - Move Members
 
 ## Lecture13
-- Classes(Continued)
+- Classes (Continued)
     - Move Members
     - `placement new`             // FORESHADOW
     - Delegating Constructor
@@ -88,7 +89,7 @@
     - Copy Elision
 
 ## Lecture14
-- Classes(Continued)
+- Classes (Continued)
     - Static Data Members
     - Named Constructor Idiom
     - Static Global Functions
@@ -105,25 +106,25 @@
     - Smart Pointers            // FORESHADOW
 
 ## Lecture16
-- Operator Overloading(Continued)
+- Operator Overloading (Continued)
     - Overloading `*` and `->` Operators
     - Function Call Operator Overloading
     - Typecasting Operator Overloading
 - Namespaces
 
 ## Lecture17
-- Namespaces(Continued)
+- Namespaces (Continued)
     - `using` Declaration
     - `using namespace` (Directive) Declaration
     - Argument Dependent Lopokup(ADL)
     - Anonymous(Unnamed) Namespaces
     - Inline Namespaces
     - Namespace Aliases
-- Nested Types(Type Member)
+- Nested Types (Type Member)
 
 ## Lecture18
-- Nested Types(Continued)
-    - Pimple Idiom(Pointer Implementation Idiom)
+- Nested Types (Continued)
+    - Pimple Idiom (Pointer Implementation Idiom)
 - Composition
 
 ## Lecture19

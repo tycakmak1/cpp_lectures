@@ -2,20 +2,20 @@
 
 ## Basic Types
 
-- bool<br><br>
-- char
-- signed char
-- unsigned char<br><br>
-- short
-- unsigned short
-- int
-- unsigned int<br><br>
-- long
-- unsigned long<br><br>
-- long long
-- unsigned long long<br><br>
-
-`sizeof(short) <= sizeof(int) <= sizeof(long) <= sizeof(long long)`
+- `bool`<br><br>
+- `char`
+- `signed char`
+- `unsigned char`<br><br>
+- `short`
+- `unsigned short`
+- `int`
+- `unsigned int`<br><br>
+- `long`
+- `unsigned long`<br><br>
+- `long long`
+- `unsigned long long`<br><br>
+##### ###REMARK###
+> `sizeof(short)` <= `sizeof(int)` <= `sizeof(long)` <= `sizeof(long long)`
 
 `float`        (4 bytes)<br>
 `double`       (8 bytes)<br>
@@ -36,13 +36,14 @@
 > - When `signed` or `unsigned` used without any type keywords like `signed x` or `unsigned x`, it
 >     automatically becomes `signed int x` and `unsigned int x` respectively.
 > - Using scientific notation in real numbers eliminates the necessity of `.`.
->     ```c
->     10e2, 10e2F
->     ```
+>   ```c
+>   10e2, 10e2F
+>   ```
 > - If you exceed the value limits of `int` or `float`, variable type automatically changes to the
 >     respective bigger types, depending on which type can contain that value.
 > - To make reading large numbers easier, `'` (digit separator) can be used.<br>
->     `int x = 784'123` would mean int x = 784123; but it is much easier to read the number. This is not exclusive to decimals.
+>     `int x = 784'123;` would mean `int x = 784123;` but it is much easier to read the number. This is not exclusive to
+decimals.
 <br><br>
 
 |C                   |C++             |                  |

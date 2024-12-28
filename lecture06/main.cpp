@@ -2,10 +2,11 @@
 #include "test.h"
 
 #include <iostream>
+#include <cstdint>
 
-enum Color : uint8_t { Black = 0, White = 1, Blue = 2 }; // enum Color
+enum Colour : uint8_t { BLACK = 0, WHITE = 1, BLUE = 2 }; // enum Colour
 
-enum class Colors : uint8_t { red = 0, black = 1, yellow = 2 }; // enum class Colors
+enum class Colours : uint8_t { RED = 0, BLACK = 1, YELLOW = 2 }; // enum class Colours
 
 int g = 10;
 

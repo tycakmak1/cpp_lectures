@@ -34,15 +34,15 @@ Compiler tries to produce longest tokens.<br>
     So `x+++y` becomes `x++ + y`.<br>
 
 ##### ###REMARK###
-After declaration of an array, `a[5]` and `int 5[a]` are the same thing, because `[]` is a pointer operator.<br>
-The `[]` operator sums the left operand and the operand between `[]` and deferences the sum.
-```c
-    int a[6]{};
-    int coders[4]{};
-    // a[5]  is identical to *(a + 5)
-    // 5[a] is identical to *(5 + a)
-    auto x = 2["coders"] - 3["coders"]; // Here x will be an int and it will have the value of 1.
-```
+> After declaration of an array, `a[5]` and `int 5[a]` are the same thing, because `[]` is a pointer operator.<br>
+> The `[]` operator sums the left operand and the operand between `[]` and deferences the sum.
+> ```c
+>     int a[6]{};
+>     int coders[4]{};
+>     // a[5]  is identical to *(a + 5)
+>     // 5[a] is identical to *(5 + a)
+>     auto x = 2["coders"] - 3["coders"]; // Here x will be an int and it will have the value of 1.
+> ```
 
 ## Pointers
 ### Object Pointers -> Address of objects, variables.
@@ -62,20 +62,20 @@ int* p = &a[5];         // Is a VALID pointer. The end of an array is always a V
 ```
 - If the object that the pointer points to is dead, than the pointer is invalid.
     ##### ###REMARK###
-    ```c 
-    #include <stdio.h>
-    int main(void) {
-        int* p1 = nullptr;   // Is a VALID pointer
-        int* p2;
-        p2;                  // Here p2 is a wild pointer.
-        if(true) {
-            int x = 10;
-            p2 = &x;
-            p2;              // here p2 is still a VALID pointer.
-        }
-        p2;                  // Here p2 is a dangling pointer. Dangling pointers are INVALID pointers.
-    }
-    ```
+    > ```c 
+    > #include <stdio.h>
+    > int main(void) {
+    >     int* p1 = nullptr;    // Is a VALID pointer
+    >     int* p2;
+    >     p2;                   // Here p2 is a wild pointer.
+    >     if (true) {
+    >         int x = 10;
+    >         p2    = &x;
+    >         p2;               // Here p2 is still a VALID pointer.
+    >     }
+    >     p2;                   // Here p2 is a dangling pointer. Dangling pointers are INVALID pointers.
+    > }
+    > ```
 
 ### Pointer Operators
 - `&` Address of Operator

@@ -1,7 +1,7 @@
 // Lecture 07
 #include <iostream>
 
-enum class Pos { on, off, hold }; // enum class Pos
+enum class Pos { ON, OFF, HOLD }; // enum class Pos
 
 char* mystrchr(char const* p, int c) {
     while (*p) {
@@ -83,7 +83,7 @@ int main() {
     std::cout << dval1 << "\n";
     std::cout << ival1 << "\n";
 
-    Pos mypos = Pos::off;
+    Pos mypos = Pos::OFF;
     int ival2 = static_cast<int>(mypos);
     std::cout << ival2 << "\n";
 
