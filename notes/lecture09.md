@@ -57,21 +57,22 @@ constexpr int a        = primes[2];
 ```
 
 ## Classes
-Class Definition
+A `class` is a user defined type.<br>
+`class` Definition
 - Data Members
 - Member Functions
 - Type Member / Member Type / Nested Type
 
-Class Members
+`class` Members
 - Data Members
-    - Non-Static Data Members
+    - Non-Static Data Members (including `bit-fields`)
     - Static Data Members
 - Member Functions
     - Non-Static Member Function
     - Static Member Function    
 - Type Members
 
-Classes have access control;
+`class` have access control;
 - `public`
 - `private`
 - `protected`

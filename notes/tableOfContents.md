@@ -60,11 +60,13 @@
 ## Lecture10
 - Classes (Continued)
     - `this` Keyword
+        - Chaining (Fluent API)
     - Const Member Functions
 
 ## Lecture11
 - Classes (Continued)
     - Const Member Functions (Continued)
+        - `mutable` Keyword
     - Constructors and Destructors
     - Special Member Functions
     - `new operator`        // FORESHADOW
@@ -76,9 +78,10 @@
 
 ## Lecture12
 - Classes (Continued)
-    - Copy Constructor
-    - Copy Assignment
-    - Move Members
+    - Special Member Functions
+        - Copy Constructor
+        - Copy Assignment
+        - Move Members
 
 ## Lecture13
 - Classes (Continued)
