@@ -2,18 +2,18 @@
 #include <iostream>
 #include <vector>
 
-class MyClass {
+class Myclass {
 public:
     friend int get_mx();
 
-    friend int get_mx(MyClass mc) { return mc._x; }
+    friend int get_mx(Myclass mc) { return mc._x; }
 
     void print() const& {
         std::cout << "mx = " << _x << " my = " << _y << " _x = " << _sta_x << " this = " << this
                   << '\n';
     }
 
-    MyClass(int x, int y) : _x{x}, _y{y} {}
+    Myclass(int x, int y) : _x{x}, _y{y} {}
 
     // inline static int x = 5; // ==> this is available with C++17
     static int _sta_x;
@@ -22,18 +22,18 @@ public:
 
 private:
     int _x, _y;
-}; // class MyClass
+}; // class Myclass
 
-int MyClass::_sta_x{};
+int Myclass::_sta_x{};
 
 int get_mx() {
-    MyClass x{3, 5};
+    Myclass x{3, 5};
     return x._x;
 }
 
 int foo() { return 5; }
 
-// example for Named Ctor Idiom
+// example for Named constructor Idiom
 class Complex {
     Complex(double x, double y) { std::cout << "Complex cartesian\n"; }
 
@@ -54,9 +54,9 @@ class B {
 }; // class B
 
 int main() {
-    MyClass m1{10, 20};
+    Myclass m1{10, 20};
     m1._sta_x;
-    MyClass m2{11, 21};
+    Myclass m2{11, 21};
     m1._sta_x = ::foo();
     m1.print();
     m1.print();

@@ -14,13 +14,13 @@ void bar(int const&&) { return; }
 // int foo(int, int = 10);
 // int foo(int = 5, int);
 
-class MyClass {
+class Myclass {
 public:
     static int tyc() { return 5; }
 
     static inline int _sta_x = tyc(); // VALID
 
-}; // class MyClass
+}; // class Myclass
 
 void bar() {
     std::printf("bar");

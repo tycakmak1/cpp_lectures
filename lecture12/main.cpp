@@ -3,9 +3,9 @@
 #include <cstring>
 #include <iostream>
 
-class MyClass {
+class Myclass {
 public:
-    MyClass() {
+    Myclass() {
         _x = 0;
         _y = 4;
     }
@@ -74,9 +74,9 @@ void func(String s) {
 }
 
 int main() {
-    MyClass m;
+    Myclass m;
     m.print();
-    MyClass& rtv_m = m;
+    Myclass& rtv_m = m;
     rtv_m.set(7, 24);
     rtv_m.print();
     m.print();

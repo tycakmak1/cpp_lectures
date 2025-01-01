@@ -1,9 +1,9 @@
 #ifndef GUARD_BAC70BAE_9FD9_4D5F_BAC1_7803114BAEFB
 #define GUARD_BAC70BAE_9FD9_4D5F_BAC1_7803114BAEFB
 
-class MyClass {
+class Myclass {
 public:
-    MyClass();
+    Myclass();
     void foo();
     void foo(int);
     void print() const;
@@ -13,6 +13,6 @@ private:
     // Date _date;
     class Pimple;
     Pimple* _p;
-}; // class MyClass
+}; // class Myclass
 
 #endif // GUARD_BAC70BAE_9FD9_4D5F_BAC1_7803114BAEFB

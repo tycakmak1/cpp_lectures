@@ -1,20 +1,20 @@
 // Lecture 11
 #include <iostream>
 
-class MyClass {
+class Myclass {
 public:
-    MyClass() { std::cout << "default ctor, this = " << this << '\n'; }
+    Myclass() { std::cout << "default constructor, this = " << this << '\n'; }
 
-    ~MyClass() { std::cout << "destructor,   this = " << this << '\n'; }
-}; // class MyClass
+    ~Myclass() { std::cout << "destructor,   this = " << this << '\n'; }
+}; // class Myclass
 
-MyClass g1;
-MyClass g2;
-MyClass g3;
+Myclass g1;
+Myclass g2;
+Myclass g3;
 
 void foo() {
     std::cout << "foo starts here\n";
-    static MyClass l1;
+    static Myclass l1;
     std::cout << "foo is ending\n";
     return;
 }
@@ -37,7 +37,7 @@ int main() {
     foo();
     foo();
     foo();
-    static MyClass sl1;
+    static Myclass sl1;
     std::cout << "&g1 = " << &g1 << '\n'
               << "&g2 = " << &g2 << '\n'
               << "&g3 = " << &g3 << '\n'
@@ -46,4 +46,4 @@ int main() {
     return 0;
 }
 
-MyClass g4;
+Myclass g4;

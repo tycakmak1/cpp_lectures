@@ -85,8 +85,9 @@
 
 ## Lecture13
 - Classes (Continued)
-    - Move Members
-    - `placement new`             // FORESHADOW
+    - Special Member Functions (Continued)
+        - Move Members
+    - placement `new`             // FORESHADOW
     - Delegating Constructor
     - Temporary Objects
     - Reference Qualifiers

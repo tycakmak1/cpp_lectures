@@ -89,7 +89,7 @@ public:
 
     operator double() const { return _x; }
 
-    Yasin(Yasin const& other) : _x{other._x} { std::cout << "copy ctor called\n"; }
+    Yasin(Yasin const& other) : _x{other._x} { std::cout << "copy constructor called\n"; }
 
     friend std::ostream& operator<<(std::ostream& os, Yasin const& temp) { return os << temp._x; }
 

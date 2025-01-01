@@ -27,7 +27,7 @@ int main() {
 ##### ###REMARK###
 > Non-static data members of a `class` may not be directly related to the observable state of the instance.
 
-## Constructor(ctor) and Destructor(dtor)
+## Constructor (ctor) and Destructor (dtor)
 Constructors
 - Their names must be the same with the class name.
 - They do not have a return type.
@@ -52,8 +52,8 @@ Destructors
 - `.` or `->` can be used to call a destructor but must be very careful when doing so.
 
     Default Constructor
-        For a ctor to be a default ctor, either it must not have any parameters,
-        or every parameter of that ctor must have default values.
+        For a constructor to be a default constructor, either it must not have any parameters,
+        or every parameter of that constructor must have default values.
 
 ### Special Member Functions
 Definitions of these functions can be written by the compiler under certain circumstances (called defaulting).<br>
@@ -63,17 +63,17 @@ Can happen in two different ways;
 2. We can declare them and expect compiler to write their code.
 
 There are 6 special member functions;
-- Default ctor
+- Default constructor
 - Destructor
-- Copy Ctor
-- Move Ctor             (added with C++11)
+- Copy constructor
+- Move constructor             (added with C++11)
 - Copy Assignment
 - Move Assignment       (added with C++11)
 - Copy Members
-    - Copy Ctor
+    - Copy constructor
     - Copy Assignment
 - Move Members
-    - Move Ctor
+    - Move constructor
     - Move Assignment
 
 ##### ###REMARK###
@@ -175,14 +175,14 @@ int main() {
 
 Constructor Initializer List (Member Initializer List)
 1. Can only be used for ctors.
-2. A ctor initializes the non-static data members of the instance it's going to construct.
+2. A constructor initializes the non-static data members of the instance it's going to construct.
 3. Construction order of data members of a class, is always in the order of definition in the class.
-4. Even if the ctor does not do anything in it's block, the block must exist.
+4. Even if the constructor does not do anything in it's block, the block must exist.
 
 ```cpp
 class Myclass {
 public:
-    Myclass() : _x{5}, _y{6}, _z(7) {   // This here is the ctor initializer list.
+    Myclass() : _x{5}, _y{6}, _z(7) {   // This here is the constructor initializer list.
         //..
     }
 private:
@@ -204,10 +204,10 @@ private:
 > ```
 
 ##### ###REMARK###
-> - Using Initializer List and assigning the values inside of the ctor is different.
+> - Using Initializer List and assigning the values inside of the constructor is different.
 > - Initializer List initializes the members, but assigning their values inside the constructor is initializing them with default
 >   values and then assigning the values to them.
-> - That's why first choice must always be the ctor initializer list.
+> - That's why first choice must always be the constructor initializer list.
 
 #### ###REMARK###
 > - Data members of a class will always be initialized in the declaration order.

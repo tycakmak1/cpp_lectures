@@ -356,27 +356,27 @@ There are three ways to use a name in the namespace without qualifying.
                 #ifdef VERSION_1
                 inline namespace version_1
                 {
-                class MyClass
+                class Myclass
                 {
                     //.. code goes here
                     //.. code goes here
-                }; // class MyClass
+                }; // class Myclass
                 } // inline namespace version_1
                 #endif
                 #ifdef VERSION_2
                 inline namespace version_2
                 {
-                class MyClass
+                class Myclass
                 {
                     //..different code goes here
                     //..different code goes here
-                }; // class MyClass
+                }; // class Myclass
                 } // inline namespace version_2
                 #endif
                 } // namespace tah
                 int main()
                 {
-                    tah::MyClass m;                 // VALID
+                    tah::Myclass m;                 // VALID
                     return 0;
                 }
         - With C++20, there is another tool to define inline namespaces.
@@ -430,25 +430,25 @@ There are three ways to use a name in the namespace without qualifying.
 ====================================================================================================
 Nested Types(Type Member)
     e.g.
-        class MyClass
+        class Myclass
         {
             class Nested
             {}; // class Nested
-        }; // class MyClass
+        }; // class Myclass
     ###REMARK###
         - Name lookup for the names used inside of a member function and the name lookup for the
             names used inside of the class definition are different from each other.
                 e.g.
-                    class MyClass
+                    class Myclass
                     {
                     public:
                         void foo();
                         void bar();
                     private:
                         int _x;
-                    }; // class MyClass
+                    }; // class Myclass
 
-                    void MyClass::foo()
+                    void Myclass::foo()
                     {
                         bar();                      // VALID
                         _x = 5;                     // VALID
@@ -457,7 +457,7 @@ Nested Types(Type Member)
 
                     BUT
 
-                    class MyClass
+                    class Myclass
                     {
                     public:
                         void foo()
@@ -465,11 +465,11 @@ Nested Types(Type Member)
                             Word x = 5;             // VALID
                         }
                         Word _x;                    // INVALID
-                        MyClass::Word _y;           // INVALID
+                        Myclass::Word _y;           // INVALID
                         typedef int Word;
-                    }; // class MyClass
+                    }; // class Myclass
                 e.g.
-                    class MyClass
+                    class Myclass
                     {
                     public:
                         static inline int _sta_x = foo();   // INVALID, it would be VALID if foo
@@ -477,23 +477,23 @@ Nested Types(Type Member)
                         {
                             return 5;
                         }
-                    }; // class MyClass
+                    }; // class Myclass
         - Member functions of the enclosing type cannot access to the private part of the nested
             type. To be able to do this, function of the enclosing type must be a friend function of
             the nested type. BUT nested type can access to the private part of the enclosing type,
             because it is a member of the enclosing type.
         ###REMARK###
-            class MyClass
+            class Myclass
             {
                 class Nested
                 {}; // class Nested
             public:
                 static Nested foo();
-            }; // class MyClass
+            }; // class Myclass
             int main()
             {
-                MyClass::Nested x = MyClass::foo(); // INVALID, access control.
-                auto y = MyClass::foo();            // VALID, no name = no access control.
+                Myclass::Nested x = Myclass::foo(); // INVALID, access control.
+                auto y = Myclass::foo();            // VALID, no name = no access control.
                 return 0;
             }
         ###REMARK###
@@ -501,20 +501,20 @@ Nested Types(Type Member)
             type without using qualifiers, but for the return value of the member functions it must
             be qualified.
                 e.g.
-                    class MyClass
+                    class Myclass
                     {
                     public:
                         class Nested
                         {}; // class Nested
                         Nested foo(Nested);
-                    }; // class MyClass
+                    }; // class Myclass
                     Nested foo(Nested x)    // Return type is invalid but parameter is VALID.
                     {                       // Because return type of the function is not part of
                                             // the class scpoe, therefore it must be qualified.
                         Nested y;           // VALID, scope of the function is part of the class
                         return y;           // scope.
                     }
-                    MyClass::Nested foo(Nexted x)   // VALID
+                    Myclass::Nested foo(Nexted x)   // VALID
                     {
                         Nested y;
                         return y;

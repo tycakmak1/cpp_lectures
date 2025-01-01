@@ -38,7 +38,7 @@ int* foo2() { return nullptr; }
 
 enum Colour { RED, GREEN, BLUE }; // enum Colour
 
-enum Pos { ON, OFF, HOLD}; // enum Pos
+enum Pos { ON, OFF, HOLD }; // enum Pos
 
 int main() {
     int const xx = -5;

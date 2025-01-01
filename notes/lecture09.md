@@ -92,10 +92,10 @@ private:
     static int _y;      // Static     data member.
 }
 
-MyClass mc;
+Myclass mc;
 mc._x;          // Dot operator.
 &mc->_x;        // Arrow operator.
-MyClass::_y;    // Scope resolution operator.
+Myclass::_y;    // Scope resolution operator.
 ```
 ##### ###REMARK###
 > Access modifiers do not create different scopes or affect scopes in any way.

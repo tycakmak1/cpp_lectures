@@ -84,18 +84,18 @@ std::string
                 std::cout << '|' << str << '|';           // Outputs |tyc|
             ###REMARK###
                 e.g. for initializer_list Constructor
-                    class MyClass {
+                    class Myclass {
                     public:
-                        MyClass(int){ std::cout << "int" << '\n'; }
+                        Myclass(int){ std::cout << "int" << '\n'; }
 
-                        MyClass(std::initializer_list<int>){
+                        Myclass(std::initializer_list<int>){
                             std::cout << "std::initializer_list<int>" << '\n';
                         }
-                    }; // class MyClass
+                    }; // class Myclass
 
                     int main(){
-                        MyClass a(5);       // Outputs int
-                        MyClass b{ 5 };     // Outputs std::initializer_list<int>
+                        Myclass a(5);       // Outputs int
+                        Myclass b{ 5 };     // Outputs std::initializer_list<int>
                     }
             ###REMARK###
 

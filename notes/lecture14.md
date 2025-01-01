@@ -1,60 +1,58 @@
-=============================================LECTURE 14=============================================
-====================================================================================================
+# LECTURE 14
+## Classes
+### Static Data Members of Classes
+```cpp
+class Myclass {
+    int  a;     // Data Member
+    void foo(); // Member Function
 
-====================================================================================================
-Static Data Members of Classes
-    class MyClass
-    {
-        int a;          // Data Member    
-        void foo();     // Member Function
-        struct Data{};  // Member Type
-    }; // class MyClass
+    struct Data {}; // Member Type
+}; // class Myclass
+```
 
-    Static data members of classes are the elements of the class, not the instance. They can be
-    accessed via class instances or pointers to class instances but doing in that form is
-    misleading. Instead, we use the scope resolution operator(::). It is misleading because it
-    creates the impression that an operation is performed on the instance, but when it's about
-    static members, we are not. This is why they are usually referred to as elements of the class,
-    instead of the instance.
-        e.g.
-            class MyClass
-            {
-            public:
-                static int _sta_x;
-            }; // class MyClass
-            int main()
-            {
-                MyClass m1;
-                MyClass* ptv_m1 = &m1;
-                m1._sta_x;              // Viable but misleading.
-                ptv_m1->_sta_x;         // Viable but misleading.
-                // Instead we use scope resolution operator(::)
-                MyClass::_sta_x;
-                // but we cannot assign a value to it inside the class.
-                // Because the line "static int _sta_x;" in class declaration is a non-defining
-                // declaration.
-                return 0;
-            }
+Static data members of classes are the elements of the class, not the instance. They can be accessed via class instances or pointers
+to class instances but doing in that form is misleading. Instead, we use the scope resolution operator `::`. It is misleading because
+it creates the impression that an operation is performed on the instance, but when it's about static members, we are not. This is
+why they are usually referred to as elements of the class, instead of the instance.
+```cpp
+class Myclass {
+public:
+    static int _sta_x;
+}; // class Myclass
+
+int main() {
+    Myclass  m1;
+    Myclass* ptv_m1 = &m1;
+    m1._sta_x;      // Viable but misleading.
+    ptv_m1->_sta_x; // Viable but misleading.
+    // Instead we use scope resolution operator(::)
+    Myclass::_sta_x;
+    // but we cannot assign a value to it inside the class.
+    // Because the line "static int _sta_x;" in class declaration is a non-defining
+    // declaration.
+    return 0;
+}
+```
 
     ================================================================================================
     How Do We Define Static Data Members?
         Declaration is in the class, but definition can be in the .cpp file of the class header or
         in the global scope.
             e.g. for .cpp definition                ||      e.g. for global scope definition
-                // MyClass.h                        ||          // MyClass.h
-                class MyClass                       ||          class MyClass
+                // Myclass.h                        ||          // Myclass.h
+                class Myclass                       ||          class Myclass
                 {                                   ||          {
                 public:                             ||          public:
                     static int _sta_x;              ||              static int _sta_x;
-                }; // class MyClass                 ||          }; // class MyClass
+                }; // class Myclass                 ||          }; // class Myclass
                                                     ||
-                // MyClass.cpp                      ||
-                //#include "MyClass.h"              ||
-                int MyClass:_sta_x;                 ||          int MyClass::_sta_x;
-                int MyClass:_sta_x = 10;            ||          int MyClass::_sta_x = 10;
-                int MyClass:_sta_x(10);             ||          int MyClass::_sta_x(10);
-                int MyClass:_sta_x{};               ||          int MyClass::_sta_x{};
-                int MyClass:_sta_x{10};             ||          int MyClass::_sta_x {10};
+                // Myclass.cpp                      ||
+                //#include "Myclass.h"              ||
+                int Myclass:_sta_x;                 ||          int Myclass::_sta_x;
+                int Myclass:_sta_x = 10;            ||          int Myclass::_sta_x = 10;
+                int Myclass:_sta_x(10);             ||          int Myclass::_sta_x(10);
+                int Myclass:_sta_x{};               ||          int Myclass::_sta_x{};
+                int Myclass:_sta_x{10};             ||          int Myclass::_sta_x {10};
 
             - Static keyword has to be used in declaration but not in definition.
             - Static data member can be of an incomplete type.
@@ -69,18 +67,18 @@ Static Data Members of Classes
                     }; // class Yasin
             - A class cannot contain a member with a type of itself, unless it is static.
                 e.g.
-                    class MyClass
+                    class Myclass
                     {
-                        MyClass _x;                 // This is a syntax error because MyClass is not
+                        Myclass _x;                 // This is a syntax error because Myclass is not
                                                     // complete.
-                        static MyClass _sta_x;      // This is allowed, because static data members
+                        static Myclass _sta_x;      // This is allowed, because static data members
                                                     // can be an incomplete type.
-                    }; // class MyClass
+                    }; // class Myclass
             - If the static data member is a const integral type then you can define it in the class
                 definition(enum, char, signed char, unsigned char, long, long long, bool are also
                 integral type).
                 e.g.
-                    class MyClass
+                    class Myclass
                     {
                         static int _sta_x1 = 5;                 // INVALID not const.
                         static double const _sta_x2 = 3.5;      // INVALID not an  integral type.
@@ -90,7 +88,7 @@ Static Data Members of Classes
                         static char const _sta_x6 = 0;          // VALID const and integral type.
                         static signed char const _sta_x7 = 9;   // VALID const and integral type.
                         static unsigned char const _sta_x8 = 9; // VALID const and integral type.
-                    }; // class MyClass
+                    }; // class Myclass
             - Static data members and global variables can be defined with "inline" keyword. (C++17)
                 Inline variable:
                     inline int _sta_x = 5;                  // This guarantees that in the link
@@ -103,53 +101,53 @@ Static Data Members of Classes
                             inline int _sta_x = 6;
                             // There will only be one _sta_x. this is about ODR.
                     e.g.
-                        // MyClass.h
-                        class MyClass
+                        // Myclass.h
+                        class Myclass
                         {
                         public:
                             inline static int _sta_x1 = 5;          // If inline keyword is used,
                                                                     // const and integral type rule
                             inline static double _sta_x2 = 5.3;     // is not necessary. So both are
                                                                     // valid now.
-                        }; // class MyClass
+                        }; // class Myclass
             - Since static data members not actually part of the instances, they cannot be
                 initialized with ctors.
                 e.g.
-                    class MyClass
+                    class Myclass
                     {
                         int _x, _y;
                         static int _sta_ival;
                     public:
-                        MyClass(){}
-                        MyClass(int x, int y) : _x{x}, _y{y} {}                       // VALID
-                        MyClass(int x, int y, int z) : _x{x}, _y{y}, _sta_ival{z} {}// INVALID
-                        MyClass() : _x{10}, _y{20}, _sta_ival{30} {}                // INVALID
-                    }; // class MyClass
+                        Myclass(){}
+                        Myclass(int x, int y) : _x{x}, _y{y} {}                       // VALID
+                        Myclass(int x, int y, int z) : _x{x}, _y{y}, _sta_ival{z} {}// INVALID
+                        Myclass() : _x{10}, _y{20}, _sta_ival{30} {}                // INVALID
+                    }; // class Myclass
 
 ====================================================================================================
 Static Member Functions
-    class MyClass
+    class Myclass
     {
     public:
         void foo();                 // Non-static member function.
         static void bar();          // Static member function.
-    }; // class MyClass
+    }; // class Myclass
     - In the class scope but do not have a "this pointer". meaning they are called without an
         address of an instance.
     - Since they do not have a "this pointer", they cannot be const functions.
     - To call them, an instance is not required.
         e.g.
-            class MyClass
+            class Myclass
             {
             public:
                 void foo();
                 static void bar();
-            }; // class MyClass
+            }; // class Myclass
 
             int main()
             {
-                MyClass::foo();     // Syntax error.
-                MyClass::bar();     // Valid.
+                Myclass::foo();     // Syntax error.
+                Myclass::bar();     // Valid.
             }
 
     - To summarize, they are not related to the instance itself but to the class, just like the
@@ -167,7 +165,7 @@ Static Member Functions
     - Pointers to static member functions are defined the same way as pointers to global functions.
 
     ###REMARK###
-        class MyClass
+        class Myclass
         {
         public:
             static int foo()
@@ -175,15 +173,15 @@ Static Member Functions
                 return 777;
             }
             static int _sta_x;
-        }; // class MyClass
+        }; // class Myclass
 
         int foo()
         {
             return 5;
         }
         
-        int MyClass::_sta_x = foo();            // This line will call the foo in class  scope.
-        MyClass::_sta_x     = ::foo();          // This line will call the foo in global scope.
+        int Myclass::_sta_x = foo();            // This line will call the foo in class  scope.
+        Myclass::_sta_x     = ::foo();          // This line will call the foo in global scope.
 
         int main()
         {
@@ -233,16 +231,16 @@ Friend Declarations
     Friend declaration can be used to;
         1-) Grant private member access to a function in a namespace.
             e.g.
-                class MyClass
+                class Myclass
                 {
                     void foo();
                     int _sta_x;
                 public:
-                    friend void func(MyClass);
-                }; // class MyClass
-                void func(MyClass pm)
+                    friend void func(Myclass);
+                }; // class Myclass
+                void func(Myclass pm)
                 {
-                    MyClass m;
+                    Myclass m;
                     pm.foo();   // Without the friend declaration, would be an access control error.
                     pm._sta_x;  // Without the friend declaration, would be an access control error.
                     m.foo();    // Without the friend declaration, would be an access control error.
@@ -250,26 +248,26 @@ Friend Declarations
                 }
         2-) Grant private member access to a member function of a different class.
             e.g.
-                class MyClass
+                class Myclass
                 {
-                    friend std::ostream& operator<<(std::ostream&, MyClass const&);
+                    friend std::ostream& operator<<(std::ostream&, Myclass const&);
                     int _x;
-                }; // class MyClass
-                std::ostream& operator<<(std::ostream& out, MyClass const&)
+                }; // class Myclass
+                std::ostream& operator<<(std::ostream& out, Myclass const&)
                 {
                     return out << _x;
                 }
 
                 or
 
-                class MyClass
+                class Myclass
                 {
-                    friend std::ostream& operator<<(std::ostream& out, MyClass const& m)
+                    friend std::ostream& operator<<(std::ostream& out, Myclass const& m)
                     {
                         return out << _x;
                     }
                     int _x;
-                }; // class MyClass
+                }; // class Myclass
         3-) Grant private member access to every function of a different class.
             e.g.
                 class A;
@@ -285,22 +283,22 @@ Friend Declarations
         These kind of friend functions are called hidden friend functions and they are frequently
         used.
             e.g.
-                class MyClass
+                class Myclass
                 {
                     void foo();
                     int _sta_x;
                 public:
-                    friend void func(MyClass x)     // This function is still a global function,
+                    friend void func(Myclass x)     // This function is still a global function,
                     {                               // so it can be called without a class instance.
                         return x._sta_x;
                     }
-                }; // class MyClass
+                }; // class Myclass
             ###REMARK###
                 Hidden friend functions can be defined in the public, private and protected sections
                 of a class. Since they are not member functions, they do not get affected by the
                 access modifiers.
                     e.g.
-                        class MyClass
+                        class Myclass
                         {
                         public:
                             friend void foo() { std::cout << "foo()\n"; }
@@ -308,7 +306,7 @@ Friend Declarations
                             friend void bar() { std::cout << "bar()\n"; }
                         private:
                             friend void baz() { std::cout << "baz()\n"; }
-                        }; // class MyClass
+                        }; // class Myclass
                         void foo();            // VALID
                         void bar();            // VALID
                         void baz();            // VALID

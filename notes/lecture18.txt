@@ -8,7 +8,7 @@ Nested Types(Continued)
         declared in the class declaration and defined outside of the enclosing class. Notice the
         detail "enclosing class" in the previous sentence.
             e.g.
-                class MyClass
+                class Myclass
                 {
                     class Nested
                     {
@@ -18,8 +18,8 @@ Nested Types(Continued)
 
                     void Nested::bar() { return; }      // INVALID
 
-                }; // class MyClass
-                void MyClass::Nested::foo() { return; } // VALID
+                }; // class Myclass
+                void Myclass::Nested::foo() { return; } // VALID
     ###REMARK###
 
     ================================================================================================
@@ -30,59 +30,59 @@ Nested Types(Continued)
             binary compatibility is still intact.
             e.g.
                 #include "Date.h"
-                class MyClass
+                class Myclass
                 {
                 private:
                     std::string _str;
                     Date _date;
                 }; // class Myclass
-                Since we are using a Date object in MyClass, compiler must be able to see the
+                Since we are using a Date object in Myclass, compiler must be able to see the
                 definition of Date type. This means everytime Date.h or Date.cpp gets changed,
-                MyClass header and implementation files must also be compiled again. To avoid this
+                Myclass header and implementation files must also be compiled again. To avoid this
                 pimple idiom is used. Instead of this we do this,
-                    // MyClass.h
-                        class MyClass
+                    // Myclass.h
+                        class Myclass
                         {
                             void foo();
                         private:
                             class Pimple;
                             Pimple* _p;
-                        }; // class MyClass
+                        }; // class Myclass
 
-                    // MyClass.cpp
+                    // Myclass.cpp
                         #include <string>
-                        #include "MyClass.h"
+                        #include "Myclass.h"
                         #include "Date.h"
-                        class MyClass::Pimple
+                        class Myclass::Pimple
                         {
-                            friend void MyClass::foo();
+                            friend void Myclass::foo();
                             std::string _str;
                             Date _date;
-                        }; // class MyClass::Pimple
+                        }; // class Myclass::Pimple
 
-                        void MyClass::foo()
+                        void Myclass::foo()
                         {
                             pimple->_str;   // Since _str and _date are private members of
-                            pimple->_date;  // MyClass::Pimple this is how they can be accessed.
+                            pimple->_date;  // Myclass::Pimple this is how they can be accessed.
                         }
 
                     Alternatively same functions can be re-declared inside Pimple and can be used
                     directly.
                         e.g.
-                            // MyClass.h
-                                class MyClass
+                            // Myclass.h
+                                class Myclass
                                 {
                                     void foo();
                                 private:
                                     class Pimple;
                                     Pimple* _p;
-                                }; // class MyClass
+                                }; // class Myclass
 
-                            // MyClass.cpp
+                            // Myclass.cpp
                                 #include <string>
-                                #include "MyClass.h"
+                                #include "Myclass.h"
                                 #include "Date.h"
-                                class MyClass::Pimple
+                                class Myclass::Pimple
                                 {
                                 public:
                                     void foo()
@@ -93,9 +93,9 @@ Nested Types(Continued)
                                 private:
                                     std::string _str;
                                     Date _date;
-                                }; // class MyClass:Pimple
+                                }; // class Myclass:Pimple
 
-                                void MyClass::foo()
+                                void Myclass::foo()
                                 {
                                     _p->foo();
                                 }
@@ -103,31 +103,31 @@ Nested Types(Continued)
         - For Pimple Idiom to be used, constructor of the enclosing type must initialize the
             pointer. Also the destructor of enclosing type must also delete the pimple object.
                 e.g.
-                    // MyClass.h
+                    // Myclass.h
                     #include "Date.h"
-                    class MyClass
+                    class Myclass
                     {
-                        MyClass();
-                        ~MyClass();
+                        Myclass();
+                        ~Myclass();
                         class Pimple;
                         Pimple* _p;
-                    }; // class MyClass
+                    }; // class Myclass
 
-                    // MyClass.cpp
-                    #include "MyClass.h"
-                    class MyClass::Pimple
+                    // Myclass.cpp
+                    #include "Myclass.h"
+                    class Myclass::Pimple
                     {
                     public:
                         Pimple();
                     private:
                         std::string _str;
                         Date _date;
-                    }; // class MyClass::Pimpla
+                    }; // class Myclass::Pimpla
 
-                    MyClass::MyClass() : _p{new Pimple} {}
-                    MyClass::~MyClass() { delete _p; }
+                    Myclass::Myclass() : _p{new Pimple} {}
+                    Myclass::~Myclass() { delete _p; }
 
-                    MyClass::Pimple::Pimple() : _str{"Hello World!"}, _date{23, 10, 2023} {}
+                    Myclass::Pimple::Pimple() : _str{"Hello World!"}, _date{23, 10, 2023} {}
 
 
 ====================================================================================================
@@ -191,22 +191,22 @@ Composition
                         }
                 ###REMARK###
                     - Members of a class instance is created before the constructors block.
-                    - If the default ctor of a class is defaulted(defined by the compiler) then the
+                    - If the default constructor of a class is defaulted(defined by the compiler) then the
                         data members will be default initialized.
-                    - If the copy ctor of a class does not initialize all members, compiler will
-                        call the default ctor for the missing members, which is dangerous.
+                    - If the copy constructor of a class does not initialize all members, compiler will
+                        call the default constructor for the missing members, which is dangerous.
                             e.g.
                                 class Member
                                 {
                                 public:
                                     Member()
                                     {
-                                        std::cout << "Member default ctor\n";
+                                        std::cout << "Member default constructor\n";
                                     }
 
                                     Member(Member const&)
                                     {
-                                        std::cout << "Member copy ctor\n";
+                                        std::cout << "Member copy constructor\n";
                                     }
                                 }; // class Member
 
@@ -228,16 +228,16 @@ Composition
                                 {
                                     A a1;
                                     A a2{a1};   // Since _x is not properly initialized in copy
-                                                // ctor, compiler will call the default ctor for it.
+                                                // constructor, compiler will call the default constructor for it.
                                     B b1;
-                                    B b2{b1};   // Here default ctor will not be called.
+                                    B b2{b1};   // Here default constructor will not be called.
                                 }
 
-                                Will have the following output because of copy ctor.
-                                    Member default ctor
-                                    Member default ctor
-                                    Member default ctor
-                                    Member copy ctor
+                                Will have the following output because of copy constructor.
+                                    Member default constructor
+                                    Member default constructor
+                                    Member default constructor
+                                    Member copy constructor
                 ###REMARK###
     ###REMARK###
 ====================================================================================================

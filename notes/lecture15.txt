@@ -108,21 +108,21 @@ Operator Overloading
         ###REMARK###
             Const correctness is important in operator overloading.
                 e.g.
-                    class MyClass
+                    class Myclass
                     {
                     public:
-                        MyClass operator+(MyClass const& other) const   // Since the addition does
+                        Myclass operator+(Myclass const& other) const   // Since the addition does
                         {                                               // not change the value of
                             return { _x + other._x, _y + other._y };    // *this, it must be const.
                         }
-                        MyClass& operator=(MyClass const& other)    // But assignment operator will
+                        Myclass& operator=(Myclass const& other)    // But assignment operator will
                         {                       // change the value of *this, so it cannot be const.
                             _x = other._x;      // Since the value of other is not gonna change.
                             _y = other._y;      // In either of the scenarios, we define them as
                             return *this;       // const to prevent it from changing and defining
                         }                       // them as references prevents the unnecessary
                         int _x, _y;             // copying.
-                    }; // class MyClass
+                    }; // class Myclass
         ###REMARK###
 
     ================================================================================================
@@ -152,13 +152,13 @@ Operator Overloading
     Do not define both a member and a global operator function exactly the same. This will cause
     ambiguity error.
         e.g.
-            class MyClass
+            class Myclass
             {
             public:
-                MyClass operator+(int) const&;
-            }; // class MyClass
+                Myclass operator+(int) const&;
+            }; // class Myclass
 
-            MyClass operator+(MyClass const&, int);
+            Myclass operator+(Myclass const&, int);
 
             This will cause ambiguity error.
 ###WARNING###
@@ -170,12 +170,12 @@ Operator Overloading
     Existence of two operators in a compound operator does not imply the existence of the compound
     operator itself.
         e.g.
-            class MyClass
+            class Myclass
             {
             public:
-                MyClass& operator=(MyClass const&);
-                bool operator<(MyClass const&) const;
-            }; // class MyClass
+                Myclass& operator=(Myclass const&);
+                bool operator<(Myclass const&) const;
+            }; // class Myclass
             Having these two operators does not imply =< can be used.
 ###REMARK###
 
@@ -185,17 +185,17 @@ Operator Overloading
     them inline then you have to use iostream. The difference between iosfwd and iostream is that
     iosfwd contains the forward declarations of iostream, so it is lighter.
         e.g.
-            // MyClass.h
+            // Myclass.h
             #include <iosfwd>
-            class MyClass
+            class Myclass
             {
             public:
-                friend std::ostream& operator<<(std::ostream&, MyClass const&);
-            }; // class MyClass
+                friend std::ostream& operator<<(std::ostream&, Myclass const&);
+            }; // class Myclass
 
-            // MyClass.cpp
+            // Myclass.cpp
             #include <iostream>
-            std::ostream& operator<<(std::ostream& out, MyClass const& m)
+            std::ostream& operator<<(std::ostream& out, Myclass const& m)
             {
                 //.. code goes here
                 return out;
@@ -203,28 +203,28 @@ Operator Overloading
 
             but for inline;
 
-            // MyClass.h
+            // Myclass.h
             #include <iostream>
-            class MyClass
+            class Myclass
             {
             public:
-                friend std::ostream& operator<<(std::ostream& out, MyClass const& m)
+                friend std::ostream& operator<<(std::ostream& out, Myclass const& m)
                 {
                     //.. code goes here
                     return out;
                 }
-            }; // class MyClass
+            }; // class Myclass
 
             or
 
-            // MyClass.h
+            // Myclass.h
             #include <iostream>
-            class MyClass{
+            class Myclass{
             public:
-                friend inline std::ostream& operator<<(std::ostream& out, MyClass const& m);
-            }; // class MyClass
+                friend inline std::ostream& operator<<(std::ostream& out, Myclass const& m);
+            }; // class Myclass
 
-            std::ostream& operator<<(std::ostream& out, MyClass const& m)
+            std::ostream& operator<<(std::ostream& out, Myclass const& m)
             {
                 //.. code goes here
                 return out;

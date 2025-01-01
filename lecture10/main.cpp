@@ -5,7 +5,7 @@
 
 #include <iostream>
 
-class MyClass {
+class Myclass {
 public:
     int m_data{};
 
@@ -13,7 +13,7 @@ public:
         std::cout << "Hello World!\n";
         return;
     }
-}; // class MyClass
+}; // class Myclass
 
 class Car {
 public:
@@ -115,11 +115,11 @@ int main() {
     std::cout << "*ptv_yy = " << *ptv_yy << "\nptv_yy = " << ptv_yy << '\n';
 
     void (*ptf_f1)(int)        = f1;
-    void (MyClass::*ptf_f11)() = &MyClass::f1;
-    MyClass a{};
+    void (Myclass::*ptf_f11)() = &Myclass::f1;
+    Myclass a{};
     a.m_data = 5;
     (a.*ptf_f11)();
-    MyClass* ptv_a = &a;
+    Myclass* ptv_a = &a;
 
     ((&a)->*ptf_f11)();
     (ptv_a->*ptf_f11)();

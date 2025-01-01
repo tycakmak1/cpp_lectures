@@ -7,23 +7,23 @@
 #include <string>
 #include <vector>
 
-class MyClass {
+class Myclass {
 public:
-    MyClass() { std::cout << "MyClass default ctor called\n"; };
+    Myclass() { std::cout << "Myclass default constructor called\n"; };
 
-    MyClass(MyClass const& other) : _x{other._x}, _y{other._y} {
-        std::cout << "copy ctor called\n";
+    Myclass(Myclass const& other) : _x{other._x}, _y{other._y} {
+        std::cout << "copy constructor called\n";
     }
 
-    MyClass(int x, int y) : _x{x}, _y{y} {}
+    Myclass(int x, int y) : _x{x}, _y{y} {}
 
-    MyClass operator+(MyClass const& other) const& {
-        std::cout << "inside the MyClass::operator+\n";
+    Myclass operator+(Myclass const& other) const& {
+        std::cout << "inside the Myclass::operator+\n";
         return {_x + other._x, _y + other._y};
     }
 
-    MyClass& operator=(MyClass const& other) {
-        std::cout << "inside the MyClass::operator=\n";
+    Myclass& operator=(Myclass const& other) {
+        std::cout << "inside the Myclass::operator=\n";
         _x = other._x;
         _y = other._y;
         return *this;
@@ -41,7 +41,7 @@ public:
 
 private:
     int _x, _y;
-}; // class MyClass
+}; // class Myclass
 
 class Name {
 public:
@@ -57,22 +57,22 @@ private:
     char* mp;
 }; // class Name
 
-static MyClass stemp1;
-MyClass        stemp2;
+static Myclass stemp1;
+Myclass        stemp2;
 
 int main() {
-    static MyClass stemp3;
+    static Myclass stemp3;
     stemp1.print();
     stemp2.print();
     stemp3.print();
     std::array<int, 3> a1{};
     std::cout << a1[0] << '\n';
     std::cout << "Hello World!\n";
-    MyClass m1{1, 2}, m2{3, 4};
+    Myclass m1{1, 2}, m2{3, 4};
     m1 + m2;
     m1.print();
-    MyClass{3, 5}.print();
-    MyClass{3, 5};
+    Myclass{3, 5}.print();
+    Myclass{3, 5};
     complex::Complex c1{4, 5}, c2{1, 1};
     complex::Complex c3{c1 + c2};
     c3.print();

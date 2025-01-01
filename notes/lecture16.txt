@@ -196,19 +196,19 @@ Function Call Operator Overloading
     ###REMARK###
         Operator functions cannot take default arguments, except the () operator function.
             e.g.
-                class MyClass
+                class Myclass
                 {
                 public:
                     int operator()(int x = 10)
                     {
-                        std::cout << "MyClass::operator()(int x = 10) called.\n";
+                        std::cout << "Myclass::operator()(int x = 10) called.\n";
                         return x * x;
                     }
-                }; // class MyClass
+                }; // class Myclass
 
                 int main()
                 {
-                    MyClass test;
+                    Myclass test;
                     auto val1 = test();                     // val1 = 100
                     auto val2 = test(5);                    // val2 = 25
                     auto val3 = text.operator()(6);         // val3 = 36
@@ -218,7 +218,7 @@ Function Call Operator Overloading
 
 ====================================================================================================
 Typecasting Operator Overloading
-    class MyClass
+    class Myclass
     {
     public:
         operator double() const
@@ -227,7 +227,7 @@ Typecasting Operator Overloading
         }
     private:
         double _x;
-    }; // class MyClass
+    }; // class Myclass
     - Notice that we do not specify a return value, but we actually do. Since writing it as
         "double operator double()" would be meaningless.
     - This is a user defined conversion(UDC). Compiler can perform this implicitly when it is
@@ -253,29 +253,29 @@ Typecasting Operator Overloading
     There is a special case for operator bool(), even if the operator bool is defined explicit, the
     compiler will perform implicit typecasting in a boolean context.
         e.g.
-            class MyClass
+            class Myclass
             {
             public:
                 operator bool() const {}
-            }; // class MyClass
+            }; // class Myclass
 
             int main()
             {
-                MyClass m;
-                int x = m;      // This is VALID because UDC + SC, MyClass to bool and bool to int.
-                if(m) {}        // This is VALID because MyClass has bool typecasting operator.
+                Myclass m;
+                int x = m;      // This is VALID because UDC + SC, Myclass to bool and bool to int.
+                if(m) {}        // This is VALID because Myclass has bool typecasting operator.
             }
 
             If that bool typecasting operator were to be an explicit, then
-            class MyClass
+            class Myclass
             {
             public:
                 explicit operator bool() const {}
-            }; // class MyClass
+            }; // class Myclass
 
             int main()
             {
-                MyClass m;
+                Myclass m;
                 int x = m;          // This becomes INVALID because compiler cannot implicitly
                                     // typecast to bool.
                 if(m) {}            // This is still VALID.
@@ -377,20 +377,20 @@ Namespaces
         e.g.
             namespace tah
             {
-            class MyClass{};
-            void func(MyClass x);
-            MyClass func(MyClass x);
+            class Myclass{};
+            void func(Myclass x);
+            Myclass func(Myclass x);
             } // namespace tah
 
             void tah::func(tah::MyClassx) {}        // These two declarations are the same.
-            void tah::func(MyClass x) {}            // These two declarations are the same.
+            void tah::func(Myclass x) {}            // These two declarations are the same.
 
             But this rule does not apply to the return type.
                 e.g.
-                    MyClass tah::func(MyClass x) {}                 // This is a syntax error.
+                    Myclass tah::func(Myclass x) {}                 // This is a syntax error.
                     There are two ways to prevent this
-                    1-) auto tah::func(MyClass x) -> MyClass {}     // This is trailing return type,
+                    1-) auto tah::func(Myclass x) -> Myclass {}     // This is trailing return type,
                                                                     // most commonly used in Generic
                                                                     // programming.
-                    2-) tah::MyClass tah::func(MyClass x) {}
+                    2-) tah::Myclass tah::func(Myclass x) {}
 ====================================================================================================

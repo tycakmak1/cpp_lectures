@@ -1,8 +1,8 @@
 // Lecture 06
 #include "test.h"
 
-#include <iostream>
 #include <cstdint>
+#include <iostream>
 
 enum Colour : uint8_t { BLACK = 0, WHITE = 1, BLUE = 2 }; // enum Colour
 

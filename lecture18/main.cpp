@@ -1,6 +1,6 @@
 // Lecture 18
 #include "Date.h"
-#include "MyClass.h"
+#include "Myclass.h"
 
 #include <iostream>
 #include <string>
@@ -14,15 +14,15 @@ class MyClass1 {
 
     // void Nested::bar() { return; } // INVALID
 
-}; // class MyClass
+}; // class Myclass
 
 void MyClass1::Nested::foo() { return; } // VALID
 
 class Member {
 public:
-    Member() { std::cout << "Member default ctor\n"; }
+    Member() { std::cout << "Member default constructor\n"; }
 
-    Member(Member const&) { std::cout << "Member copy ctor\n"; }
+    Member(Member const&) { std::cout << "Member copy constructor\n"; }
 }; // class Member
 
 class A {
@@ -44,7 +44,7 @@ private:
 }; // class B
 
 int main() {
-    MyClass mc1, mc2;
+    Myclass mc1, mc2;
     mc1.foo();
     mc1.print();
     mc2.foo(0);

@@ -9,7 +9,7 @@ int                  g1 = 10;
 int                  g2 = 20;
 constexpr int const* p1 = &g1;
 
-class MyClass {
+class Myclass {
     int _x, _y;
 
 public:
@@ -19,10 +19,10 @@ public:
     }
 
     int _a, _b;
-}; // class MyClass
+}; // class Myclass
 
 int main() {
-    MyClass mc;
+    Myclass mc;
     mc.addresses();
     std::cout << "main.cpp &foo = " << &foo << '\n';
     std::printf("%p\n", &foo);

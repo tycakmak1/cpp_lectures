@@ -5,10 +5,10 @@
 
 class Car {
 public:
-    Car() : _year{-1}, _doorNumber{-1} { std::cout << "Default Ctor Called\n"; }
+    Car() : _year{-1}, _doorNumber{-1} { std::cout << "Default constructor Called\n"; }
 
     Car(int year, int door_number) : _year{year}, _doorNumber{door_number} {
-        std::cout << "Ctor Called\n";
+        std::cout << "constructor Called\n";
     }
 
     Car(Car const& rhs) : _year{rhs._year}, _doorNumber{rhs._doorNumber} {
@@ -71,7 +71,7 @@ public:
 
     String(String&& other)
     : _len{std::move(other._len)}
-    , _p{std::move(other._p)} // move ctor
+    , _p{std::move(other._p)} // move constructor
     {
         other._len = 0;
         other._p   = nullptr;
@@ -103,30 +103,32 @@ private:
     char*       _p{};
 }; // class String
 
-class MyClass {
+class Myclass {
 public:
-    MyClass() : _x{}, _y{} { std::cout << "default ctor this = " << this << '\n'; }
+    Myclass() : _x{}, _y{} { std::cout << "default constructor this = " << this << '\n'; }
 
-    MyClass(int a, int b) : _x{a}, _y{b} {
-        std::cout << "int ctor a = " << a << " b = " << b << " this = " << this << '\n';
+    Myclass(int a, int b) : _x{a}, _y{b} {
+        std::cout << "int constructor a = " << a << " b = " << b << " this = " << this << '\n';
     }
 
-    MyClass(MyClass const& other) : _x{other._x}, _y{other._y} { std::cout << "Copy Ctor\n"; }
-
-    MyClass(MyClass&& other) : _x{std::move(other._x)}, _y{std::move(other._y)} {
-        std::cout << "Move Ctor\n";
+    Myclass(Myclass const& other) : _x{other._x}, _y{other._y} {
+        std::cout << "Copy constructor\n";
     }
 
-    ~MyClass() { std::cout << "destructor this = " << this << '\n'; }
+    Myclass(Myclass&& other) : _x{std::move(other._x)}, _y{std::move(other._y)} {
+        std::cout << "Move constructor\n";
+    }
 
-    MyClass& operator=(MyClass const& other) {
+    ~Myclass() { std::cout << "destructor this = " << this << '\n'; }
+
+    Myclass& operator=(Myclass const& other) {
         std::cout << "Copy Assignment\n";
         _x = other._x;
         _y = other._y;
         return *this;
     }
 
-    MyClass& operator=(MyClass&& other) {
+    Myclass& operator=(Myclass&& other) {
         std::cout << "Move Assignment\n";
         _x = std::move(other._x);
         _y = std::move(other._y);
@@ -143,7 +145,7 @@ public:
 
 private:
     int _x, _y;
-}; // class MyClass
+}; // class Myclass
 
 int main() {
     /*std::cout << "Hello World!\n";
@@ -160,16 +162,16 @@ int main() {
     // Yes this is valid and a pr value expression, this line creates a temporary object.
     // std::cout << "main continues\n";
 
-    MyClass t1;
-    MyClass t2{3, 4};
+    Myclass t1;
+    Myclass t2{3, 4};
     t1 = t2;
-    MyClass t3{std::move(t2)};
+    Myclass t3{std::move(t2)};
     t3         = {3, 4};
-    MyClass t4 = MyClass{3, 4};
+    Myclass t4 = Myclass{3, 4};
     // THIS HERE IS ABOUT REFERENCE QUALIFIERS
-    // MyClass{3, 4}.foo();
-    // MyClass x;
-    // const MyClass cx;
+    // Myclass{3, 4}.foo();
+    // Myclass x;
+    // const Myclass cx;
     // x.foo();
     // cx.foo();
     // std::move(x).foo();

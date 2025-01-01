@@ -5,10 +5,10 @@
 ```cpp
 #ifndef MYCLASS_H
 #define MYCLASS_H
-class MyClass {
+class Myclass {
 public:
     void foo();
-}; // class MyClass
+}; // class Myclass
 #endif
 ```
 
@@ -56,57 +56,57 @@ PUBLIC void Myclass::foo(){}    // When a macro is declared without initializati
 #### Chaining (Fluent API)
 -  In C++ it is called chaining, in higher level languages like C# it's called fluent API.
 ```cpp
-class MyClass {
+class Myclass {
 public:
-    MyClass& f1() {
+    Myclass& f1() {
         this;           // PR value expr. so &this would be a syntax error.
         //code
         return *this;
     }
 
-    MyClass& f2() {
+    Myclass& f2() {
         //code
         return *this;
     }
 
-    MyClass& f3() {
+    Myclass& f3() {
         //code
         return *this;
     }
-}; // class MyClass
+}; // class Myclass
 
 int main() {
-    MyClass m;
+    Myclass m;
     m.f1().f2().f3();   // This is called chaining.
-                        // This works because f1 returns the MyClass instance used to call it, and so do f2 and f3.
+                        // This works because f1 returns the Myclass instance used to call it, and so do f2 and f3.
     return 0;
 }
 ```
 Same can be achieved by using pointers as well.
 ```cpp
-class MyClass {
+class Myclass {
 public:
-    MyClass* f1() {
+    Myclass* f1() {
         //.. code
         return this;
     }
 
-    MyClass* f2() {
+    Myclass* f2() {
         //.. code
         return this;
     }
 
-    MyClass* f3() {
+    Myclass* f3() {
         //.. code
         return this;
     }
-}; // class MyClass
+}; // class Myclass
 
 int main() {
-    MyClass m;
-    MyClass* ptv_m = &m;
+    Myclass m;
+    Myclass* ptv_m = &m;
     ptv_v->f1()->f2()->f3();    // This is called chaining.
-                                // This works because f1 returns the address of MyClass instance
+                                // This works because f1 returns the address of Myclass instance
                                 // used to call it, and so do f2 and f3.
     return 0;
 }
@@ -124,7 +124,7 @@ Special case; if the function first takes the argument, uses it and then sets it
 #### How to send the pointer to the instance of a class as `const` to a member function?
 To do this we use the const keyword
 ```cpp
-class MyClass {
+class Myclass {
 public:
     void set();
     void get() const;   // Since we are not gonna change any values in this
@@ -132,7 +132,7 @@ public:
                         // the instance const.
 private:
     int _x;
-}; // class MyClass
+}; // class Myclass
 ```
 In this example `set()` is mutator, and `get()` is accessor.<br>
 Non-static member functions can belong to one of the two categories;
@@ -140,7 +140,7 @@ Non-static member functions can belong to one of the two categories;
 2. Non-`const` Member Functions
 ##### ###REMARK###
 > ```cpp
-> class MyClass {
+> class Myclass {
 > public:
 >     void foo() {}
 > 
@@ -149,7 +149,7 @@ Non-static member functions can belong to one of the two categories;
 >                     // foo does not. In C++ there is no implicit conversion from
 >                     // T const* to T*. Therefore this line creates an error.
 >     }
-> }; // class MyClass
+> }; // class Myclass
 > ```
 ##### ###REMARK###
 > - `const` member functions cannot call non-`const` member functions, but non-`const` member functions can call `const` member functions.
