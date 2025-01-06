@@ -1,11 +1,11 @@
-out: main.o complex.o
-	g++ -std=c++17 -Wpedantic main.o complex.o -o out
+out: main.o Complex.o
+	g++ -std=c++17 -Wpedantic main.o Complex.o -o out
 
 main.o: main.cpp
 	g++ -std=c++17 -Wpedantic -c main.cpp
 
-complex.o: complex.h complex.cpp
-	g++ -std=c++17 -Wpedantic -c complex.cpp
+Complex.o: Complex.h Complex.cpp
+	g++ -std=c++17 -Wpedantic -c Complex.cpp
 
 cleanup:
 	rm *.o out *.s

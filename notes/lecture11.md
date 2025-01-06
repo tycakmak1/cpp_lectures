@@ -1,6 +1,6 @@
 # LECTURE 11
 ## Classes
-### Const Member Functions(continued)
+### Const Member Functions
 #### `mutable` Keyword
 ```cpp
 class Myclass {

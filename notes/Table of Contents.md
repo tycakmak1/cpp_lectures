@@ -34,7 +34,7 @@
     - Universal Reference (Forwarding Reference)
 
 ## Lecture06
-- Type Deduction (Continued)
+- Type Deduction
     - `decltype()` Type Deduction
 - Default Arguments of Functions
 - Enumerators
@@ -47,7 +47,7 @@
     - Function Overload Resolution
 
 ## Lecture08
-- Function Overloading (Continued)
+- Function Overloading
     - Exceptions to the Overload Resolution
 - One Definition Rule (ODR)
 - Inline Functions
@@ -58,14 +58,14 @@
 - Classes
 
 ## Lecture10
-- Classes (Continued)
+- Classes
     - `this` Keyword
         - Chaining (Fluent API)
     - Const Member Functions
 
 ## Lecture11
-- Classes (Continued)
-    - Const Member Functions (Continued)
+- Classes
+    - Const Member Functions
         - `mutable` Keyword
     - Constructors and Destructors
     - Special Member Functions
@@ -77,15 +77,15 @@
     - Default Member Initializer
 
 ## Lecture12
-- Classes (Continued)
+- Classes
     - Special Member Functions
         - Copy Constructor
         - Copy Assignment
         - Move Members
 
 ## Lecture13
-- Classes (Continued)
-    - Special Member Functions (Continued)
+- Classes
+    - Special Member Functions
         - Move Members
     - placement `new`             // FORESHADOW
     - Delegating Constructor
@@ -95,7 +95,7 @@
     - Copy Elision
 
 ## Lecture14
-- Classes (Continued)
+- Classes
     - Static Data Members
     - Named Constructor Idiom
     - Static Global Functions
@@ -112,14 +112,14 @@
     - Smart Pointers            // FORESHADOW
 
 ## Lecture16
-- Operator Overloading (Continued)
+- Operator Overloading
     - Overloading `*` and `->` Operators
     - Function Call Operator Overloading
     - Typecasting Operator Overloading
 - Namespaces
 
 ## Lecture17
-- Namespaces (Continued)
+- Namespaces
     - `using` Declaration
     - `using namespace` (Directive) Declaration
     - Argument Dependent Lopokup(ADL)
@@ -129,7 +129,7 @@
 - Nested Types (Type Member)
 
 ## Lecture18
-- Nested Types (Continued)
+- Nested Types
     - Pimple Idiom (Pointer Implementation Idiom)
 - Composition
 

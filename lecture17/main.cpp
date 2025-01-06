@@ -1,17 +1,17 @@
 // Lecture 17
 #include <iostream>
 
-namespace tah {
+namespace ns {
 int y = 10;
-} // namespace tah
+} // namespace ns
 
 namespace yas {
 int y = 11;
 } // namespace yas
 
-namespace tah {
-void func(int) { std::cout << "tah::func(int)\n"; }
-} // namespace tah
+namespace ns {
+void func(int) { std::cout << "ns::func(int)\n"; }
+} // namespace ns
 
 namespace yas {
 void func(int, int) { std::cout << "yas::func(int, int)\n"; }
@@ -29,7 +29,7 @@ int main() {
     int t1 = ns1::ns2::x;
     int t2 = ns1::x;
     using ::func;
-    using tah::func;
+    using ns::func;
     using yas::func;
     ::func();
     func();

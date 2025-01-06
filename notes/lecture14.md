@@ -243,6 +243,7 @@ Friend declaration can be used to;
     std::ostream& operator<<(std::ostream& out, Myclass const&) { return out << _x; }
 
     // OR
+
     class Myclass {
         friend std::ostream& operator<<(std::ostream& out, Myclass const& m) { return out << _x; }
 
