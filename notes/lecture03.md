@@ -146,7 +146,7 @@ For more details check [CppReference C++ Operator Precedence](https://en.cpprefe
 |7|`a << b` `a >> b`[^3]|Bitwise left shift and right shift|Left-to-right|
 |8|`a <=> b`|Three-way comparison operator (C++20)|Left-to-right|
 |9|`a < b` `a <= b`<br>`a > b` `a >= b`|Relational operators|Left-to-right|
-|10|`=` `!=`| Equality operators|Left-to-right|
+|10|`==` `!=`| Equality operators|Left-to-right|
 |11|`a & b`|Bitwise `AND`|Left-to-right|
 |12|`a ^ b`|Bitwise `XOR`|Left-to-right|
 |13|`a \| b`|Bitwise `OR`|Left-to-right|
