@@ -158,3 +158,13 @@ std::cout << '|' << str << '|';           // || is the output
 > s1.swap(s2);
 > // OR
 > swap(s1, s2);
+
+##### ###REMARK###
+> Forshadowing for `attributes`.<br>
+> In scenarios where the return value of the function must be used, an `[[nodiscard]]` attribute
+> must be used in fucntion declaration.
+> ```cpp
+> [[nodiscard]] int foo() { return 5; }
+>
+> // compiler will generate a warning for this call as the return value is discarded
+> foo();

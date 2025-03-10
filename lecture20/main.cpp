@@ -6,6 +6,8 @@
 #include <string_view>
 #include <vector>
 
+[[nodiscard]] int foo() { return 5; }
+
 int main() {
     std::string           str{"hello world"};
     std::string::iterator iter = str.begin();
@@ -35,6 +37,6 @@ int main() {
 
     std::string      str_Test{"hello world"};
     std::string_view sv_str{&str_Test.at(0U), 4U};
-
+    foo();
     return 0;
 }
