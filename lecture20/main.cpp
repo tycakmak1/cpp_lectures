@@ -3,6 +3,7 @@
 #include <cstdint>
 #include <iostream>
 #include <string>
+#include <string_view>
 #include <vector>
 
 int main() {
@@ -31,5 +32,9 @@ int main() {
     std::cout << '|' << str << "|\n";
     std::getline(std::cin, str, ',');
     std::cout << '|' << str << "|\n";
+
+    std::string      str_Test{"hello world"};
+    std::string_view sv_str{&str_Test.at(0U), 4U};
+
     return 0;
 }

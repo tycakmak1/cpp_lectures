@@ -92,7 +92,7 @@ std::cout << '|' << str << '|';           // || is the output
     std::cout << '|' << str << '|';           // |llo world| is the output
     ```
 
-4. noexcept since C++11, `constexpr` since C++20<br>
+4. `noexcept` since C++11, `constexpr` since C++20<br>
         std::string str{"hello world"};
         str.clear();
         std::cout << '|' << str << '|';           // || is the output
@@ -132,4 +132,29 @@ std::cout << '|' << str << '|';           // || is the output
 > std::getline(std::cin, str2, ','); // hello, is the input
 > std::cout << '|' << str2 << '|';   // |hello|
 > ```
-1:43:10
+
+##### ###REMARK###
+> When a substring of any given `std::string` is needed, using `str.substr(pos1, pos2)` can be used but, this causes the
+> copying of the whole substring. If the substring is too long, this operation gets expensive.<br>
+> As an alternative, if the substring is only needed for read-only operations, then `string_view` can be used.<br>
+> ```cpp
+> std::string      str{"hello world"};
+> std::string_view sv{&str.at(0U), 4U};
+> ```
+> Similar thing happens when we want to swap two strings. Doing
+> ```cpp
+> std::string s1(100'000, 'a');
+> std::string s2(200'000, 'b');
+>
+> std::string temp = s1;
+> s1 = s2;
+> s2 = s1;
+> ```
+> would be unnecessarily wasteful because we don't need Deep Copy. Swapping the values of the pointers and the size
+> values of the strings would be enough.
+> ```cpp
+> std::string s1(100'000, 'a');
+> std::string s2(200'000, 'b');
+> s1.swap(s2);
+> // OR
+> swap(s1, s2);
