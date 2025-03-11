@@ -150,8 +150,8 @@ std::cout << '|' << str << '|';           // || is the output
 > s1 = s2;
 > s2 = s1;
 > ```
-> would be unnecessarily wasteful because we don't need Deep Copy. Swapping the values of the pointers and the size
-> values of the strings would be enough.
+> would be unnecessarily wasteful because we don't need Deep Copy. Swapping the values of the pointers and the size values of the
+> strings would be enough.
 > ```cpp
 > std::string s1(100'000, 'a');
 > std::string s2(200'000, 'b');
@@ -161,10 +161,10 @@ std::cout << '|' << str << '|';           // || is the output
 
 ##### ###REMARK###
 > Forshadowing for `attributes`.<br>
-> In scenarios where the return value of the function must be used, an `[[nodiscard]]` attribute
-> must be used in fucntion declaration.
+> In scenarios where the return value of the function must be used, a `[[nodiscard]]` attribute must be used in function declaration.
 > ```cpp
 > [[nodiscard]] int foo() { return 5; }
 >
 > // compiler will generate a warning for this call as the return value is discarded
 > foo();
+> ```
