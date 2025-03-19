@@ -37,7 +37,11 @@ PUBLIC void Myclass::foo(){}    // When a macro is declared without initializati
 > 3. Enclosing scope<br>
 >   After all the enclosing scopes ended
 > 4. Class scope<br>
-    This is the only difference between searching in a member function and searching in a global function.
+>    This is the only difference between searching in a member function and searching in a global
+> function.
+>       ##### ###REMARK###
+>       > If the class is a derived class, before moving to namespace scope, it will move to base base class scope. This is
+>       > about inheritance.
 > 5. Namespace scope
 >
 > #### Name lookup happens only once, if the identifier is not found, compiler does not repeat the name lookup.
@@ -112,7 +116,8 @@ int main() {
 }
 ```
 ##### ###REMARK###
->Public interface of a `class` consists of the public members of the `class` and the global functions defined in the `class` header file.
+> Public interface of a `class` consists of the public members of the `class` and the global
+> functions defined in the `class` header file.
 
 ## Const Member Functions
 ```cpp
