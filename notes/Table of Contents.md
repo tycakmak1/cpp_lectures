@@ -138,3 +138,9 @@
 
 ## Lecture20
 - `std::string` Functions
+
+## Lecture21
+- Inheritance
+    - `public` Inheritance
+    - upcastin
+    - Special Member Functions in Inheritance
