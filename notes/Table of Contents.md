@@ -138,3 +138,12 @@
 
 ## Lecture20
 - `std::string` Functions
+
+## Lecture21
+- Inheritance
+    - `public` Inheritance
+    - upcasting
+    - Special Member Functions in Inheritance
+    - `using` Declarations Inside a Class
+        - Inherited Constructor
+    - Runtime Polymorphism
