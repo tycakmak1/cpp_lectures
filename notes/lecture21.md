@@ -1,4 +1,4 @@
-# LECTURE 20
+# LECTURE 21
 ## Inheritance
 The term inheritance means more in C++ than it does in OOP.
 
@@ -58,7 +58,8 @@ int main() {
 ##### ###REMARK###
 > - `public` members of a class is accessible to everyone.
 > - `protected` members of a class is accessible to derived classes and the class itself.
-> - `private` members of a class is accessible only to the class itself, if there are no `friend` declarations.
+> - `private` members of a class is accessible only to the class itself, if there are no `friend`
+declarations.
 > ```cpp
 > class Base {
 > public:
@@ -357,7 +358,8 @@ int main() {
 Now `d.func(12)` will call the `void Base::func(int)` and `d.func(12.5)` will call the
 `void Der::func(double)`
 
-This kind of `using` declaration can also be used to access protected members of the base class via client code of the derived class.
+This kind of `using` declaration can also be used to access protected members of the base class via
+client code of the derived class.
 ```cpp
 class Base {
 public:
@@ -397,7 +399,7 @@ public:
 class Der : public Base {
 public:
     using Base::Base;   // With this declaration, all constructors of the base class will
-                        // be defined for Der as well.
+                        // be inherited by Der.
 }; // class Der
 ```
 
@@ -405,3 +407,19 @@ public:
 > `using` declaration can be used for data members as well.
 
 ### Runtime Polymorphism
+Member functions of a base class can have one of the three possible categories.<br>
+1. Said function can provide the derived classes with both an interface and an implementation.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+2. Said function can provide the derived classes with both an interface and a default
+implementation.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;i.e. `override`
+3. Said function can provide the derived classes only with an interface.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;i.e. `override`
+```cpp
+class Airplane {
+public:
+    void take_off();            // 1st category
+    virtual void fly();         // 2nd category
+    virtual void land() = 0;    // 3rd category, also called pure virtual function
+}; // class Airplane
+```
