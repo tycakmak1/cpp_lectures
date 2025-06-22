@@ -147,3 +147,7 @@
     - `using` Declarations Inside a Class
         - Inherited Constructor
     - Runtime Polymorphism
+
+## Lecture22
+- Inheritance
+    - Runtime Polymorphism

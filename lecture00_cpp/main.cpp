@@ -1,49 +1,39 @@
-// this is a testing ground for C++
+#include <cstdint>
 #include <iostream>
 
-enum class Pos { OFF, ON, HOLD }; // /enum class Pos
+struct Node;
+using nodeptr_t = Node*;
 
-int func(int a) { return 1; }
-
-int func(int const a);
-
-void f(void* p) { return; }
-
-void bar(int const&&) { return; }
-
-// int foo(int, int = 10);
-// int foo(int = 5, int);
-
-class Myclass {
-public:
-    static int tyc() { return 5; }
-
-    static inline int _sta_x = tyc(); // VALID
-
-}; // class Myclass
-
-void bar() {
-    std::printf("bar");
-    return;
+nodeptr_t ptrDiff(nodeptr_t ptr1, nodeptr_t ptr2) {
+    return reinterpret_cast<nodeptr_t>(
+        reinterpret_cast<uint64_t>(ptr1) ^ reinterpret_cast<uint64_t>(ptr2));
 }
 
-void foo() {
-    bar();
-    std::printf("foo");
-}
+struct Node {
+    uint16_t  _data{};
+    nodeptr_t _ptrdiff{ptrDiff(nullptr, nullptr)};
+
+    void addNode(uint16_t data) {
+        if (_ptrdiff == nullptr) {
+            nodeptr_t next = ptrDiff(this, nullptr);
+            _ptrdiff       = ptrDiff(nullptr, next);
+            next->_data    = data;
+        }
+        // else if()
+    }
+
+    void printNode(uint8_t const& nodeIndex) {
+        nodeptr_t iter{this};
+        for (uint8_t idx{}; idx < nodeIndex && iter != nullptr;
+             idx++ && (iter = ptrDiff(nullptr, _ptrdiff))) {}
+        std::cout << iter->_data << '\n';
+    }
+};
 
 int main() {
-    int  a;
-    int* p1{&a};
-    f(p1);
-    Pos mypos = Pos::ON;
-    int ival  = static_cast<int>(mypos);
+    nodeptr_t head = new Node{0U};
+    head->addNode(1U);
+    head->printNode(0);
 
-    std::cout << ival << '\n';
-
-    if (true) {
-        std::cout << "true\n";
-    }
-    foo();
-    return 0;
+    // std::cout << (ptrDiff(nullptr, nullptr) == nullptr) << '\n';
 }
