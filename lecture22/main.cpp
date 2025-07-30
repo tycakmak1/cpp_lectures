@@ -1,32 +1,52 @@
 // Lecture 22
+#include "Car.h"
+
 #include <iostream>
 
-struct Car {
-    virtual void start() { std::cout << "Car has started\n"; }
+void car_program_ptr(car::Car* const ptr) {
+    std::cout << "car_program_ptr\n";
+    ptr->start();
+    ptr->run();
+    ptr->stop();
+    ptr->lock();
+    ptr->foo();
+    std::cout << '\n';
+}
 
-    virtual void run() { std::cout << "Car is running\n"; }
+void car_program_ref(car::Car& ref) {
+    std::cout << "car_program_ref\n";
+    ref.start();
+    ref.run();
+    ref.stop();
+    ref.lock();
+    ref.foo();
+    std::cout << '\n';
+}
 
-    virtual void stop() { std::cout << "Car has stopped\n"; }
-};
-
-struct Merc : public Car {
-    void start() { std::cout << "Merc has started\n"; }
-
-    void run() { std::cout << "Merc is running\n"; }
-
-    void stop() { std::cout << "Merc has stopped\n"; }
-};
-
-void car(Car& cr) {
-    cr.start();
-    cr.run();
-    cr.stop();
+void car_program(car::Car car) {
+    std::cout << "car_program\n";
+    car.start();
+    car.run();
+    car.stop();
+    car.lock();
+    car.foo();
+    std::cout << '\n';
 }
 
 int main() {
-    Car  c;
-    Merc m;
+    car::Mercedes     m;
+    car::Audi         a;
+    car::MercedesA180 mA180;
 
-    car(c);
-    car(m);
+    car_program_ptr(&m);     // will call the derived functions of the respective classes
+    car_program_ptr(&a);     // will call the derived functions of the respective classes
+    car_program_ptr(&mA180); // will call the derived functions of the respective classes
+
+    car_program_ref(m);     // will call the derived functions of the respective classes
+    car_program_ref(a);     // will call the derived functions of the respective classes
+    car_program_ref(mA180); // will call the derived functions of the respective classes
+
+    car_program(m);
+    car_program(a);
+    car_program(mA180);
 }

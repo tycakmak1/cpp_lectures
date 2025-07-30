@@ -1,8 +1,11 @@
-out: main.o
-	g++ -std=c++17 -Wpedantic main.o -o out
+out: main.o Car.o
+	g++ -std=c++17 -Wpedantic main.o Car.o -o out
 
 main.o: main.cpp
 	g++ -std=c++17 -Wpedantic -c main.cpp
+
+Car.o: Car.h Car.cpp
+	g++ -std=c++17 -Wpedantic -c Car.cpp
 
 cleanup:
 	rm *.o out *.s
