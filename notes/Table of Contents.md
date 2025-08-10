@@ -151,3 +151,6 @@
 ## Lecture22
 - Inheritance
     - Runtime Polymorphism
+        - Coveriance
+        - Virtual Constructor Idiom (Clone Idiom)
+        - Virtual Destructor

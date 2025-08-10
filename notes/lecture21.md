@@ -3,8 +3,8 @@
 The term inheritance means more in C++ than it does in OOP.
 
 ### `public` Inheritance
-This is the 'is a' relationship inheritance from OOP, e.g. a Mercedes 'is a' Car. So Car is the base
-class and Mercedes is the derived class.
+This is the 'is a' relationship inheritance from OOP, e.g. a Merdedes 'is a' Car. So Car is the base
+class and Merdedes is the derived class.
 ```cpp
 class Base {
 public:

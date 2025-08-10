@@ -98,7 +98,7 @@ int main() {
     (((temp_ptr.*ptf_ptr_f1)()->*ptf_ptr_f2)()->*ptf_ptr_f3)();
 
     void (Car::*ptf_get_info)() const = &Car::get_info;
-    Car temp_car1("Audi", "A3 Sportback", 2021);
+    Car temp_car1("Aubi", "A3 Sportback", 2021);
     (temp_car1.*ptf_get_info)();
     temp_car1.f1();
     Car temp_car3;
